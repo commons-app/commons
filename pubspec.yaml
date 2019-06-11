@@ -27,6 +27,7 @@ dependencies:
   rxdart: ^0.20.0
   json_annotation: ^2.0.0
   image_picker: ^0.6.0
+  shared_preferences: ^0.5.3
 
 dev_dependencies:
   flutter_test:

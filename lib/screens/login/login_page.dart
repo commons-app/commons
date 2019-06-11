@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'login_presenter.dart';
 
 class LoginPage extends StatefulWidget {
@@ -50,23 +52,26 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     var loginForm = new Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        new Text(
-          "Commons App Login",
-          textScaleFactor: 2.0,
+        new Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: new Text(
+            "Log in to your account",
+            textScaleFactor: 1.5,
+          ),
         ),
         new Form(
           key: formKey,
           child: new Column(
             children: <Widget>[
               new Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(20.0),
                 child: new TextFormField(
                   onSaved: (val) => _username = val,
                   decoration: new InputDecoration(labelText: "Username"),
                 ),
               ),
               new Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(20.0),
                 child: new TextFormField(
                   onSaved: (val) => _password = val,
                   decoration: new InputDecoration(labelText: "Password"),
@@ -81,7 +86,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
 
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Login Page"),
+        title: new Text("Commons App"),
       ),
       key: scaffoldKey,
       body: new Container(
@@ -105,6 +110,12 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     setState(() {
       _isLoading = false;
     });
+
+    print(loginResponse);
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('isLoggedIn', true);
+    prefs.setString('username', loginResponse.clientLogin.userName);
     Navigator.of(context).pushNamed("/home");
   }
 }

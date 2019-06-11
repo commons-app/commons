@@ -1,15 +1,17 @@
 import 'dart:io';
 
+import 'package:commons/screens/login/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'picker_presenter.dart';
+import 'home_presenter.dart';
 
-class PickerPage extends StatefulWidget {
+class HomePage extends StatefulWidget {
   @override
-  _PickerPageState createState() => new _PickerPageState();
+  _HomePageState createState() => new _HomePageState();
 }
 
-class _PickerPageState extends State<PickerPage> implements PickerPageContract {
+class _HomePageState extends State<HomePage> implements PickerPageContract {
   BuildContext _ctx;
   bool _isLoading = false;
   final formKey = new GlobalKey<FormState>();
@@ -17,8 +19,9 @@ class _PickerPageState extends State<PickerPage> implements PickerPageContract {
 
   File _image;
   PickerPagePresenter _presenter;
+  var appBarTitleText = new Text("Welcome!");
 
-  _PickerPageState() {
+  _HomePageState() {
     _presenter = new PickerPagePresenter(this);
   }
 
@@ -39,13 +42,37 @@ class _PickerPageState extends State<PickerPage> implements PickerPageContract {
   }
 
   @override
+  void initState() {
+    super.initState();
+    checkIsLogin();
+  }
+
+  Future<Null> checkIsLogin() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var isLoggedIn = prefs.getBool("isLoggedIn");
+    if (isLoggedIn != null && isLoggedIn) {
+      print("User is logged in");
+      var username = prefs.getString("username");
+      appBarTitleText = new Text(username);
+    }
+    else {
+      print("User is not logged in");
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => new LoginPage()),
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     _ctx = context;
 
+    var homeAppBar = AppBar(
+      title: appBarTitleText,
+    );
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Choose image'),
-      ),
+      appBar: homeAppBar,
       body: Center(
         child: _image == null
             ? Text('No image selected.')
