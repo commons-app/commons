@@ -2,7 +2,9 @@ import 'dart:io';
 
 import 'package:commons/model/response/MwQueryResponse.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
+import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
+import 'package:path_provider/path_provider.dart';
 
 class CommonsApiProvider {
   String _base_endpoint;
@@ -14,9 +16,20 @@ class CommonsApiProvider {
     _base_endpoint = baseEndpoint;
     _url_prefix =
         _base_endpoint + "?format=json&formatversion=2&errorformat=plaintext&";
-    Options options = Options(receiveTimeout: 5000, connectTimeout: 5000);
+    BaseOptions options = BaseOptions(
+        receiveTimeout: 5000, connectTimeout: 5000);
     _dio = Dio(options);
-    _setupLoggingInterceptor();
+    _dio.interceptors.add(LogInterceptor(responseBody: true));
+
+    addCookieJar();
+
+  }
+
+  Future addCookieJar() async {
+    Directory tempDir = await getTemporaryDirectory();
+    String tempPath = tempDir.path;
+    CookieJar persistedCookieJar = new PersistCookieJar(dir: tempPath);
+    _dio.interceptors.add(CookieManager(persistedCookieJar));
   }
 
   Future<MwQueryResponse> getLoginToken() async {
@@ -26,7 +39,7 @@ class CommonsApiProvider {
       return MwQueryResponse.fromJson(response.data);
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
-      throw Exception(_handleError(error));
+      throw error;
     }
   }
 
@@ -45,7 +58,7 @@ class CommonsApiProvider {
       return LoginResponse.fromJson(response.data);
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
-      throw Exception(_handleError(error));
+      throw error;
     }
   }
 
@@ -56,7 +69,7 @@ class CommonsApiProvider {
       return MwQueryResponse.fromJson(response.data);
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
-      throw Exception(_handleError(error));
+      throw error;
     }
   }
 
@@ -75,67 +88,7 @@ class CommonsApiProvider {
       return MwQueryResponse.fromJson(response.data);
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
-      throw Exception(_handleError(error));
+      throw error;
     }
-  }
-
-  String _handleError(Error error) {
-    String errorDescription = "";
-    if (error is DioError) {
-      switch (error.type) {
-        case DioErrorType.CANCEL:
-          errorDescription = "Request to API server was cancelled";
-          break;
-        case DioErrorType.CONNECT_TIMEOUT:
-          errorDescription = "Connection timeout with API server";
-          break;
-        case DioErrorType.DEFAULT:
-          errorDescription =
-              "Connection to API server failed due to internet connection";
-          break;
-        case DioErrorType.RECEIVE_TIMEOUT:
-          errorDescription = "Receive timeout in connection with API server";
-          break;
-        case DioErrorType.RESPONSE:
-          errorDescription =
-              "Received invalid status code: ${error.response.statusCode}";
-          break;
-      }
-    } else {
-      errorDescription = "Unexpected error occured";
-    }
-    return errorDescription;
-  }
-
-  void _setupLoggingInterceptor() {
-    int maxCharactersPerLine = 200;
-
-    _dio.interceptor.request.onSend = (Options options) {
-      print("--> ${options.method} ${options.path}");
-      print("Content type: ${options.contentType}");
-      print("<-- END HTTP");
-      return options;
-    };
-
-    _dio.interceptor.response.onSuccess = (Response response) {
-      print(
-          "<-- ${response.statusCode} ${response.request.method} ${response.request.path}");
-      String responseAsString = response.data.toString();
-      if (responseAsString.length > maxCharactersPerLine) {
-        int iterations =
-            (responseAsString.length / maxCharactersPerLine).floor();
-        for (int i = 0; i <= iterations; i++) {
-          int endingIndex = i * maxCharactersPerLine + maxCharactersPerLine;
-          if (endingIndex > responseAsString.length) {
-            endingIndex = responseAsString.length;
-          }
-          print(responseAsString.substring(
-              i * maxCharactersPerLine, endingIndex));
-        }
-      } else {
-        print(response.data);
-      }
-      print("<-- END HTTP");
-    };
   }
 }

@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:animated_floatactionbuttons/animated_floatactionbuttons.dart';
 import 'package:commons/app_config.dart';
 import 'package:commons/screens/login/login_page.dart';
+import 'package:commons/widgets/fancy_fab.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -108,14 +108,9 @@ class _HomePageState extends State<HomePage> implements PickerPageContract {
             : Image.file(_image),
       ),
       key: scaffoldKey,
-      floatingActionButton: AnimatedFloatingActionButton(
-        //Fab list
-          fabButtons: <Widget>[
-            gallery(), camera()
-          ],
-          colorStartAnimation: Colors.blueAccent,
-          colorEndAnimation: Colors.blue,
-          animatedIconData: AnimatedIcons.menu_home //To principal button
+      floatingActionButton: FancyFab(
+        onCameraPressed: _pickImageFromCamera,
+        onGalleryPressed: _pickImageFromGallery,
       ),
     );
   }

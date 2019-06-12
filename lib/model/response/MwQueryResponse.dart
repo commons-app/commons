@@ -15,6 +15,10 @@ class MwQueryResponse extends MwResponse {
     return query;
   }
 
+  bool success() {
+    return this.query != null;
+  }
+
   factory MwQueryResponse.fromJson(Map<String, dynamic> json) => _$MwQueryResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$MwQueryResponseToJson(this);
