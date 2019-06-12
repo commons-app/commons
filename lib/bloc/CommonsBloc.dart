@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:commons/model/Place.dart';
 import 'package:commons/repository/commons_repository.dart';
 
 class CommonsBloc {
@@ -20,5 +21,9 @@ class CommonsBloc {
   uploadFile(File file, String filename, String text) async {
     String csrfToken = await _repository.getCsrfToken();
     return _repository.uploadFile(file, csrfToken, filename, text);
+  }
+
+  Future<List<Place>> getNearbyPlaces() async {
+    return _repository.getNearbyPlaces();
   }
 }

@@ -1,0 +1,2233 @@
+{
+  "head" : {
+    "vars" : [ "location", "item", "label", "class", "classLabel", "icon", "wikipediaArticle", "commonsArticle", "commonsCategory" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3595268"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/National_Institute_of_Mental_Health_and_Neurosciences"
+      },
+      "commonsArticle" : {
+        "type" : "uri",
+        "value" : "https://commons.wikimedia.org/wiki/Category:National_Institute_of_Mental_Health_and_Neurosciences"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.59880556 12.93955556)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "National Institute of Mental Health and Neurosciences"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2385804"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "educational institution"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "National Institute of Mental Health and Neurosciences"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4855064"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Bangalore_Military_School"
+      },
+      "commonsArticle" : {
+        "type" : "uri",
+        "value" : "https://commons.wikimedia.org/wiki/Category:Bangalore_Military_School"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6085 12.9624)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bangalore Military School"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q269770"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "boarding school"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "Bangalore Military School"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4917523"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Bishop_Cotton_Boys%27_School"
+      },
+      "commonsArticle" : {
+        "type" : "uri",
+        "value" : "https://commons.wikimedia.org/wiki/Category:Bishop_Cotton_Boys%27_School"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.59877778 12.96861111)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bishop Cotton Boys' School"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q269770"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "boarding school"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "Bishop Cotton Boys' School"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5539354"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Mahatma_Gandhi_Road_metro_station_(Bangalore)"
+      },
+      "commonsArticle" : {
+        "type" : "uri",
+        "value" : "https://commons.wikimedia.org/wiki/Category:MG_Road_metro_station,_Bangalore"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6068 12.9755)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "MG Road Metro Station"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11670533"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "elevated station"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "MG Road metro station, Bangalore"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6025080"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Indiranagar_metro_station"
+      },
+      "commonsArticle" : {
+        "type" : "uri",
+        "value" : "https://commons.wikimedia.org/wiki/Category:Indiranagar_metro_station"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.65 12.97)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Indiranagar metro station"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q928830"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "metro station"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "Indiranagar metro station"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6173081"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Jeevanbheema_Nagar"
+      },
+      "commonsArticle" : {
+        "type" : "uri",
+        "value" : "https://commons.wikimedia.org/wiki/Category:Jeevanbheemanagar"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.657672 12.966008)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Jeevanbheemanagar"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q123705"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "neighborhood"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "Jeevanbheemanagar"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6939803"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Murugeshpalya"
+      },
+      "commonsArticle" : {
+        "type" : "uri",
+        "value" : "https://commons.wikimedia.org/wiki/Category:Murugeshpalya"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.65995 12.968344444)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Murugeshpalya"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q486972"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "human settlement"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "Murugeshpalya"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6975124"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/National_Public_School,_Indiranagar"
+      },
+      "commonsArticle" : {
+        "type" : "uri",
+        "value" : "https://commons.wikimedia.org/wiki/Category:National_Public_School,_Indiranagar"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.64677778 12.96958333)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "National Public School, Indiranagar"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3914"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "school"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "National Public School, Indiranagar"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17018520"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Dwadasha_Jyotirlinga_Temple"
+      },
+      "commonsArticle" : {
+        "type" : "uri",
+        "value" : "https://commons.wikimedia.org/wiki/Category:Dwadasha_Jyotirlinga_Temple"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.63333333 12.96666667)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dwadasha Jyotirlinga Temple"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q842402"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Hindu temple"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "Dwadasha Jyotirlinga Temple"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19898479"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/St._Mark%27s_Cathedral,_Bangalore"
+      },
+      "commonsArticle" : {
+        "type" : "uri",
+        "value" : "https://commons.wikimedia.org/wiki/Category:St._Mark%27s_Cathedral,_Bangalore"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6041 12.9757)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "St. Mark's Cathedral, Bangalore"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56242250"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "anglican or episcopal cathedral"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "St. Mark's Cathedral, Bangalore"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28035345"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Bellandur"
+      },
+      "commonsArticle" : {
+        "type" : "uri",
+        "value" : "https://commons.wikimedia.org/wiki/Category:Bellandur"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.675778 12.926088)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bellandur"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15642541"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "human-geographic territorial entity"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "Bellandur"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q675608"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Indian_Institute_of_Astrophysics"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.62111111 12.92638889)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Indian Institute of Astrophysics"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31855"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "research institute"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "Indian Institute of Astrophysics"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3520778"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/U_R_Rao_Satellite_Centre"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.654766 12.961223)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Indian Space Research Organisation Satellite Centre"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q83405"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "factory"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3545234"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Bangalore_Football_Stadium"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.611585 12.968866)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bangalore Football Stadium"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1076486"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "sports venue"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4836712"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/BTM_Layout"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.61 12.92)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "BTM Layout"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q486972"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "human settlement"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4850530"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Baldwin_Boys%27_High_School"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6059 12.9628)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Baldwin Boys High School"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q159334"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "secondary school"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4850551"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Baldwin_Girls%27_High_School"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.60040556 12.96416111)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Baldwin Girls High School"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q159334"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "secondary school"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4855035"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Bangalore_Central_Business_District"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.61 12.975)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bangalore Central Business District"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q738570"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "central business district"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "MG Road, Bangalore"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4855048"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Bangalore_Hockey_Stadium"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.600642 12.961684)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bangalore Hockey Stadium"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q483110"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "stadium"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4855073"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Bangalore_School_of_Speech_and_Drama"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.62876667 12.91324167)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bangalore School of Speech and Drama"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3914"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "school"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4897748"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Bethany_High"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.620805 12.940627)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bethany High"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3914"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "school"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4917524"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Bishop_Cotton_Girls%27_School"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6014 12.9704)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bishop Cotton Girls' School"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q423208"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "private school"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5014804"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/CV_Raman_Nagar"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.66388889 12.98555556)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "CV Raman Nagar"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q486972"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "human settlement"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5052232"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Cathedral_High_School,_Bangalore"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6078 12.9667)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Cathedral High School, Bangalore"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9826"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "high school"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5108941"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Christ_University"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6053 12.9347)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Christ (deemed to be university)"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q8434"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "education"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "Christ University, Bangalore"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5164561"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Consulate_General_of_Germany,_Bangalore"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6004 12.9683)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Consulate General of Germany, Bangalore"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q372690"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "consulate general"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5269317"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Dharmaram_College"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.60291667 12.93633333)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Dharmaram College"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q233324"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "seminary"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5539214"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Trinity_metro_station"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.617 12.973)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Trinity Metro Station"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11670533"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "elevated station"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "MG Road metro station, Bangalore"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5635474"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/HOSMAT"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.61373 12.96884)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "HOSMAT"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16917"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "hospital"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5635997"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/HSR_Layout"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6388622 12.9116225)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "HSR Layout"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q486972"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "human settlement"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5641098"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Halasuru_metro_station"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.62628 12.97566)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Halasuru metro station"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q11670533"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "elevated station"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "MG Road metro station, Bangalore"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6019809"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Indian_Airlines_Flight_605"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.647777777 12.948055555)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Indian Airlines Flight 605"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q744913"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "aviation accident"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6150813"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Janaseva_Vidyakendra_Boys_Residential_School"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.603559 12.970895)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Janaseva Vidyakendra Boys Residential School"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3914"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "school"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6405058"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Kidwai_Memorial_Institute_of_Oncology"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.5981 12.9375)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kidwai Memorial Institute of Oncology"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31855"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "research institute"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6975123"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/National_Public_School,_Koramangala"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6208 12.9492)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "National Public School, Koramangala"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3914"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "school"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7331016"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Richmond_Town_Methodist_Church"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6035 12.96337778)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Richmond Town Methodist Church"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16970"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "church building"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7389489"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/SDS_Tuberculosis_Sanatorium"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.622881 12.917275)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "SDS Tuberculosis Sanatorium"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q29628876"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "tuberculosis sanatorium"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7589061"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/St_Joseph%27s_Boys%27_High_School,_Bangalore"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.603559 12.970895)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "St. Joseph's Boys' High School, Bangalore"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9826"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "high school"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7589124"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/St_Joseph%27s_College,_Bangalore"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.5971 12.9627)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "St Joseph's College, Bangalore"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q189004"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "college"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7924608"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Vibhutipura_Lake"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.675566666 12.967644444)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vibhutipura Lake"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q23397"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "lake"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15232316"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Kaggadasapura"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.67372222 12.97936111)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kaggadasapura"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q486972"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "human settlement"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17061845"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Matsya_Narayana_Temple,_Bangalore"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.63333333 12.96666667)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Matsya Narayana Temple, Bangalore"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q44539"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "temple"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18379413"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/National_Centre_for_Excellence"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6733 12.9783)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "National Centre for Excellence"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3914"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "school"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18750174"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Austin_Town"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6133 12.9616)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Austin Town"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q188509"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "suburb"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18750366"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Murphy_Town,_Bangalore"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6265 12.9798)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Murphy Town"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q15642541"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "human-geographic territorial entity"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19898477"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/St._Joseph%27s_Pre-University_College"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.60421389 12.97108889)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "St. Joseph's Pre-University College"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3914"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "school"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q27996915"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Niki.ai"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.62186 12.94318)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "niki.ai"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q620615"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "mobile app"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28408213"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Miranda_Junior_College"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.65044444 12.96888889)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Miranda Junior College"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3914"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "school"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30260573"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.675167 12.973878)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "MediHope Super Specialty Hospital"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4287745"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "medical organization"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30262886"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.61873 12.976179)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Anchorage"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q163740"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "nonprofit organization"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30262915"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.603579 12.965996)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Flags of Honour Foundation"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q163740"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "nonprofit organization"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30262993"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.636648 12.960833)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Mysore Resettlement and Development Agency"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q163740"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "nonprofit organization"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30263017"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.635683 12.960646)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Resource Optimization Initiative"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q163740"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "nonprofit organization"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30263069"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.617971 12.925869)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Vaatsalya Healthcare"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4287745"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "medical organization"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30270009"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.639592 12.98276)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Samatvam Endocrinology Diabetes Centre"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4287745"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "medical organization"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30271575"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.596486 12.962022)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bempu"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q163740"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "nonprofit organization"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30272762"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.614935 12.9723)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "New India Foundation"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q163740"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "nonprofit organization"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30274098"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.620785 12.916346)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Central Silk Technological Research Institute"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q13226383"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "facility"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30274371"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.635386 12.925172)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "St.John's National Academy of Health Sciences"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4287745"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "medical organization"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30280126"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.62858 12.963209)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Command Hospital Air Force"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4287745"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "medical organization"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30284811"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.61873 12.976189)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Interactive Technology Software and Media Association"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q163740"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "nonprofit organization"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q33121520"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.632965 12.918235)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Sampark"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q163740"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "nonprofit organization"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q33318439"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.62227 12.9765)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Ulsoor"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q187223"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "lagoon"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q34877508"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.668888888 12.935)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Belandūr Tank"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131681"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "reservoir"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q47763569"
+      },
+      "wikipediaArticle" : {
+        "type" : "uri",
+        "value" : "https://en.wikipedia.org/wiki/Agaram_Cemetery"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.618007 12.967335)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Agaram Cemetery"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q39614"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "cemetery"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55454367"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.630918 12.968761)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "MS Clinical Research (India)"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4830453"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "business"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q55454455"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.615247 12.934146)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Adamas Pharmaceuticals (India)"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4830453"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "business"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q61930828"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.63654 12.92909)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Society for Community Health Awareness Research and Action"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q43229"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "organization"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q61931435"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.620343 12.920956)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Enzen (India)"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4830453"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "business"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q64143465"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.616211 12.976252)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Centre For Wildlife Studies"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q163740"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "nonprofit organization"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q64143512"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.635134 12.929182)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kentropy Technologies (India)"
+      },
+      "class" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4830453"
+      },
+      "classLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "business"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3416185"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6075 12.973801)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Brigade Road"
+      },
+      "classLabel" : {
+        "type" : "literal",
+        "value" : "?"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "Brigade Road, Bangalore"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4841998"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.661111 12.978611)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Bagmane Tech Park"
+      },
+      "classLabel" : {
+        "type" : "literal",
+        "value" : "?"
+      },
+      "commonsCategory" : {
+        "type" : "literal",
+        "value" : "Bagmane Tech Park"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5108933"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.60513889 12.92883333)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Christ School, Bangalore"
+      },
+      "classLabel" : {
+        "type" : "literal",
+        "value" : "?"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7432489"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.60600556 12.93475833)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "School of Law, Christ University"
+      },
+      "classLabel" : {
+        "type" : "literal",
+        "value" : "?"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7589147"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.5971 12.9627)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "St. Joseph's College of Commerce"
+      },
+      "classLabel" : {
+        "type" : "literal",
+        "value" : "?"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7755788"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6428 12.9158)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "The Oxford College of Science"
+      },
+      "classLabel" : {
+        "type" : "literal",
+        "value" : "?"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q14957050"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.604011 12.951179)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "St. Hopkins College"
+      },
+      "classLabel" : {
+        "type" : "literal",
+        "value" : "?"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q24886481"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6042 12.97105833)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "St. Joseph's Evening College, Bangalore"
+      },
+      "classLabel" : {
+        "type" : "literal",
+        "value" : "?"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q24943501"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6083553 12.9821663)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Commercial Street, Bangalore"
+      },
+      "classLabel" : {
+        "type" : "literal",
+        "value" : "?"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q30621804"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.6414041 12.9143638)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Krupanidhi Group of Institution"
+      },
+      "classLabel" : {
+        "type" : "literal",
+        "value" : "?"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q48733514"
+      },
+      "location" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(77.60313056 12.97053333)"
+      },
+      "label" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "St Joseph’s College of Law, Bangalore"
+      },
+      "classLabel" : {
+        "type" : "literal",
+        "value" : "?"
+      }
+    } ]
+  }
+}

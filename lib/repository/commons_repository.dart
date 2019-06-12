@@ -1,7 +1,9 @@
 import 'dart:io';
 
+import 'package:commons/model/Place.dart';
 import 'package:commons/model/response/MwQueryResponse.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
+import 'package:commons/model/response/nearby/NearbyResponse.dart';
 import 'package:commons/repository/commons_api_provider.dart';
 
 class CommonsRepository {
@@ -35,5 +37,15 @@ class CommonsRepository {
 
   Future<MwQueryResponse> uploadFile(File file, String token, String filename, String text) {
     return _apiProvider.uploadFile(file, filename, token, text);
+  }
+
+  Future<List<Place>> getNearbyPlaces() {
+    return _apiProvider.getNearbyPlaces("1", 77.64, 12.95, "en").then((
+        NearbyResponse value) {
+      return value.getResults().getBindings()
+          .map((val) => Place.from(val)).toList();
+    }, onError: (e) {
+      throw e;
+    });
   }
 }

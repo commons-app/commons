@@ -1,0 +1,47 @@
+SELECT
+     (SAMPLE(?location) as ?location)
+     ?item
+     (SAMPLE(COALESCE(?itemLabelPreferredLanguage, ?itemLabelAnyLanguage)) as ?label)
+     (SAMPLE(?classId) as ?class)
+     (SAMPLE(COALESCE(?classLabelPreferredLanguage, ?classLabelAnyLanguage, "?")) as ?classLabel)
+     (SAMPLE(COALESCE(?icon0, ?icon1)) as ?icon)
+     ?wikipediaArticle
+     ?commonsArticle
+     (SAMPLE(?commonsCategory) as ?commonsCategory)
+   WHERE {
+     SERVICE wikibase:around {
+       ?item wdt:P625 ?location.
+       bd:serviceParam wikibase:center "Point($longitude $latitude)"^^geo:wktLiteral.
+       bd:serviceParam wikibase:radius "$radius" .
+     }
+
+     MINUS {?item wdt:P18 []}
+
+     OPTIONAL {?item rdfs:label ?itemLabelPreferredLanguage. FILTER (lang(?itemLabelPreferredLanguage) = "$language")}
+     OPTIONAL {?item rdfs:label ?itemLabelAnyLanguage}
+
+     OPTIONAL { ?item wdt:P373 ?commonsCategory. }
+
+     OPTIONAL {
+       ?item p:P31/ps:P31 ?classId.
+       OPTIONAL {?classId rdfs:label ?classLabelPreferredLanguage. FILTER (lang(?classLabelPreferredLanguage) = "$language")}
+       OPTIONAL {?classId rdfs:label ?classLabelAnyLanguage}
+
+       OPTIONAL {
+           ?wikipediaArticle   schema:about ?item ;
+                               schema:isPartOf <https://$language.wikipedia.org/> .
+         }
+       OPTIONAL {
+           ?wikipediaArticle   schema:about ?item ;
+                               schema:isPartOf <https://en.wikipedia.org/> .
+           SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+         }
+
+         OPTIONAL {
+           ?commonsArticle   schema:about ?item ;
+                               schema:isPartOf <https://commons.wikimedia.org/> .
+           SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }
+         }
+     }
+   }
+   GROUP BY ?item ?wikipediaArticle ?commonsArticle
