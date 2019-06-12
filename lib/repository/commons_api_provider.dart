@@ -61,14 +61,15 @@ class CommonsApiProvider {
   }
 
   Future<MwQueryResponse> uploadFile(File file, String filename,
-      String token) async {
+      String token, String text) async {
     try {
       var _endpoint = _url_prefix + 'action=upload&ignorewarnings=1';
 
       FormData formData = new FormData.from({
         "filename": filename,
         "token": token,
-        "file": new UploadFileInfo(file, filename)
+        "file": new UploadFileInfo(file, filename),
+        "text": text
       });
       Response response = await _dio.post(_endpoint, data: formData);
       return MwQueryResponse.fromJson(response.data);

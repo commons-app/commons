@@ -33,7 +33,7 @@ class CommonsRepository {
     });
   }
 
-  Future<MwQueryResponse> uploadFile(File file, String token, String filename) {
-    return _apiProvider.uploadFile(file, filename, token);
+  Future<MwQueryResponse> uploadFile(File file, String token, String filename, String text) {
+    return _apiProvider.uploadFile(file, filename, token, text);
   }
 }

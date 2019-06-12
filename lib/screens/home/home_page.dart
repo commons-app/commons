@@ -107,6 +107,7 @@ class _HomePageState extends State<HomePage> implements PickerPageContract {
             ? Text('No image selected.')
             : Image.file(_image),
       ),
+      key: scaffoldKey,
       floatingActionButton: AnimatedFloatingActionButton(
         //Fab list
           fabButtons: <Widget>[

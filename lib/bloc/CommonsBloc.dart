@@ -17,8 +17,8 @@ class CommonsBloc {
     return _repository.doLogin(username, password, loginToken, baseEndpoint);
   }
 
-  uploadFile(File file, String filename) async {
+  uploadFile(File file, String filename, String text) async {
     String csrfToken = await _repository.getCsrfToken();
-    return _repository.uploadFile(file, csrfToken, filename);
+    return _repository.uploadFile(file, csrfToken, filename, text);
   }
 }
