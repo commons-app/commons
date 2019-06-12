@@ -18,8 +18,12 @@ class PickerPagePresenter {
     commonsBloc = new CommonsBloc(baseEndpoint);
   }
 
-  Future<File> getImage() async {
+  Future<File> getImageFromCamera() async {
     return ImagePicker.pickImage(source: ImageSource.camera);
+  }
+
+  Future<File> getImageFromGallery() async {
+    return ImagePicker.pickImage(source: ImageSource.gallery);
   }
 
   uploadFile(File file, String filename) {

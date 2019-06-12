@@ -29,6 +29,7 @@ dependencies:
   image_picker: ^0.6.0
   shared_preferences: ^0.5.3
   flutter_stetho: ^0.2.2
+  animated_floatactionbuttons: ^0.1.0
 
 dev_dependencies:
   flutter_test:

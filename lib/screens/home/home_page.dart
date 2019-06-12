@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:animated_floatactionbuttons/animated_floatactionbuttons.dart';
 import 'package:commons/app_config.dart';
 import 'package:commons/screens/login/login_page.dart';
 import 'package:flutter/material.dart';
@@ -20,16 +21,29 @@ class _HomePageState extends State<HomePage> implements PickerPageContract {
 
   File _image;
   PickerPagePresenter _presenter;
-  var appBarTitleText = new Text("Welcome!");
 
-  void _pickImage() async {
-    var image = await _presenter.getImage();
+  void _pickImageFromCamera() async {
+    var image = await _presenter.getImageFromCamera();
 
-    _presenter.uploadFile(image, "Test.jpg");
+    uploadImage(image);
 
     setState(() {
       _image = image;
     });
+  }
+
+  void _pickImageFromGallery() async {
+    var image = await _presenter.getImageFromGallery();
+
+    uploadImage(image);
+
+    setState(() {
+      _image = image;
+    });
+  }
+
+  void uploadImage(File image) {
+    _presenter.uploadFile(image, "Test.jpg");
   }
 
   void _showSnackBar(String text) {
@@ -47,19 +61,33 @@ class _HomePageState extends State<HomePage> implements PickerPageContract {
   Future<Null> checkIsLogin() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var isLoggedIn = prefs.getBool("isLoggedIn");
-    if (isLoggedIn != null && isLoggedIn) {
-      print("User is logged in");
-      var username = prefs.getString("username") == null ? "" : prefs.getString(
-          "username");
-      appBarTitleText = new Text(username);
-    }
-    else {
+    if (isLoggedIn == null || !isLoggedIn) {
       print("User is not logged in");
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => new LoginPage()),
       );
     }
+  }
+
+  Widget gallery() {
+    return Container(
+      child: FloatingActionButton(
+        onPressed: _pickImageFromGallery,
+        tooltip: 'Gallery',
+        child: Icon(Icons.image),
+      ),
+    );
+  }
+
+  Widget camera() {
+    return Container(
+      child: FloatingActionButton(
+        onPressed: _pickImageFromCamera,
+        tooltip: 'Camera',
+        child: Icon(Icons.photo_camera),
+      ),
+    );
   }
 
   @override
@@ -69,7 +97,7 @@ class _HomePageState extends State<HomePage> implements PickerPageContract {
     _presenter = new PickerPagePresenter(config.commonsBaseUrl, this);
 
     var homeAppBar = AppBar(
-      title: appBarTitleText,
+      title: new Text("Welcome to Commons!"),
     );
 
     return Scaffold(
@@ -79,10 +107,14 @@ class _HomePageState extends State<HomePage> implements PickerPageContract {
             ? Text('No image selected.')
             : Image.file(_image),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _pickImage,
-        tooltip: 'Pick Image',
-        child: Icon(Icons.add_a_photo),
+      floatingActionButton: AnimatedFloatingActionButton(
+        //Fab list
+          fabButtons: <Widget>[
+            gallery(), camera()
+          ],
+          colorStartAnimation: Colors.blueAccent,
+          colorEndAnimation: Colors.blue,
+          animatedIconData: AnimatedIcons.menu_home //To principal button
       ),
     );
   }

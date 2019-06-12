@@ -8,6 +8,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.36.3"
+  animated_floatactionbuttons:
+    dependency: "direct main"
+    description:
+      name: animated_floatactionbuttons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   args:
     dependency: transitive
     description:
