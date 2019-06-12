@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:commons/app_config.dart';
 import 'package:commons/screens/login/login_page.dart';
+import 'package:commons/screens/upload/license_page.dart';
 import 'package:commons/widgets/fancy_fab.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,7 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> implements PickerPageContract {
   BuildContext _ctx;
-  bool _isLoading = false;
+
   final formKey = new GlobalKey<FormState>();
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
@@ -43,7 +44,11 @@ class _HomePageState extends State<HomePage> implements PickerPageContract {
   }
 
   void uploadImage(File image) {
-    _presenter.uploadFile(image, "Test.jpg");
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => FileLicensePage(selectedFile: image),
+        ));
   }
 
   void _showSnackBar(String text) {
@@ -102,32 +107,11 @@ class _HomePageState extends State<HomePage> implements PickerPageContract {
 
     return Scaffold(
       appBar: homeAppBar,
-      body: Center(
-        child: _image == null
-            ? Text('No image selected.')
-            : Image.file(_image),
-      ),
       key: scaffoldKey,
       floatingActionButton: FancyFab(
         onCameraPressed: _pickImageFromCamera,
         onGalleryPressed: _pickImageFromGallery,
       ),
     );
-  }
-
-  @override
-  void onImageUploadError(String error) {
-    _showSnackBar(error);
-    setState(() {
-      _isLoading = false;
-    });
-  }
-
-  @override
-  void onImageUploadSuccess(String success) {
-    _showSnackBar(success);
-    setState(() {
-      _isLoading = false;
-    });
   }
 }

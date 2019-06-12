@@ -6,9 +6,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:commons/helper/upload_helper.dart';
 
 abstract class PickerPageContract {
-  void onImageUploadSuccess(String success);
-
-  void onImageUploadError(String error);
 }
 
 class PickerPagePresenter {
@@ -28,18 +25,5 @@ class PickerPagePresenter {
 
   Future<File> getImageFromGallery() async {
     return ImagePicker.pickImage(source: ImageSource.gallery);
-  }
-
-  uploadFile(File file, String filename) async {
-    var text = await _uploadHelper.getPageText(
-        "", DateTime.now(), 12.9593548, 77.643414, UploadHelper.CC_BY_SA_4,
-        ["Test"]);
-
-    print(text);
-
-    commonsBloc
-        .uploadFile(file, filename, text)
-        .then((uploadResponse) => _view.onImageUploadSuccess("Image uploaded!"))
-        .catchError((onError) => _view.onImageUploadError(onError.toString()));
   }
 }
