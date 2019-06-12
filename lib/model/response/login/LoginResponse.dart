@@ -7,9 +7,9 @@ part 'LoginResponse.g.dart';
 @JsonSerializable()
 class LoginResponse {
   MwServiceError error;
-  ClientLogin clientLogin;
+  ClientLogin clientlogin;
 
-  LoginResponse(this.error, this.clientLogin);
+  LoginResponse(this.error, this.clientlogin);
 
   factory LoginResponse.fromJson(Map<String, dynamic> json) =>
       _$LoginResponseFromJson(json);

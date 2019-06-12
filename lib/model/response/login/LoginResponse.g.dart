@@ -11,13 +11,13 @@ LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) {
       json['error'] == null
           ? null
           : MwServiceError.fromJson(json['error'] as Map<String, dynamic>),
-      json['clientLogin'] == null
+      json['clientlogin'] == null
           ? null
-          : ClientLogin.fromJson(json['clientLogin'] as Map<String, dynamic>));
+          : ClientLogin.fromJson(json['clientlogin'] as Map<String, dynamic>));
 }
 
 Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
     <String, dynamic>{
       'error': instance.error,
-      'clientLogin': instance.clientLogin
+      'clientlogin': instance.clientlogin
     };

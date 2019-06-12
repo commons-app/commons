@@ -3,14 +3,18 @@ import 'dart:io';
 import 'package:commons/repository/commons_repository.dart';
 
 class CommonsBloc {
-  String COMMONS_URL = "https://commons.wikimedia.org/";
+  String baseEndpoint;
+  CommonsRepository _repository;
 
-  final CommonsRepository _repository = CommonsRepository();
+  CommonsBloc(String baseEndpoint) {
+    this.baseEndpoint = baseEndpoint;
+    _repository = CommonsRepository(baseEndpoint);
+  }
 
   doLogin(String username, String password) async {
     String loginToken = await _repository.getLoginToken();
 
-    return _repository.doLogin(username, password, loginToken, COMMONS_URL);
+    return _repository.doLogin(username, password, loginToken, baseEndpoint);
   }
 
   uploadFile(File file, String filename) async {
@@ -18,5 +22,3 @@ class CommonsBloc {
     return _repository.uploadFile(file, csrfToken, filename);
   }
 }
-
-final bloc = CommonsBloc();

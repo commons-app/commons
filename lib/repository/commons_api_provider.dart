@@ -5,15 +5,15 @@ import 'package:commons/model/response/login/LoginResponse.dart';
 import 'package:dio/dio.dart';
 
 class CommonsApiProvider {
-  //String _base_endpoint =
-  //  "https://commons.wikimedia.org/w/api.php?format=json&formatversion=2&errorformat=plaintext&";
-
-  String _base_endpoint =
-      "https://commons.wikimedia.beta.wmflabs.org/w/api.php?format=json&formatversion=2&errorformat=plaintext&";
+  String _base_endpoint;
+  String _url_prefix;
 
   Dio _dio;
 
-  CommonsApiProvider() {
+  CommonsApiProvider(String baseEndpoint) {
+    _base_endpoint = baseEndpoint;
+    _url_prefix =
+        _base_endpoint + "?format=json&formatversion=2&errorformat=plaintext&";
     Options options = Options(receiveTimeout: 5000, connectTimeout: 5000);
     _dio = Dio(options);
     _setupLoggingInterceptor();
@@ -21,7 +21,7 @@ class CommonsApiProvider {
 
   Future<MwQueryResponse> getLoginToken() async {
     try {
-      var _endpoint = _base_endpoint + 'action=query&meta=tokens&type=login';
+      var _endpoint = _url_prefix + 'action=query&meta=tokens&type=login';
       Response response = await _dio.get(_endpoint);
       return MwQueryResponse.fromJson(response.data);
     } catch (error, stacktrace) {
@@ -33,7 +33,7 @@ class CommonsApiProvider {
   Future<LoginResponse> postLogin(String username, String password,
       String loginToken, String loginReturnUrl) async {
     try {
-      var _endpoint = _base_endpoint + 'action=clientlogin&rememberMe=';
+      var _endpoint = _url_prefix + 'action=clientlogin&rememberMe=';
 
       print(loginToken);
       Response response = await _dio.post(_endpoint, data: {
@@ -51,7 +51,7 @@ class CommonsApiProvider {
 
   Future<MwQueryResponse> getCsrfToken() async {
     try {
-      var _endpoint = _base_endpoint + 'action=query&meta=tokens&type=csrf';
+      var _endpoint = _url_prefix + 'action=query&meta=tokens&type=csrf';
       Response response = await _dio.get(_endpoint);
       return MwQueryResponse.fromJson(response.data);
     } catch (error, stacktrace) {
@@ -63,7 +63,7 @@ class CommonsApiProvider {
   Future<MwQueryResponse> uploadFile(File file, String filename,
       String token) async {
     try {
-      var _endpoint = _base_endpoint + 'action=upload&ignorewarnings=1';
+      var _endpoint = _url_prefix + 'action=upload&ignorewarnings=1';
 
       FormData formData = new FormData.from({
         "filename": filename,

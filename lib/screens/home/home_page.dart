@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:commons/app_config.dart';
 import 'package:commons/screens/login/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,10 +21,6 @@ class _HomePageState extends State<HomePage> implements PickerPageContract {
   File _image;
   PickerPagePresenter _presenter;
   var appBarTitleText = new Text("Welcome!");
-
-  _HomePageState() {
-    _presenter = new PickerPagePresenter(this);
-  }
 
   void _pickImage() async {
     var image = await _presenter.getImage();
@@ -52,7 +49,8 @@ class _HomePageState extends State<HomePage> implements PickerPageContract {
     var isLoggedIn = prefs.getBool("isLoggedIn");
     if (isLoggedIn != null && isLoggedIn) {
       print("User is logged in");
-      var username = prefs.getString("username");
+      var username = prefs.getString("username") == null ? "" : prefs.getString(
+          "username");
       appBarTitleText = new Text(username);
     }
     else {
@@ -67,10 +65,13 @@ class _HomePageState extends State<HomePage> implements PickerPageContract {
   @override
   Widget build(BuildContext context) {
     _ctx = context;
+    var config = AppConfig.of(_ctx);
+    _presenter = new PickerPagePresenter(config.commonsBaseUrl, this);
 
     var homeAppBar = AppBar(
       title: appBarTitleText,
     );
+
     return Scaffold(
       appBar: homeAppBar,
       body: Center(

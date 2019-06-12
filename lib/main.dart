@@ -1,8 +1,7 @@
 import 'package:commons/screens/home/home_page.dart';
 import 'package:commons/screens/login/login_page.dart';
 import 'package:flutter/material.dart';
-
-void main() => runApp(new MyApp());
+import 'app_config.dart';
 
 final routes = {
   '/login': (BuildContext context) => new LoginPage(),
@@ -13,8 +12,10 @@ final routes = {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var config = AppConfig.of(context);
+
     return new MaterialApp(
-      title: 'Commons App',
+      title: config.appName,
       theme: new ThemeData(primarySwatch: Colors.blue),
       routes: routes,
     );

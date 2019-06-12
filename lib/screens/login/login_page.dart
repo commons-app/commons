@@ -1,7 +1,7 @@
 import 'package:commons/model/response/login/LoginResponse.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:commons/app_config.dart';
 import 'login_presenter.dart';
 
 class LoginPage extends StatefulWidget {
@@ -18,10 +18,6 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
   String _username, _password;
 
   LoginPagePresenter _presenter;
-
-  _LoginPageState() {
-    _presenter = new LoginPagePresenter(this);
-  }
 
   void _submit() {
     final form = formKey.currentState;
@@ -44,6 +40,9 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
   @override
   Widget build(BuildContext context) {
     _ctx = context;
+    var config = AppConfig.of(_ctx);
+    _presenter = new LoginPagePresenter(this, config.commonsBaseUrl);
+
     var loginBtn = new RaisedButton(
       onPressed: _submit,
       child: new Text("Login"),
@@ -115,7 +114,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('isLoggedIn', true);
-    prefs.setString('username', loginResponse.clientLogin.userName);
+    prefs.setString('username', loginResponse.clientlogin.username);
     Navigator.of(context).pushNamed("/home");
   }
 }

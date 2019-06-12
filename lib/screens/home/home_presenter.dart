@@ -12,9 +12,11 @@ abstract class PickerPageContract {
 
 class PickerPagePresenter {
   PickerPageContract _view;
-  CommonsBloc commonsBloc = new CommonsBloc();
+  CommonsBloc commonsBloc;
 
-  PickerPagePresenter(this._view);
+  PickerPagePresenter(String baseEndpoint, this._view) {
+    commonsBloc = new CommonsBloc(baseEndpoint);
+  }
 
   Future<File> getImage() async {
     return ImagePicker.pickImage(source: ImageSource.camera);

@@ -8,8 +8,11 @@ abstract class LoginPageContract {
 
 class LoginPagePresenter {
   LoginPageContract _view;
-  CommonsBloc commonsBloc = new CommonsBloc();
-  LoginPagePresenter(this._view);
+  CommonsBloc commonsBloc;
+
+  LoginPagePresenter(this._view, String commonsBaseUrl) {
+    commonsBloc = new CommonsBloc(commonsBaseUrl);
+  }
 
   doLogin(String username, String password) {
     commonsBloc

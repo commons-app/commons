@@ -5,7 +5,11 @@ import 'package:commons/model/response/login/LoginResponse.dart';
 import 'package:commons/repository/commons_api_provider.dart';
 
 class CommonsRepository {
-  CommonsApiProvider _apiProvider = CommonsApiProvider();
+  CommonsApiProvider _apiProvider;
+
+  CommonsRepository(String baseEndpoint) {
+    _apiProvider = CommonsApiProvider(baseEndpoint);
+  }
 
   Future<String> getLoginToken() {
     return _apiProvider.getLoginToken().then((MwQueryResponse value) {

@@ -8,9 +8,9 @@ class ClientLogin {
   String status;
   List<LoginRequest> requests;
   String message;
-  String userName;
+  String username;
 
-  ClientLogin(this.status, this.requests, this.message, this.userName);
+  ClientLogin(this.status, this.requests, this.message, this.username);
 
   factory ClientLogin.fromJson(Map<String, dynamic> json) =>
       _$ClientLoginFromJson(json);

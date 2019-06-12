@@ -7,8 +7,15 @@ part of 'ClientLogin.dart';
 // **************************************************************************
 
 ClientLogin _$ClientLoginFromJson(Map<String, dynamic> json) {
-  return ClientLogin(json['status'] as String, json['requests'] as List,
-      json['message'] as String, json['userName'] as String);
+  return ClientLogin(
+      json['status'] as String,
+      (json['requests'] as List)
+          ?.map((e) => e == null
+              ? null
+              : LoginRequest.fromJson(e as Map<String, dynamic>))
+          ?.toList(),
+      json['message'] as String,
+      json['username'] as String);
 }
 
 Map<String, dynamic> _$ClientLoginToJson(ClientLogin instance) =>
@@ -16,5 +23,5 @@ Map<String, dynamic> _$ClientLoginToJson(ClientLogin instance) =>
       'status': instance.status,
       'requests': instance.requests,
       'message': instance.message,
-      'userName': instance.userName
+      'username': instance.username
     };
