@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:commons/model/Place.dart';
 import 'package:commons/repository/commons_repository.dart';
+import 'package:latlong/latlong.dart';
 
 class CommonsBloc {
   String baseEndpoint;
@@ -23,7 +24,7 @@ class CommonsBloc {
     return _repository.uploadFile(file, csrfToken, filename, text);
   }
 
-  Future<List<Place>> getNearbyPlaces() async {
-    return _repository.getNearbyPlaces();
+  Future<List<Place>> getNearbyPlaces(LatLng latLng) async {
+    return _repository.getNearbyPlaces(latLng);
   }
 }

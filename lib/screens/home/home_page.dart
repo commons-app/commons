@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
   File _image;
+  LatLng _currentLocation = new LatLng(12.95, 77.64);
   HomePagePresenter _presenter;
 
   void _pickImageFromCamera() async {
@@ -78,10 +79,7 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
         MaterialPageRoute(builder: (context) => new LoginPage()),
       );
     } else {
-      nearbyMarkers = await _presenter.getNearbyPlaces();
-      setState(() {
-
-      });
+      _presenter.subscribeToCurrentLocation();
     }
   }
 
@@ -119,7 +117,7 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
 
     var flutterMap = new FlutterMap(
       options: new MapOptions(
-        center: new LatLng(12.95, 77.64),
+        center: _currentLocation,
         zoom: 13.0,
       ),
       layers: [
@@ -148,6 +146,13 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
 
   @override
   void onMarkerTapped(Place place) {
-    print(place.getName());
+    _showSnackBar(place.getName());
+  }
+
+  @override
+  void onLocationUpdated(LatLng latLng) async {
+    _currentLocation = latLng;
+    nearbyMarkers = await _presenter.getNearbyPlaces(latLng);
+    setState(() {});
   }
 }

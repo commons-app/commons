@@ -6,7 +6,7 @@ import 'package:commons/model/response/login/LoginResponse.dart';
 import 'package:commons/model/response/nearby/NearbyResponse.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/services.dart';
+import 'package:latlong/latlong.dart';
 import 'package:path_provider/path_provider.dart';
 
 class CommonsApiProvider {
@@ -96,10 +96,10 @@ class CommonsApiProvider {
   }
 
   Future<NearbyResponse> getNearbyPlaces(String radius,
-      double latitude,
-      double longitude,
+      LatLng latLng,
       String language) async {
-    String query = getNearbyQuery(radius, latitude, longitude, language);
+    String query = getNearbyQuery(
+        radius, latLng.latitude, latLng.longitude, language);
     try {
       var _endpoint = _sparql_query_endpoint + '?format=json&query=' + query;
 
@@ -113,14 +113,6 @@ class CommonsApiProvider {
       throw error;
     }
   }
-
-//  Future<NearbyResponse> getNearbyPlaces() async {
-//    String json = await _loadNearbyAsset();
-//    //print(json);
-//    NearbyResponse response = NearbyResponse.fromJson(jsonDecode(json));
-//    var bindings = response.getResults().getBindings();
-//    return NearbyResponse.fromJson(jsonDecode(json));
-//  }
 
   String getNearbyQuery(String radius,
       double latitude,
@@ -139,25 +131,25 @@ class CommonsApiProvider {
    WHERE {
      SERVICE wikibase:around {
        ?item wdt:P625 ?location.
-       bd:serviceParam wikibase:center 'Point(77.64 12.95)'^^geo:wktLiteral.
-       bd:serviceParam wikibase:radius '1' .
+       bd:serviceParam wikibase:center 'Point($longitude $latitude)'^^geo:wktLiteral.
+       bd:serviceParam wikibase:radius '$radius' .
      }
 
      MINUS {?item wdt:P18 []}
 
-     OPTIONAL {?item rdfs:label ?itemLabelPreferredLanguage. FILTER (lang(?itemLabelPreferredLanguage) = 'en')}
+     OPTIONAL {?item rdfs:label ?itemLabelPreferredLanguage. FILTER (lang(?itemLabelPreferredLanguage) = '$language')}
      OPTIONAL {?item rdfs:label ?itemLabelAnyLanguage}
 
      OPTIONAL { ?item wdt:P373 ?commonsCategory. }
 
      OPTIONAL {
        ?item p:P31/ps:P31 ?classId.
-       OPTIONAL {?classId rdfs:label ?classLabelPreferredLanguage. FILTER (lang(?classLabelPreferredLanguage) = 'en')}
+       OPTIONAL {?classId rdfs:label ?classLabelPreferredLanguage. FILTER (lang(?classLabelPreferredLanguage) = '$language')}
        OPTIONAL {?classId rdfs:label ?classLabelAnyLanguage}
 
        OPTIONAL {
            ?wikipediaArticle   schema:about ?item ;
-                               schema:isPartOf <https://\$language.wikipedia.org/> .
+                               schema:isPartOf <https://$language.wikipedia.org/> .
          }
        OPTIONAL {
            ?wikipediaArticle   schema:about ?item ;
@@ -173,9 +165,5 @@ class CommonsApiProvider {
      }
    }
    GROUP BY ?item ?wikipediaArticle ?commonsArticle""";
-  }
-
-  Future<String> _loadNearbyAsset() async {
-    return await rootBundle.loadString('assets/nearby.json');
   }
 }
