@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:commons/bloc/CommonsBloc.dart';
 import 'package:commons/helper/upload_helper.dart';
-import 'package:commons/model/Place.dart';
+import 'package:commons/model/place.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:image_picker/image_picker.dart';

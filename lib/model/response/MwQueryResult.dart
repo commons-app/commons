@@ -1,13 +1,16 @@
+import 'package:commons/model/response/search/SearchResultItem.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 import 'Tokens.dart';
 
 part 'MwQueryResult.g.dart';
 
 @JsonSerializable()
 class MwQueryResult {
+  List<SearchResultItem> search;
   Tokens tokens;
 
-  MwQueryResult(this.tokens);
+  MwQueryResult(this.tokens, this.search);
 
   Tokens getTokens() {
     return tokens;

@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:commons/model/Place.dart';
+import 'package:commons/model/category.dart';
+import 'package:commons/model/place.dart';
 import 'package:commons/repository/commons_repository.dart';
 import 'package:latlong/latlong.dart';
 
@@ -26,5 +27,9 @@ class CommonsBloc {
 
   Future<List<Place>> getNearbyPlaces(LatLng latLng) async {
     return _repository.getNearbyPlaces(latLng);
+  }
+
+  Future<List<Category>> getCategories(String query) async {
+    return _repository.searchCategories(query);
   }
 }

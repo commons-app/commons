@@ -1,45 +1,35 @@
 import 'dart:io';
 
-import 'package:autocomplete_textfield/autocomplete_textfield.dart';
-import 'package:commons/app_config.dart';
 import 'package:commons/helper/upload_helper.dart';
-import 'package:commons/screens/upload/upload_presenter.dart';
+import 'package:commons/screens/upload/upload_category_page.dart';
 import 'package:flutter/material.dart';
 
 class FileDescriptionPage extends StatefulWidget {
   final File file;
-  final String license;
 
-  const FileDescriptionPage(
-      {Key key, @required this.file, @required this.license})
+  const FileDescriptionPage({Key key, @required this.file})
       : super(key: key);
 
   @override
   _FileDescriptionPageState createState() =>
-      new _FileDescriptionPageState(file, license);
+      new _FileDescriptionPageState(file);
 }
 
-class _FileDescriptionPageState extends State<FileDescriptionPage>
-    implements UploadPageContract {
+class _FileDescriptionPageState extends State<FileDescriptionPage> {
   BuildContext _ctx;
   final formKey = new GlobalKey<FormState>();
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
   bool _isLoading = false;
   File _image;
-  String _license;
 
   var _title;
   var _caption;
   var _description;
+  String _license = UploadHelper.CC_BY_3;
 
-  UploadPagePresenter _presenter;
-
-  String dropdownValue = UploadHelper.CC_BY_3;
-
-  _FileDescriptionPageState(File file, String license) {
+  _FileDescriptionPageState(File file) {
     _image = file;
-    _license = license;
   }
 
   void _showSnackBar(String text) {
@@ -56,40 +46,18 @@ class _FileDescriptionPageState extends State<FileDescriptionPage>
   @override
   Widget build(BuildContext context) {
     _ctx = context;
-    var config = AppConfig.of(_ctx);
-    _presenter = new UploadPagePresenter(config.commonsBaseUrl, this);
+
+    var outlineInputBorder = OutlineInputBorder(
+        borderRadius: BorderRadius.all(
+            Radius.circular(25.0)));
 
     var homeAppBar = AppBar(
       title: new Text("Welcome to Commons!"),
     );
 
-    var categoriesSearch = new AutoCompleteTextField<String>(
-      style: new TextStyle(color: Colors.black, fontSize: 16.0),
-      decoration: new InputDecoration(
-          suffixIcon: Container(
-            width: 85.0,
-            height: 60.0,
-          ),
-          contentPadding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
-          filled: true,
-          hintText: 'Search Player Name',
-          hintStyle: TextStyle(color: Colors.black)),
-      itemBuilder: (context, item) {
-        return Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              item,
-              style: TextStyle(fontSize: 16.0),
-            )
-          ],
-        );
-      },
-    );
-
     var loginBtn = new RaisedButton(
       onPressed: _submit,
-      child: new Text("Upload"),
+      child: new Text("Next"),
       color: Colors.green,
     );
 
@@ -101,27 +69,54 @@ class _FileDescriptionPageState extends State<FileDescriptionPage>
           child: new Column(
             children: <Widget>[
               new Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: new TextFormField(
                     onSaved: (val) => _title = val,
-                    decoration: new InputDecoration(labelText: "Title"),
+                    decoration: new InputDecoration(labelText: "Title",
+                        border: outlineInputBorder),
                   )),
               new Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: new TextFormField(
                     onSaved: (val) => _caption = val,
-                    decoration: new InputDecoration(labelText: "Caption"),
+                    decoration: new InputDecoration(labelText: "Caption",
+                        border: outlineInputBorder),
                   )),
               new Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: new TextFormField(
                     onSaved: (val) => _description = val,
-                    decoration: new InputDecoration(labelText: "Description"),
+                    decoration: new InputDecoration(labelText: "Description",
+                        border: outlineInputBorder),
                   )),
               new Padding(
                 padding: const EdgeInsets.all(12.0),
-                child: new Text("Categories"),
+                child: new Text(
+                    "This site requires you to provide copyright information for this work, to make sure everyone can legally reuse it. I the copyright holder of this work, irrevocably grant anyone the right to use this work under the following license:"),
               ),
+              new Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: new DropdownButton<String>(
+                  value: _license,
+                  onChanged: (String newValue) {
+                    setState(() {
+                      _license = newValue;
+                    });
+                  },
+                  items: <String>[
+                    UploadHelper.CC0,
+                    UploadHelper.CC_BY_3,
+                    UploadHelper.CC_BY_4,
+                    UploadHelper.CC_BY_SA_3,
+                    UploadHelper.CC_BY_SA_4
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+              )
             ],
           ),
         ),
@@ -143,24 +138,16 @@ class _FileDescriptionPageState extends State<FileDescriptionPage>
       setState(() {
         _isLoading = true;
         form.save();
-        _presenter.uploadFile(_image, _title, _description, _license);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    FileCategoryPage(file: _image,
+                        title: _title,
+                        caption: _caption,
+                        description: _description,
+                        license: _license)));
       });
     }
-  }
-
-  @override
-  void onImageUploadError(String error) {
-    _showSnackBar(error);
-    setState(() {
-      _isLoading = false;
-    });
-  }
-
-  @override
-  void onImageUploadSuccess(String success) {
-    _showSnackBar(success);
-    setState(() {
-      _isLoading = false;
-    });
   }
 }

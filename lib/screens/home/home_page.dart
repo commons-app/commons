@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:commons/app_config.dart';
-import 'package:commons/model/Place.dart';
+import 'package:commons/model/place.dart';
 import 'package:commons/screens/login/login_page.dart';
-import 'package:commons/screens/upload/license_page.dart';
+import 'package:commons/screens/upload/description_page.dart';
 import 'package:commons/widgets/fancy_fab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => FileLicensePage(selectedFile: image),
+          builder: (context) => FileDescriptionPage(file: image),
         ));
   }
 

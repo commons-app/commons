@@ -1,7 +1,7 @@
 import 'package:commons/model/response/nearby/NearbyResultItem.dart';
 import 'package:latlong/latlong.dart';
 
-import 'Sitelinks.dart';
+import 'site_links.dart';
 
 class Place {
   final String name;

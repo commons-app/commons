@@ -1,6 +1,7 @@
 import 'dart:io';
 
-import 'package:commons/model/Place.dart';
+import 'package:commons/model/category.dart';
+import 'package:commons/model/place.dart';
 import 'package:commons/model/response/MwQueryResponse.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
 import 'package:commons/model/response/nearby/NearbyResponse.dart';
@@ -45,6 +46,15 @@ class CommonsRepository {
         NearbyResponse value) {
       return value.getResults().getBindings()
           .map((val) => Place.from(val)).toList();
+    }, onError: (e) {
+      throw e;
+    });
+  }
+
+  Future<List<Category>> searchCategories(String query) {
+    return _apiProvider.searchCategories(query).then((MwQueryResponse value) {
+      return value.query.search
+          .map((val) => new Category(val.title.replaceAll("Category:", ""), '')).toList();
     }, onError: (e) {
       throw e;
     });

@@ -95,6 +95,20 @@ class CommonsApiProvider {
     }
   }
 
+
+  Future<MwQueryResponse> searchCategories(String query) async {
+    try {
+      var _endpoint = _url_prefix +
+          'action=query&list=search&srwhat=text&srnamespace=14&srlimit=10&srsearch=$query';
+
+      Response response = await _dio.get(_endpoint);
+      return MwQueryResponse.fromJson(response.data);
+    } catch (error, stacktrace) {
+      print("Exception occured: $error stackTrace: $stacktrace");
+      throw error;
+    }
+  }
+
   Future<NearbyResponse> getNearbyPlaces(String radius,
       LatLng latLng,
       String language) async {
