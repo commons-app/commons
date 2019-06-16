@@ -26,23 +26,15 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-	<key>UISupportedInterfaceOrientations</key>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>Pick image for upload to Wikimedia Commons</string>
     <key>NSCameraUsageDescription</key>
     <string>Click picture for upload to Wikimedia Commons</string>
-
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>Use location to show nearby map</string>
     <key>NSLocationAlwaysUsageDescription</key>
     <string>Use location to show nearby map</string>
-
-    <array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
+    <key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
