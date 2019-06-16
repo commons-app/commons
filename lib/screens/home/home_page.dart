@@ -203,11 +203,4 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
   void onMarkerTapped(Place place) {
     _showSnackBar(place.getName());
   }
-
-  @override
-  void onLocationUpdated(LatLng latLng) async {
-    _currentLocation = latLng;
-    nearbyMarkers = await _presenter.getNearbyPlaces(latLng);
-    setState(() {});
-  }
 }
