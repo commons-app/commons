@@ -27,6 +27,8 @@ class UploadPagePresenter {
         description, DateTime.now(), 12.9593548, 77.643414, license,
         categories);
 
+    print(text);
+
     commonsBloc
         .uploadFile(file, filename, text)
         .then((uploadResponse) => _view.onImageUploadSuccess("Image uploaded!"))

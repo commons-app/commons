@@ -57,6 +57,7 @@ class UploadHelper {
   String getTemplatedCategories(List<String> categories) {
     String templatedCategory = "";
     for (String category in categories) {
+      print(category);
       templatedCategory = templatedCategory + "\n[[Category:$category]]";
     }
     return templatedCategory;
@@ -70,6 +71,7 @@ class UploadHelper {
       String license,
       String version,
       String categories) {
+    print(categories);
     return "== {{int:filedesc}} ==\n{{Information\n|description=$description\n|source={{own}}\n|author=[[User:$creator|$creator]]\n|date=$templatedDate}}\n{{Location|$decimalCoords}}\n== {{int:license-header}} ==\n$license\n\n{{Uploaded from Mobile|platform=Android|version=$version}}\n$categories{{subst:unc}}";
   }
 }

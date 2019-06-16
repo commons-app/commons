@@ -93,7 +93,10 @@ class _FileCategoryPageState extends State<FileCategoryPage>
         return categories;
       },
       onChanged: (data) {
-        _selectedCategoryItems = data;
+        _selectedCategoryItems.clear();
+        for (Category category in data) {
+          _selectedCategoryItems.add(category);
+        }
       },
       chipBuilder: (context, state, profile) {
         return InputChip(
@@ -149,7 +152,7 @@ class _FileCategoryPageState extends State<FileCategoryPage>
   }
 
   void _submit() {
-    _presenter.uploadFile(_image, _title, _description, _license, _selectedCategoryItems);
+     _presenter.uploadFile(_image, _title, _description, _license, _selectedCategoryItems);
   }
 
   @override

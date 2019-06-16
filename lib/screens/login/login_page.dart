@@ -78,6 +78,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
               new Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: new TextFormField(
+                  obscureText: true,
                   onSaved: (val) => _password = val,
                   decoration: new InputDecoration(labelText: "Password",
                       border: outlineInputBorder),

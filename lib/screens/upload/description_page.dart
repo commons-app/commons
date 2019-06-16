@@ -72,12 +72,22 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
           child: new Column(
             children: <Widget>[
               new Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: new Text(
+                    "Create a unique descriptive title using plain language with spaces. Omit the file extension, if any."),
+              ),
+              new Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: new TextFormField(
                     onSaved: (val) => _title = val,
                     decoration: new InputDecoration(labelText: "Title",
                         border: outlineInputBorder),
                   )),
+              new Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: new Text(
+                    "Add a one-line explanation of what this file represents, including only the most relevant information.(Optional)"),
+              ),
               new Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: new TextFormField(
@@ -86,6 +96,11 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
                         border: outlineInputBorder),
                   )),
               new Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: new Text(
+                    "Provide all information that will help others understand what this file represents."),
+              ),
+              new Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: new TextFormField(
                     onSaved: (val) => _description = val,
@@ -93,12 +108,12 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
                         border: outlineInputBorder),
                   )),
               new Padding(
-                padding: const EdgeInsets.all(12.0),
+                padding: const EdgeInsets.all(8.0),
                 child: new Text(
                     "This site requires you to provide copyright information for this work, to make sure everyone can legally reuse it. I the copyright holder of this work, irrevocably grant anyone the right to use this work under the following license:"),
               ),
               new Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(8.0),
                 child: new DropdownButton<String>(
                   value: _license,
                   onChanged: (String newValue) {
@@ -128,7 +143,10 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
 
     return Scaffold(
       appBar: homeAppBar,
-      body: new Container(child: uploadForm),
+      body: new SingleChildScrollView(
+          child: Stack(
+              children: <Widget>[
+                new Container(child: uploadForm)])),
       key: scaffoldKey,
     );
   }
