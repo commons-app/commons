@@ -119,21 +119,26 @@ class _FileCategoryPageState extends State<FileCategoryPage>
     );
 
     var homeAppBar = AppBar(
-      title: new Text("Welcome to Commons!"),
-    );
-
-    var uploadBtn = new RaisedButton(
-      onPressed: _submit,
-      child: new Text("Upload"),
-      color: Colors.green,
-    );
-
-    var uploadForm = new Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        chipsInput,
-        uploadBtn
+      title: const Text('Upload Image'),
+      actions: <Widget>[
+        // action button
+        IconButton(
+          icon: Icon(Icons.check),
+          onPressed: () {
+            _submit();
+          },
+        ),
       ],
+    );
+
+    var uploadForm = new Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          chipsInput
+        ],
+      ),
     );
 
     return Scaffold(

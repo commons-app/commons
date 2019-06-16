@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:commons/app_config.dart';
+import 'package:commons/model/Choice.dart';
 import 'package:commons/model/place.dart';
 import 'package:commons/screens/login/login_page.dart';
 import 'package:commons/screens/upload/description_page.dart';
@@ -105,6 +106,21 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
 
   bool popupShown = false;
 
+  Choice _selectedChoice = choices[0]; // The app's "state".
+
+  static const List<Choice> choices = const <Choice>[
+    const Choice(title: 'Rate Us', icon: Icons.star),
+    const Choice(title: 'Send Feedback', icon: Icons.feedback),
+  ];
+
+
+  void _select(Choice choice) {
+    // Causes the app to rebuild with the new _selectedChoice.
+    setState(() {
+      _selectedChoice = choice;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     _ctx = context;
@@ -112,7 +128,22 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
     _presenter = new HomePagePresenter(config.commonsBaseUrl, this);
 
     var homeAppBar = AppBar(
-      title: new Text("Welcome to Commons!"),
+      title: const Text('Home'),
+      actions: <Widget>[
+        // action button
+        // overflow menu
+        PopupMenuButton<Choice>(
+          onSelected: _select,
+          itemBuilder: (BuildContext context) {
+            return choices.map((Choice choice) {
+              return PopupMenuItem<Choice>(
+                value: choice,
+                child: Text(choice.title),
+              );
+            }).toList();
+          },
+        ),
+      ],
     );
 
     var flutterMap = new FlutterMap(

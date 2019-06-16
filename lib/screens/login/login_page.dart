@@ -1,7 +1,8 @@
+import 'package:commons/app_config.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:commons/app_config.dart';
+
 import 'login_presenter.dart';
 
 class LoginPage extends StatefulWidget {
@@ -43,6 +44,10 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     var config = AppConfig.of(_ctx);
     _presenter = new LoginPagePresenter(this, config.commonsBaseUrl);
 
+    var outlineInputBorder = OutlineInputBorder(
+        borderRadius: BorderRadius.all(
+            Radius.circular(25.0)));
+
     var loginBtn = new RaisedButton(
       onPressed: _submit,
       child: new Text("Login"),
@@ -66,14 +71,16 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
                 padding: const EdgeInsets.all(20.0),
                 child: new TextFormField(
                   onSaved: (val) => _username = val,
-                  decoration: new InputDecoration(labelText: "Username"),
+                  decoration: new InputDecoration(labelText: "Username",
+                      border: outlineInputBorder),
                 ),
               ),
               new Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: new TextFormField(
                   onSaved: (val) => _password = val,
-                  decoration: new InputDecoration(labelText: "Password"),
+                  decoration: new InputDecoration(labelText: "Password",
+                      border: outlineInputBorder),
                 ),
               )
             ],

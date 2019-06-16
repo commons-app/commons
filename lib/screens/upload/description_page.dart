@@ -52,13 +52,16 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
             Radius.circular(25.0)));
 
     var homeAppBar = AppBar(
-      title: new Text("Welcome to Commons!"),
-    );
-
-    var loginBtn = new RaisedButton(
-      onPressed: _submit,
-      child: new Text("Next"),
-      color: Colors.green,
+      title: const Text('Upload Image'),
+      actions: <Widget>[
+        // action button
+        IconButton(
+          icon: Icon(Icons.check),
+          onPressed: () {
+            _submit();
+          },
+        ),
+      ],
     );
 
     var uploadForm = new Column(
@@ -119,8 +122,7 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
               )
             ],
           ),
-        ),
-        loginBtn
+        )
       ],
     );
 
