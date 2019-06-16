@@ -35,7 +35,6 @@
 **/android/gradlew.bat
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
-ios/Podfile.lock
 local.properties
 
 
@@ -74,7 +73,6 @@ local.properties
 
 
 .gradle/5.1.1/executionHistory/
-gradle/
 gradlew
 gradlew.bat
 
