@@ -35,7 +35,6 @@
 **/android/gradlew.bat
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
-ios/Podfile.lock
 local.properties
 
 
