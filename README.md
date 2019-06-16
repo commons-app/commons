@@ -8,6 +8,10 @@ App to upload pictures to Commons
 flutter pub run build_runner build --delete-conflicting-outputs
 ```
 
+or else use 
+
+https://javiercbk.github.io/json_to_dart/
+
 ## Running the app
 
 ### Beta variant
