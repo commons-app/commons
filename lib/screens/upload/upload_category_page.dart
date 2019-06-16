@@ -102,9 +102,6 @@ class _FileCategoryPageState extends State<FileCategoryPage>
         return InputChip(
           key: ObjectKey(profile),
           label: Text(profile.categoryName),
-          avatar: CircleAvatar(
-            backgroundImage: NetworkImage(profile.categoryIcon),
-          ),
           onDeleted: () => state.deleteChip(profile),
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
         );
@@ -112,9 +109,6 @@ class _FileCategoryPageState extends State<FileCategoryPage>
       suggestionBuilder: (context, state, profile) {
         return ListTile(
           key: ObjectKey(profile),
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage(profile.categoryIcon),
-          ),
           title: Text(profile.categoryName),
           onTap: () => state.selectSuggestion(profile),
         );
