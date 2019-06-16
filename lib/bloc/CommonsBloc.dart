@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:commons/model/category.dart';
 import 'package:commons/model/place.dart';
+import 'package:commons/model/response/upload/UploadResult.dart';
 import 'package:commons/repository/commons_repository.dart';
 import 'package:latlong/latlong.dart';
 
@@ -20,7 +21,8 @@ class CommonsBloc {
     return _repository.doLogin(username, password, loginToken, baseEndpoint);
   }
 
-  uploadFile(File file, String filename, String text) async {
+  Future<UploadResult> uploadFile(File file, String filename,
+      String text) async {
     String csrfToken = await _repository.getCsrfToken();
     return _repository.uploadFile(file, csrfToken, filename, text);
   }

@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:commons/model/response/MwQueryResponse.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
 import 'package:commons/model/response/nearby/NearbyResponse.dart';
+import 'package:commons/model/response/upload/UploadResult.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:latlong/latlong.dart';
@@ -76,7 +77,7 @@ class CommonsApiProvider {
     }
   }
 
-  Future<MwQueryResponse> uploadFile(File file, String filename,
+  Future<UploadResult> uploadFile(File file, String filename,
       String token, String text) async {
     try {
       var _endpoint = _url_prefix + 'action=upload&ignorewarnings=1';
@@ -88,7 +89,7 @@ class CommonsApiProvider {
         "text": text
       });
       Response response = await _dio.post(_endpoint, data: formData);
-      return MwQueryResponse.fromJson(response.data);
+      return UploadResult.fromJson(response.data);
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
       throw error;
