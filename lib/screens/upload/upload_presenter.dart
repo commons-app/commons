@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:commons/bloc/CommonsBloc.dart';
 import 'package:commons/helper/upload_helper.dart';
 import 'package:commons/model/category.dart';
+import 'package:commons/model/response/upload/UploadResult.dart';
 
 abstract class UploadPageContract {
   void onImageUploadSuccess(String success);
@@ -31,7 +32,14 @@ class UploadPagePresenter {
 
     commonsBloc
         .uploadFile(file, filename, text)
-        .then((uploadResponse) => _view.onImageUploadSuccess("Image uploaded!"))
+        .then((UploadResult uploadResponse) {
+      if (uploadResponse.upload.result.toLowerCase() ==
+          "Success".toLowerCase()) {
+        _view.onImageUploadSuccess("Image uploaded!");
+      } else {
+        _view.onImageUploadError("Error occurred");
+      }
+    })
         .catchError((onError) => _view.onImageUploadError(onError.toString()));
   }
 
