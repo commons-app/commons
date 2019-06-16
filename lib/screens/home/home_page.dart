@@ -12,6 +12,7 @@ import 'package:latlong/latlong.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'home_presenter.dart';
+import 'nearby/nearby.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -25,7 +26,6 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
   File _image;
-  LatLng _currentLocation = new LatLng(12.95, 77.64);
   HomePagePresenter _presenter;
 
   void _pickImageFromCamera() async {
@@ -62,6 +62,25 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
     ));
   }
 
+  void _selectedTab() async {
+    _showSnackBar("Tab Selected");
+  }
+
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  final widgetOptions = [
+    Text('Uploads'),
+    new NearbyPage(),
+    Text('Expolore'),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+
   @override
   void initState() {
     super.initState();
@@ -79,8 +98,6 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
         context,
         MaterialPageRoute(builder: (context) => new LoginPage()),
       );
-    } else {
-      _presenter.subscribeToCurrentLocation();
     }
   }
 
@@ -146,31 +163,38 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
       ],
     );
 
-    var flutterMap = new FlutterMap(
-      options: new MapOptions(
-        center: _currentLocation,
-        zoom: 13.0,
-      ),
-      layers: [
-        new TileLayerOptions(
-          urlTemplate: "https://api.tiles.mapbox.com/v4/"
-              "{id}/{z}/{x}/{y}@2x.png?access_token=pk.eyJ1IjoibWFza2FyYXZpdmVrIiwiYSI6ImNqd3RxdndwNTAyajA0MW1xeTU0djJrN2kifQ.Gbl5TlD2V2coA_5KzoS6WA",
-          additionalOptions: {
-            'accessToken': 'pk.eyJ1IjoibWFza2FyYXZpdmVrIiwiYSI6ImNqd3RxdndwNTAyajA0MW1xeTU0djJrN2kifQ.Gbl5TlD2V2coA_5KzoS6WA',
-            'id': 'mapbox.streets',
-          },
-        ),
-        new MarkerLayerOptions(markers: nearbyMarkers)
-      ],
-    );
+
 
     return Scaffold(
       appBar: homeAppBar,
       key: scaffoldKey,
-      body: flutterMap,
+//      body: flutterMap,
       floatingActionButton: FancyFab(
         onCameraPressed: _pickImageFromCamera,
         onGalleryPressed: _pickImageFromGallery,
+      ),
+
+      body: Center(
+        child: widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_a_photo),
+            title: Text('Contributions'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map),
+            title: Text('Nearby'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            title: Text('Explore'),
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
     );
   }
