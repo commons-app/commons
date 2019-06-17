@@ -12,7 +12,7 @@ import 'package:latlong/latlong.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'home_presenter.dart';
-import 'nearby/nearby.dart';
+import 'nearby/nearby_page.dart';
 
 class HomePage extends StatefulWidget {
   @override

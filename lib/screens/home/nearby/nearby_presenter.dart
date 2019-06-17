@@ -2,19 +2,21 @@ import 'dart:async';
 
 import 'package:commons/bloc/CommonsBloc.dart';
 import 'package:commons/model/place.dart';
+import 'package:commons/utils/distance_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
 import 'package:location/location.dart';
 
 abstract class NearbyContract {
-  void onLocationUpdated(LatLng latLng);
+  void onLocationSlightlyUpdated(LatLng latLng);
 
+  void onLocationSignificantlyUpdated(LatLng latLng);
   void onMarkerTapped(Place place) {}
 }
 
 class NearbyPresenter {
-  LatLng _latLng;
+  LatLng _initialMapLocation;
   NearbyContract _view;
   CommonsBloc commonsBloc;
 
@@ -24,7 +26,6 @@ class NearbyPresenter {
 
   Future<List<Marker>> getNearbyPlaces(LatLng latLng) async {
     return commonsBloc.getNearbyPlaces(latLng).then((List<Place> items) {
-      _latLng = latLng;
       return getMarkersFromPlaces(latLng, items);
     }, onError: (e) {
       throw e;
@@ -35,15 +36,22 @@ class NearbyPresenter {
     var location = new Location();
 
     location.changeSettings(interval: 5000, distanceFilter: 10);
-
     location.onLocationChanged().listen((LocationData currentLocation) {
-      _view.onLocationUpdated(
-          new LatLng(currentLocation.latitude, currentLocation.longitude));
+      var currentLatLng = new LatLng(
+          currentLocation.latitude, currentLocation.longitude);
+      if (DistanceUtils.calculateDistance(_initialMapLocation, currentLatLng) >
+          100) {
+        _initialMapLocation = currentLatLng;
+        _view.onLocationSignificantlyUpdated(currentLatLng);
+      } else {
+        _view.onLocationSlightlyUpdated(currentLatLng);
+      }
     });
 
     return location.getLocation().then((LocationData locationData) {
-      _view.onLocationUpdated(
-          new LatLng(locationData.latitude, locationData.longitude));
+      _initialMapLocation =
+      new LatLng(locationData.latitude, locationData.longitude);
+      _view.onLocationSignificantlyUpdated(_initialMapLocation);
     }, onError: (e) {
       print(e);
     });
@@ -55,22 +63,26 @@ class NearbyPresenter {
         width: 40.0,
         height: 40.0,
         point:
-            new LatLng(val.getLocation().latitude, val.getLocation().longitude),
+        new LatLng(val
+            .getLocation()
+            .latitude, val
+            .getLocation()
+            .longitude),
         builder: (ctx) => new Container(
-              child: new GestureDetector(
-                child: new Transform(
-                  transform: new Matrix4.rotationZ(0.1),
-                  child: new IconButton(
-                    icon: Icon(Icons.location_on),
-                    color: Colors.deepPurple,
-                    tooltip: val.getName(),
-                    onPressed: () {
-                      onMarkerPressed(val);
-                    },
-                  ),
-                ),
+          child: new GestureDetector(
+            child: new Transform(
+              transform: new Matrix4.rotationZ(0.1),
+              child: new IconButton(
+                icon: Icon(Icons.location_on),
+                color: Colors.deepPurple,
+                tooltip: val.getName(),
+                onPressed: () {
+                  onMarkerPressed(val);
+                },
               ),
             ),
+          ),
+        ),
       );
     }).toList();
 
@@ -79,8 +91,8 @@ class NearbyPresenter {
       height: 25.0,
       point: new LatLng(latLng.latitude, latLng.longitude),
       builder: (ctx) => new Container(
-            child: Icon(Icons.my_location),
-          ),
+        child: Icon(Icons.my_location),
+      ),
     ));
     return markers;
   }

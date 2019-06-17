@@ -19,6 +19,8 @@ class _NearbyState extends State<NearbyPage> implements NearbyContract {
 
   NearbyPresenter _presenter;
   List<Marker> nearbyMarkers = List();
+  FlutterMap flutterMap;
+  var controller = new MapController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +28,12 @@ class _NearbyState extends State<NearbyPage> implements NearbyContract {
     _presenter = new NearbyPresenter(config.commonsBaseUrl, this);
     _presenter.subscribeToCurrentLocation();
 
-    var flutterMap = new FlutterMap(
+    flutterMap = FlutterMap(
       options: new MapOptions(
         zoom: 13.0,
         center: _currentLocation
       ),
+      mapController: controller,
       layers: [
         new TileLayerOptions(
           urlTemplate: "https://api.tiles.mapbox.com/v4/"
@@ -48,7 +51,7 @@ class _NearbyState extends State<NearbyPage> implements NearbyContract {
   }
 
   @override
-  void onLocationUpdated(LatLng latLng) async {
+  void onLocationSlightlyUpdated(LatLng latLng) async {
     _currentLocation = latLng;
     nearbyMarkers = await _presenter.getNearbyPlaces(latLng);
     _currentLocation=latLng;
@@ -64,5 +67,10 @@ class _NearbyState extends State<NearbyPage> implements NearbyContract {
     scaffoldKey.currentState.showSnackBar(new SnackBar(
       content: new Text(message),
     ));
+  }
+
+  @override
+  void onLocationSignificantlyUpdated(LatLng latLng) {
+    controller.move(latLng, flutterMap.options.zoom);
   }
 }
