@@ -3,7 +3,7 @@ import 'package:commons/model/response/media/ImageInfo.dart';
 class Upload {
   String filename;
   String result;
-  Imageinfo imageinfo;
+  ImageInfo imageinfo;
 
   Upload({this.filename, this.result, this.imageinfo});
 
@@ -11,7 +11,7 @@ class Upload {
     filename = json['filename'];
     result = json['result'];
     imageinfo = json['imageinfo'] != null
-        ? new Imageinfo.fromJson(json['imageinfo'])
+        ? new ImageInfo.fromJson(json['imageinfo'])
         : null;
   }
 

@@ -7,9 +7,13 @@ part 'MwQueryResponse.g.dart';
 
 @JsonSerializable()
 class MwQueryResponse extends MwResponse {
+  @JsonKey(name: "batchcomplete")
+  final bool batchComplete;
+  @JsonKey(name: "continue")
+  final Map<String, String> continuation;
   final MwQueryResult query;
 
-  MwQueryResponse(List<MwServiceError> errors, String servedBy, this.query) : super(errors, servedBy);
+  MwQueryResponse(List<MwServiceError> errors, String servedBy, this.batchComplete, this.continuation, this.query) : super(errors, servedBy);
 
   MwQueryResult getMwQueryResult() {
     return query;

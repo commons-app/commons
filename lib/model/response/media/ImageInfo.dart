@@ -1,7 +1,7 @@
 import 'ExtMetaData.dart';
 import 'MetaData.dart';
 
-class Imageinfo {
+class ImageInfo {
   String url;
   String html;
   int width;
@@ -22,7 +22,7 @@ class Imageinfo {
   String timestamp;
   int height;
 
-  Imageinfo(
+  ImageInfo(
       {this.url,
       this.html,
       this.width,
@@ -43,7 +43,7 @@ class Imageinfo {
       this.timestamp,
       this.height});
 
-  Imageinfo.fromJson(Map<String, dynamic> json) {
+  ImageInfo.fromJson(Map<String, dynamic> json) {
     url = json['url'];
     html = json['html'];
     width = json['width'];
