@@ -93,7 +93,7 @@ class _NearbyState extends State<NearbyPage> implements NearbyContract {
         builder: (BuildContext bc) {
           return Container(
             child: new Padding(
-              padding: const EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(12.0),
               child: new Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
@@ -104,17 +104,14 @@ class _NearbyState extends State<NearbyPage> implements NearbyContract {
                       style: TextStyle(
                           fontSize: 16, fontWeight: FontWeight.normal)),
                   new Padding(
-                    padding: const EdgeInsets.only(top: 36.0),
+                    padding: const EdgeInsets.only(top: 24.0, bottom: 24.0),
                     child: new Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         new FlatButton(onPressed: () {
                           _onDirectionsPressed(place);
                         },
                             child: new Icon(Icons.directions)),
-                        new FlatButton(onPressed: () {
-                          _onOpenLinkPressed(place);
-                        },
-                            child: new Icon(Icons.link)),
                         new FlatButton(onPressed: () {
                           _pickImageFromCamera(place);
                         },
@@ -164,27 +161,29 @@ class _NearbyState extends State<NearbyPage> implements NearbyContract {
   }
 
   void _onDirectionsPressed(Place place) async {
-    var mapUrl = "google.navigation:q=${place.location.latitude},${place
-        .location.longitude}";
-    if (await canLaunch(mapUrl)) {
-      await launch(mapUrl);
-    }
-  }
-
-  void _onOpenLinkPressed(Place place) async {
-    var wikidataUrl = place.getSitelinks().getWikidataLink();
-    if (await canLaunch(wikidataUrl)) {
-      await launch(wikidataUrl);
+    final url = 'https://www.google.com/maps/search/?api=1&query=${place
+        .location.latitude},${place
+        .location.longitude}';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
     }
   }
 
   void _pickImageFromCamera(Place place) async {
     var image = await _presenter.getImageFromCamera();
+    if (image == null) {
+      return;
+    }
     uploadImage(image, place);
   }
 
   void _pickImageFromGallery(Place place) async {
     var image = await _presenter.getImageFromGallery();
+    if (image == null) {
+      return;
+    }
     uploadImage(image, place);
   }
 

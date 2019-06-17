@@ -6,7 +6,6 @@ import 'package:commons/screens/login/login_page.dart';
 import 'package:commons/screens/upload/description_page.dart';
 import 'package:commons/widgets/fancy_fab.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'home_presenter.dart';
@@ -27,11 +26,17 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
 
   void _pickImageFromCamera() async {
     var image = await _presenter.getImageFromCamera();
+    if (image == null) {
+      return;
+    }
     uploadImage(image);
   }
 
   void _pickImageFromGallery() async {
     var image = await _presenter.getImageFromGallery();
+    if (image == null) {
+      return;
+    }
     uploadImage(image);
   }
 
@@ -58,7 +63,7 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
   final widgetOptions = [
     Text('Uploads'),
     new NearbyPage(),
-    Text('Expolore'),
+    Text('Explore'),
   ];
 
   void _onItemTapped(int index) {
@@ -73,8 +78,6 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
     super.initState();
     checkIsLogin();
   }
-
-  List<Marker> nearbyMarkers = List();
 
   Future<Null> checkIsLogin() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
