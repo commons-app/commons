@@ -2,13 +2,11 @@ import 'dart:io';
 
 import 'package:commons/app_config.dart';
 import 'package:commons/model/Choice.dart';
-import 'package:commons/model/place.dart';
 import 'package:commons/screens/login/login_page.dart';
 import 'package:commons/screens/upload/description_page.dart';
 import 'package:commons/widgets/fancy_fab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong/latlong.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'home_presenter.dart';
@@ -25,27 +23,16 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
   final formKey = new GlobalKey<FormState>();
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
-  File _image;
   HomePagePresenter _presenter;
 
   void _pickImageFromCamera() async {
     var image = await _presenter.getImageFromCamera();
-
     uploadImage(image);
-
-    setState(() {
-      _image = image;
-    });
   }
 
   void _pickImageFromGallery() async {
     var image = await _presenter.getImageFromGallery();
-
     uploadImage(image);
-
-    setState(() {
-      _image = image;
-    });
   }
 
   void uploadImage(File image) {
@@ -197,10 +184,5 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
         onTap: _onItemTapped,
       ),
     );
-  }
-
-  @override
-  void onMarkerTapped(Place place) {
-    _showSnackBar(place.getName());
   }
 }

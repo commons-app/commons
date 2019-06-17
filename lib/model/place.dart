@@ -29,18 +29,6 @@ class Place {
     Sitelinks sitelinks = new Sitelinks(item.getWikipediaArticle().getValue(),
         item.getCommonsArticle().getValue(), item.getItem().getValue());
 
-//    print(sitelinks);
-//
-//    print(item.getLabel().getValue());
-//
-//    print(item.getClassLabel().getValue());
-//
-//    print(latLngFromPointString(item.getLocation().getValue()));
-//
-//    print(item.getCommonsCategory().getValue());
-//
-//    print(sitelinks);
-
     return new Place(
         item.getLabel().getValue(),
         classEntityId,
@@ -77,9 +65,14 @@ class Place {
     return category;
   }
 
+  Sitelinks getSitelinks() {
+    return siteLinks;
+  }
+
   void setDistance(String distance) {
     this.distance = distance;
   }
+
 
   String getWikiDataEntityId() {
     if (!hasWikidataLink()) {

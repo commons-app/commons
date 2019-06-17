@@ -3,12 +3,14 @@ import 'dart:io';
 import 'package:commons/app_config.dart';
 import 'package:commons/helper/upload_helper.dart';
 import 'package:commons/model/category.dart';
+import 'package:commons/model/place.dart';
 import 'package:commons/screens/upload/upload_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chips_input/flutter_chips_input.dart';
 
 class FileCategoryPage extends StatefulWidget {
   final File file;
+  final Place place;
   final String title;
   final String caption;
   final String description;
@@ -20,12 +22,14 @@ class FileCategoryPage extends StatefulWidget {
       @required this.title,
       @required this.caption,
       @required this.description,
-      @required this.license})
+        @required this.license,
+        this.place})
       : super(key: key);
 
   @override
   _FileCategoryPageState createState() =>
-      new _FileCategoryPageState(file, title, caption, description, license);
+      new _FileCategoryPageState(
+          file, title, caption, description, license, place);
 }
 
 class _FileCategoryPageState extends State<FileCategoryPage>
@@ -38,6 +42,7 @@ class _FileCategoryPageState extends State<FileCategoryPage>
 
   bool _isLoading = false;
   File _image;
+  Place _place;
   String _license;
 
   var _title;
@@ -50,12 +55,13 @@ class _FileCategoryPageState extends State<FileCategoryPage>
   String dropdownValue = UploadHelper.CC_BY_3;
 
   _FileCategoryPageState(File file, String title, String caption,
-      String description, String license) {
+      String description, String license, Place place) {
     _image = file;
     _title = title;
     _description = description;
     _caption = caption;
     _license = license;
+    _place = place;
   }
 
   void _showSnackBar(String text) {
@@ -159,6 +165,9 @@ class _FileCategoryPageState extends State<FileCategoryPage>
 
   @override
   void onImageUploadSuccess(String success) {
+    if (_place != null) {
+      _presenter.editWikiDataItem(_title, _place);
+    }
     _showSnackBar(success);
     setState(() {
       _isLoading = false;

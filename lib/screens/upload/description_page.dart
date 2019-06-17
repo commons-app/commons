@@ -1,18 +1,20 @@
 import 'dart:io';
 
 import 'package:commons/helper/upload_helper.dart';
+import 'package:commons/model/place.dart';
 import 'package:commons/screens/upload/upload_category_page.dart';
 import 'package:flutter/material.dart';
 
 class FileDescriptionPage extends StatefulWidget {
   final File file;
+  final Place place;
 
-  const FileDescriptionPage({Key key, @required this.file})
+  const FileDescriptionPage({Key key, @required this.file, this.place})
       : super(key: key);
 
   @override
   _FileDescriptionPageState createState() =>
-      new _FileDescriptionPageState(file);
+      new _FileDescriptionPageState(file, place);
 }
 
 class _FileDescriptionPageState extends State<FileDescriptionPage> {
@@ -22,14 +24,16 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
 
   bool _isLoading = false;
   File _image;
+  Place _place;
 
   var _title;
   var _caption;
   var _description;
   String _license = UploadHelper.CC_BY_3;
 
-  _FileDescriptionPageState(File file) {
+  _FileDescriptionPageState(File file, Place place) {
     _image = file;
+    _place = place;
   }
 
   void _showSnackBar(String text) {
@@ -166,7 +170,8 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
                         title: _title,
                         caption: _caption,
                         description: _description,
-                        license: _license)));
+                        license: _license,
+                        place: _place)));
       });
     }
   }

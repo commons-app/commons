@@ -1,10 +1,12 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:commons/bloc/CommonsBloc.dart';
 import 'package:commons/model/place.dart';
 import 'package:commons/utils/distance_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:latlong/latlong.dart';
 import 'package:location/location.dart';
 
@@ -24,9 +26,17 @@ class NearbyPresenter {
     commonsBloc = new CommonsBloc(baseEndpoint);
   }
 
+  Future<File> getImageFromCamera() async {
+    return ImagePicker.pickImage(source: ImageSource.camera);
+  }
+
+  Future<File> getImageFromGallery() async {
+    return ImagePicker.pickImage(source: ImageSource.gallery);
+  }
+
   Future<List<Marker>> getNearbyPlaces(LatLng latLng) async {
     return commonsBloc.getNearbyPlaces(latLng).then((List<Place> items) {
-      return getMarkersFromPlaces(latLng, items);
+      return getMarkersFromPlaces(items);
     }, onError: (e) {
       throw e;
     });
@@ -39,7 +49,8 @@ class NearbyPresenter {
     location.onLocationChanged().listen((LocationData currentLocation) {
       var currentLatLng = new LatLng(
           currentLocation.latitude, currentLocation.longitude);
-      if (DistanceUtils.calculateDistance(_initialMapLocation, currentLatLng) >
+      if (_initialMapLocation == null ||
+          DistanceUtils.calculateDistance(_initialMapLocation, currentLatLng) >
           100) {
         _initialMapLocation = currentLatLng;
         _view.onLocationSignificantlyUpdated(currentLatLng);
@@ -57,7 +68,7 @@ class NearbyPresenter {
     });
   }
 
-  List<Marker> getMarkersFromPlaces(LatLng latLng, List<Place> items) {
+  List<Marker> getMarkersFromPlaces(List<Place> items) {
     List<Marker> markers = items.map((val) {
       return new Marker(
         width: 40.0,
@@ -86,14 +97,6 @@ class NearbyPresenter {
       );
     }).toList();
 
-    markers.add(new Marker(
-      width: 25.0,
-      height: 25.0,
-      point: new LatLng(latLng.latitude, latLng.longitude),
-      builder: (ctx) => new Container(
-        child: Icon(Icons.my_location),
-      ),
-    ));
     return markers;
   }
 

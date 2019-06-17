@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:commons/bloc/CommonsBloc.dart';
 import 'package:commons/helper/upload_helper.dart';
 import 'package:commons/model/category.dart';
+import 'package:commons/model/place.dart';
 import 'package:commons/model/response/upload/UploadResult.dart';
 
 abstract class UploadPageContract {
@@ -41,6 +42,10 @@ class UploadPagePresenter {
       }
     })
         .catchError((onError) => _view.onImageUploadError(onError.toString()));
+  }
+
+  editWikiDataItem(String filename, Place place) {
+
   }
 
   Future<List<Category>> filterSearchResults(String query) {
