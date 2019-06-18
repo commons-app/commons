@@ -161,9 +161,12 @@ class _NearbyState extends State<NearbyPage> implements NearbyContract {
   }
 
   void _onDirectionsPressed(Place place) async {
-    final url = 'https://www.google.com/maps/search/?api=1&query=${place
-        .location.latitude},${place
-        .location.longitude}';
+    // Android
+    var url = 'geo:${place.location.latitude},${place.location.longitude}';
+    if (Platform.isIOS) {
+      // iOS
+      url = 'http://maps.apple.com/?ll=52.32,4.917';
+    }
     if (await canLaunch(url)) {
       await launch(url);
     } else {
