@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:commons/app_config.dart';
 import 'package:commons/helper/upload_helper.dart';
+import 'package:commons/model/UploadableFile.dart';
 import 'package:commons/model/category.dart';
 import 'package:commons/model/place.dart';
 import 'package:commons/screens/upload/upload_presenter.dart';
@@ -152,7 +153,16 @@ class _FileCategoryPageState extends State<FileCategoryPage>
   }
 
   void _submit() {
-     _presenter.uploadFile(_image, _title, _description, _license, _selectedCategoryItems);
+    var categories = _selectedCategoryItems.map((val) => val.categoryName)
+        .toList();
+    var description = new Map<String, String>();
+    description['en'] = _description.toString();
+    var caption = new Map<String, String>();
+    caption['en'] = _caption.toString();
+    var uploadableFile = new UploadableFile(
+        _image, _title, description, caption, _license,
+        categories);
+    _presenter.uploadFile(uploadableFile);
   }
 
   @override

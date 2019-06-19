@@ -35,6 +35,7 @@ dependencies:
   autocomplete_textfield: ^1.6.4
   flutter_map: any
   flutter_chips_input: ^1.3.0
+  exif: ^1.0.0
 
   #utils
   cookie_jar: ^1.0.0
