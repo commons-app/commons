@@ -1,7 +1,6 @@
-import 'dart:io';
-
 import 'package:commons/bloc/CommonsBloc.dart';
 import 'package:commons/helper/upload_helper.dart';
+import 'package:commons/model/UploadableFile.dart';
 import 'package:commons/model/category.dart';
 import 'package:commons/model/place.dart';
 import 'package:commons/model/response/upload/UploadResult.dart';
@@ -21,20 +20,16 @@ class UploadPagePresenter {
     _uploadHelper = new UploadHelper();
   }
 
-  uploadFile(File file, String filename, String description, String license,
-      List<Category> selectedCategoryItems) async {
-    var categories = selectedCategoryItems.map((val) => val.categoryName)
-        .toList();
-    var text = await _uploadHelper.getPageText(
-        description, DateTime.now(), 12.9593548, 77.643414, license,
-        categories);
+  uploadFile(UploadableFile uploadableFile) async {
+    var text = await _uploadHelper.getPageText(uploadableFile);
 
     print(text);
 
     commonsBloc
-        .uploadFile(file, filename, text)
+        .uploadFile(uploadableFile.file, uploadableFile.title, text)
         .then((UploadResult uploadResponse) {
-      if (uploadResponse.upload.result.toLowerCase() ==
+      if (uploadResponse.upload != null &&
+          uploadResponse.upload.result.toLowerCase() ==
           "Success".toLowerCase()) {
         _view.onImageUploadSuccess("Image uploaded!");
       } else {
