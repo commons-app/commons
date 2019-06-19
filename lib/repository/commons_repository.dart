@@ -4,6 +4,7 @@ import 'package:commons/model/category.dart';
 import 'package:commons/model/place.dart';
 import 'package:commons/model/response/MwQueryResponse.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
+import 'package:commons/model/response/media/contributions.dart';
 import 'package:commons/model/response/nearby/NearbyResponse.dart';
 import 'package:commons/model/response/upload/UploadResult.dart';
 import 'package:commons/repository/commons_api_provider.dart';
@@ -57,6 +58,15 @@ class CommonsRepository {
     return _apiProvider.searchCategories(query).then((MwQueryResponse value) {
       return value.query.search
           .map((val) => new Category(val.title.replaceAll("Category:", ""), '')).toList();
+    }, onError: (e) {
+      throw e;
+    });
+  }
+
+  Future<List<Contribution>> fetchContributions(String userName) {
+    return _apiProvider.fetchContributions(userName).then((
+        ContributionsResponseDTO value) {
+      return value.contributions;
     }, onError: (e) {
       throw e;
     });
