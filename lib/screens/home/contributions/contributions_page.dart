@@ -32,10 +32,15 @@ class _ContributionsState extends State<ContributionsPage>
             itemCount: contributions.length,
             itemBuilder: (context, int) {
               return Stack(alignment: Alignment.bottomLeft, children: <Widget>[
-                new Container(
+                Container(
+                  width: double.infinity,
+                  height: 200,
+                ),
+                new Card(
                     child: new CachedNetworkImage(
                         imageUrl: contributions.elementAt(int).url)),
                 new Container(
+                    margin: const EdgeInsets.only(left: 10.0,bottom: 10),
                     child: Text(contributions.elementAt(int).title,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.white))),
