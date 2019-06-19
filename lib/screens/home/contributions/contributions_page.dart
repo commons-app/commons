@@ -41,7 +41,7 @@ class _ContributionsState extends State<ContributionsPage>
                         imageUrl: contributions.elementAt(int).url)),
                 new Container(
                     margin: const EdgeInsets.only(left: 10.0,bottom: 10),
-                    child: Text(contributions.elementAt(int).title,
+                    child: Text(contributions.elementAt(int).name,
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.white))),
               ]);
