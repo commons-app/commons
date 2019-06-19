@@ -8,6 +8,7 @@ import 'package:commons/widgets/fancy_fab.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'contributions/contributions_page.dart';
 import 'home_presenter.dart';
 import 'nearby/nearby_page.dart';
 
@@ -59,10 +60,13 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
   }
 
   int _selectedIndex = 0;
-  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const TextStyle optionStyle = TextStyle(
+      fontSize: 30, fontWeight: FontWeight.bold);
+  static var contributionsPage = new ContributionsPage();
+  static var nearbyPage = new NearbyPage();
   final widgetOptions = [
-    Text('Uploads'),
-    new NearbyPage(),
+    contributionsPage,
+    nearbyPage,
     Text('Explore'),
   ];
 
