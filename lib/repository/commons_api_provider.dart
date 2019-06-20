@@ -9,7 +9,6 @@ import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:latlong/latlong.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:commons/model/response/media/contributions.dart';
 
 
 class CommonsApiProvider {
@@ -184,11 +183,19 @@ class CommonsApiProvider {
    GROUP BY ?item ?wikipediaArticle ?commonsArticle""";
   }
 
-  Future<ContributionsResponseDTO> fetchContributions(String userName) async{
+  Future<MwQueryResponse> fetchContributions(String userName,
+      Map<String, String> continuation) async {
     try {
       var _endpoint = _url_prefix + 'action=query&list=allimages&aiuser=+'+userName+'&aisort=timestamp&aiprop=url%7Cextmetadata';
+
+      if (continuation != null) {
+        for (String key in continuation.keys) {
+          _endpoint = _endpoint + "&$key=${continuation[key]}";
+        }
+      }
+
       Response response = await _dio.get(_endpoint);
-      return ContributionsResponseDTO.fromJson(response.data);
+      return MwQueryResponse.fromJson(response.data);
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
       throw error;

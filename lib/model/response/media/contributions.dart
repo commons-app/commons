@@ -1,42 +1,46 @@
-class Contribution {
+import 'ExtMetaData.dart';
+
+class AllImages {
   String name;
-  String timestamp;
   String url;
-  String descriptionUrl;
-  String descriptionShortUrl;
+  String descriptionurl;
+  String descriptionshorturl;
+  Extmetadata extmetadata;
+  int ns;
   String title;
 
-  Contribution({this.name,
-    this.title,
-    this.timestamp,
-    this.url,
-    this.descriptionUrl,
-    this.descriptionShortUrl});
+  AllImages(
+      {this.name,
+      this.url,
+      this.descriptionurl,
+      this.descriptionshorturl,
+      this.extmetadata,
+      this.ns,
+      this.title});
 
-  Contribution.fromJson(Map<String, dynamic> json) {
+  AllImages.fromJson(Map<String, dynamic> json) {
     name = json['name'];
-    title = json['title'];
     url = json['url'];
-    descriptionUrl = json['descriptionurl'];
-    descriptionShortUrl = json['descriptionshorturl'];
-    timestamp = json['timestamp'];
+    descriptionurl = json['descriptionurl'];
+    descriptionshorturl = json['descriptionshorturl'];
+    extmetadata = json['extmetadata'] != null
+        ? new Extmetadata.fromJson(json['extmetadata'])
+        : null;
+    ns = json['ns'];
+    title = json['title'];
   }
-}
 
-
-class ContributionsResponseDTO {
-  List<Contribution> contributions;
-
-  ContributionsResponseDTO({this.contributions});
-
-  ContributionsResponseDTO.fromJson(Map<String, dynamic> json){
-    List<dynamic> allContributionsJsonList = (json['query'] as Map<
-        String,
-        dynamic>)['allimages'];
-    contributions = [];
-    for (var value in allContributionsJsonList) {
-      contributions.add(Contribution.fromJson(value));
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['name'] = this.name;
+    data['url'] = this.url;
+    data['descriptionurl'] = this.descriptionurl;
+    data['descriptionshorturl'] = this.descriptionshorturl;
+    if (this.extmetadata != null) {
+      data['extmetadata'] = this.extmetadata.toJson();
     }
+    data['ns'] = this.ns;
+    data['title'] = this.title;
+    return data;
   }
 }
-

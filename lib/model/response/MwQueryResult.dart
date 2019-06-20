@@ -2,6 +2,7 @@ import 'package:commons/model/response/search/SearchResultItem.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'Tokens.dart';
+import 'media/contributions.dart';
 import 'media/ImageInfo.dart';
 
 part 'MwQueryResult.g.dart';
@@ -10,6 +11,7 @@ part 'MwQueryResult.g.dart';
 class MwQueryResult {
   List<SearchResultItem> search;
   List<ImageInfo> imageinfo;
+  List<AllImages> allimages;
   Tokens tokens;
 
   MwQueryResult(this.tokens, this.search);

@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:commons/model/category.dart';
 import 'package:commons/model/place.dart';
+import 'package:commons/model/response/MwQueryResponse.dart';
 import 'package:commons/model/response/upload/UploadResult.dart';
-import 'package:commons/model/response/media/contributions.dart';
 import 'package:commons/repository/commons_repository.dart';
 import 'package:latlong/latlong.dart';
 
@@ -36,7 +36,8 @@ class CommonsBloc {
     return _repository.searchCategories(query);
   }
 
-  Future<List<Contribution>> fetchContributions(String userName) async {
-    return _repository.fetchContributions(userName);
+  Future<MwQueryResponse> fetchContributions(String userName,
+      Map<String, String> continuation) async {
+    return _repository.fetchContributions(userName, continuation);
   }
 }

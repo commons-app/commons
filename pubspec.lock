@@ -244,6 +244,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.5.5+2"
+  flutter_pagewise:
+    dependency: "direct main"
+    description:
+      name: flutter_pagewise
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.2.3"
   flutter_stetho:
     dependency: "direct main"
     description:

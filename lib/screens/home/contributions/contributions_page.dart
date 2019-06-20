@@ -2,8 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:commons/app_config.dart';
 import 'package:commons/model/response/media/contributions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_pagewise/flutter_pagewise.dart';
 
 import 'contributions_presenter.dart';
+
 
 class ContributionsPage extends StatefulWidget {
   @override
@@ -14,7 +16,8 @@ class ContributionsPage extends StatefulWidget {
 
 class _ContributionsState extends State<ContributionsPage>
     implements ContributionsContract {
-  List<Contribution> contributions = [];
+
+  List<AllImages> contributions = List();
   ContributionsPresenter presenter;
 
   bool _isPresenterInit = false;
@@ -25,36 +28,29 @@ class _ContributionsState extends State<ContributionsPage>
       _isPresenterInit = true;
       var config = AppConfig.of(this.context);
       presenter = new ContributionsPresenter(config.commonsBaseUrl, this);
-      loadContributions();
     }
     
     return Scaffold(
-        body: ListView.builder(
-            itemCount: contributions.length,
-            physics: const AlwaysScrollableScrollPhysics (),
-            itemBuilder: (context, int) {
-              return Stack(alignment: Alignment.bottomLeft, children: <Widget>[
-                Container(
-                  width: double.infinity,
-                  height: 200,
-                ),
-                new Card(
-                    child: new CachedNetworkImage(
-                        imageUrl: contributions.elementAt(int).url)),
-                new Container(
-                    margin: const EdgeInsets.only(left: 10.0,bottom: 10),
-                    child: Text(contributions.elementAt(int).name,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.white))),
-              ]);
-            }));
+        body: PagewiseListView(
+            pageSize: 10,
+            padding: EdgeInsets.all(5.0),
+            itemBuilder: (context, entry, index) => listItem(entry),
+            pageFuture: (pageIndex) => presenter.getContributions()
+        ));
   }
 
-  void loadContributions() {
-    presenter.getContributions().then((response) {
-      setState(() {
-        contributions = response;
-      });
-    });
+  Stack listItem(AllImages allimage) {
+    return Stack(alignment: Alignment.bottomLeft, children: <Widget>[
+      Container(
+        width: double.infinity,
+        height: 200,
+      ),
+      new CachedNetworkImage(imageUrl: allimage.url),
+      new Container(
+          margin: const EdgeInsets.only(left: 10.0, bottom: 10),
+          child: Text(allimage.name,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, color: Colors.white))),
+    ]);
   }
 }

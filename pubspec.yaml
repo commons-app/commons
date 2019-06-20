@@ -39,6 +39,7 @@ dependencies:
   exif: ^1.0.0
   launch_review: ^2.0.0
   flutter_mailer: ^0.4.1+1
+  flutter_pagewise: 1.2.3
 
   #utils
   cookie_jar: ^1.0.0
