@@ -17,16 +17,17 @@ class _ContributionsState extends State<ContributionsPage>
   List<Contribution> contributions = [];
   ContributionsPresenter presenter;
 
+  bool _isPresenterInit = false;
+
   @override
   Widget build(BuildContext context) {
-    var config = AppConfig.of(this.context);
-    presenter = new ContributionsPresenter(config.commonsBaseUrl, this);
-    presenter.getContributions().then((response) {
-      setState(() {
-        contributions = response;
-      });
-    });
-
+    if (!_isPresenterInit) {
+      _isPresenterInit = true;
+      var config = AppConfig.of(this.context);
+      presenter = new ContributionsPresenter(config.commonsBaseUrl, this);
+      loadContributions();
+    }
+    
     return Scaffold(
         body: ListView.builder(
             itemCount: contributions.length,
@@ -46,5 +47,13 @@ class _ContributionsState extends State<ContributionsPage>
                             fontWeight: FontWeight.bold, color: Colors.white))),
               ]);
             }));
+  }
+
+  void loadContributions() {
+    presenter.getContributions().then((response) {
+      setState(() {
+        contributions = response;
+      });
+    });
   }
 }
