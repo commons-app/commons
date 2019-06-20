@@ -31,6 +31,7 @@ class _ContributionsState extends State<ContributionsPage>
     return Scaffold(
         body: ListView.builder(
             itemCount: contributions.length,
+            physics: const AlwaysScrollableScrollPhysics (),
             itemBuilder: (context, int) {
               return Stack(alignment: Alignment.bottomLeft, children: <Widget>[
                 Container(
