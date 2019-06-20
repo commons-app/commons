@@ -129,6 +129,11 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
     // Causes the app to rebuild with the new _selectedChoice.
     setState(() {
       _selectedChoice = choice;
+      if (_selectedChoice.title == 'Rate Us') {
+        _presenter.appReview();
+      } else if (_selectedChoice.title == 'Send Feedback') {
+        _presenter.sendFeedback();
+      }
     });
   }
 
