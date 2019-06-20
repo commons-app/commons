@@ -111,6 +111,20 @@ class CommonsApiProvider {
     }
   }
 
+  Future<MwQueryResponse> searchNearbyCategories(LatLng latLng) async {
+    try {
+      var _endpoint = _url_prefix +
+          'action=query&list=geosearch&gsprimary=all&gsnamespace=14&gsradius=10000&gscoord=${latLng
+              .latitude}|${latLng.longitude}';
+
+      Response response = await _dio.get(_endpoint);
+      return MwQueryResponse.fromJson(response.data);
+    } catch (error, stacktrace) {
+      print("Exception occured: $error stackTrace: $stacktrace");
+      throw error;
+    }
+  }
+
   Future<NearbyResponse> getNearbyPlaces(String radius,
       LatLng latLng,
       String language) async {

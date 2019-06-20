@@ -62,6 +62,15 @@ class CommonsRepository {
     });
   }
 
+  Future<List<Category>> searchNearbyCategories(LatLng latLng) {
+    return _apiProvider.searchNearbyCategories(latLng).then((MwQueryResponse value) {
+      return value.query.geosearch
+          .map((val) => new Category(val.title.replaceAll("Category:", ""), '')).toList();
+    }, onError: (e) {
+      throw e;
+    });
+  }
+
   Future<MwQueryResponse> fetchContributions(String userName, Map<String, String> continuation) {
     return _apiProvider.fetchContributions(userName, continuation);
   }
