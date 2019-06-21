@@ -79,6 +79,11 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: new TextFormField(
                     onSaved: (val) => _title = val,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter a title';
+                      }
+                    },
                     decoration: new InputDecoration(labelText: "Title",
                         border: outlineInputBorder),
                   )),
@@ -91,6 +96,11 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: new TextFormField(
                     onSaved: (val) => _caption = val,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter a caption';
+                      }
+                    },
                     decoration: new InputDecoration(labelText: "Caption",
                         border: outlineInputBorder),
                   )),
@@ -103,6 +113,11 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
                   padding: const EdgeInsets.all(8.0),
                   child: new TextFormField(
                     onSaved: (val) => _description = val,
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return 'Please enter a description';
+                      }
+                    },
                     decoration: new InputDecoration(labelText: "Description",
                         border: outlineInputBorder),
                   )),
