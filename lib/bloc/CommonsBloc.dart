@@ -36,6 +36,10 @@ class CommonsBloc {
     return _repository.searchCategories(query);
   }
 
+  Future<List<Category>> getNearbyCategories(LatLng latLng) async {
+    return _repository.searchNearbyCategories(latLng);
+  }
+
   Future<MwQueryResponse> fetchContributions(String userName,
       Map<String, String> continuation) async {
     return _repository.fetchContributions(userName, continuation);

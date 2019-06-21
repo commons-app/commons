@@ -4,6 +4,7 @@ import 'package:commons/model/UploadableFile.dart';
 import 'package:commons/model/category.dart';
 import 'package:commons/model/place.dart';
 import 'package:commons/model/response/upload/UploadResult.dart';
+import 'package:latlong/latlong.dart';
 
 abstract class UploadPageContract {
   void onImageUploadSuccess(String success);
@@ -45,7 +46,8 @@ class UploadPagePresenter {
 
   Future<List<Category>> filterSearchResults(String query) {
     if (query == "") {
-      return Future.value(List());
+      var latLng = new LatLng(12.9581741,77.6421572);
+      return commonsBloc.getNearbyCategories(latLng);
     }
     return commonsBloc.getCategories(query);
   }

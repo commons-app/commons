@@ -96,6 +96,7 @@ class _FileCategoryPageState extends State<FileCategoryPage>
       ),
       maxChips: 10,
       findSuggestions: (String query) async {
+        print("findSuggestions triggered for " + query);
         List<Category> categories = await _presenter.filterSearchResults(query);
         return categories;
       },

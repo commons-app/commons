@@ -5,7 +5,7 @@ class GeoSearch {
   double lat;
   double lon;
   double dist;
-  String primary;
+  bool primary;
 
   GeoSearch(
       {this.pageid,
@@ -20,9 +20,9 @@ class GeoSearch {
     pageid = json['pageid'];
     ns = json['ns'];
     title = json['title'];
-    lat = json['lat'];
-    lon = json['lon'];
-    dist = json['dist'];
+    lat = double.tryParse(json['lat'].toString());
+    lon = double.tryParse(json['lon'].toString());
+    dist = double.tryParse(json['dist'].toString());
     primary = json['primary'];
   }
 
