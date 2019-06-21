@@ -120,7 +120,7 @@ class CommonsApiProvider {
   Future<MwQueryResponse> checkIfFileExists(String title) async {
     try {
       var _endpoint = _url_prefix +
-          'w/api.php?action=query&format=json&formatversion=2&titles=$title';
+          'action=query&format=json&formatversion=2&titles=$title';
 
       Response response = await _dio.get(_endpoint);
       return MwQueryResponse.fromJson(response.data);

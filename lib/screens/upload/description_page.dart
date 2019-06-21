@@ -1,7 +1,11 @@
+import 'package:commons/app_config.dart';
 import 'package:commons/helper/upload_helper.dart';
 import 'package:commons/model/UploadableFile.dart';
 import 'package:commons/screens/upload/upload_category_page.dart';
 import 'package:flutter/material.dart';
+import 'package:progress_dialog/progress_dialog.dart';
+
+import 'description_presenter.dart';
 
 class FileDescriptionPage extends StatefulWidget {
   final UploadableFile uploadableFile;
@@ -14,13 +18,17 @@ class FileDescriptionPage extends StatefulWidget {
       new _FileDescriptionPageState(uploadableFile);
 }
 
-class _FileDescriptionPageState extends State<FileDescriptionPage> {
+class _FileDescriptionPageState extends State<FileDescriptionPage>
+    implements FileDescriptionPageContract {
   BuildContext _ctx;
   final formKey = new GlobalKey<FormState>();
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
   bool _isLoading = false;
   UploadableFile _uploadableFile;
+  ProgressDialog pr;
+
+  FileDescriptionPagePresenter _presenter;
 
   var _title;
   var _caption;
@@ -46,6 +54,16 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
   Widget build(BuildContext context) {
     _ctx = context;
 
+    if (_presenter == null) {
+      var config = AppConfig.of(_ctx);
+      _presenter =
+      new FileDescriptionPagePresenter(config.commonsBaseUrl, this);
+    }
+
+    if (pr == null) {
+      pr = new ProgressDialog(context, ProgressDialogType.Normal);
+    }
+
     var outlineInputBorder = OutlineInputBorder(
         borderRadius: BorderRadius.all(
             Radius.circular(25.0)));
@@ -67,6 +85,7 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         new Form(
+          autovalidate: true,
           key: formKey,
           child: new Column(
             children: <Widget>[
@@ -172,6 +191,7 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
       _isLoading = true;
       form.save();
 
+
       var description = new Map<String, String>();
       description['en'] = _description.toString();
       var caption = new Map<String, String>();
@@ -182,17 +202,33 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
       _uploadableFile.caption = caption;
       _uploadableFile.license = _license;
 
-      _uploadableFile = await UploadHelper().getExifFromFile(_uploadableFile);
-
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  FileCategoryPage(uploadableFile: _uploadableFile)));
-
-      setState(() {
-
-      });
+      _presenter.performFileQualityChecks(_uploadableFile);
     }
+  }
+
+  Future proceedToCategorySelection() async {
+    _uploadableFile = await UploadHelper().getExifFromFile(_uploadableFile);
+
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                FileCategoryPage(uploadableFile: _uploadableFile)));
+  }
+
+  @override
+  void onQualityChecksFailed(List<String> errorMessages) {
+    if (pr.isShowing()) {
+      pr.hide();
+    }
+    _showSnackBar(errorMessages[0]);
+  }
+
+  @override
+  void onQualityChecksPassed() async {
+    if (pr.isShowing()) {
+      pr.hide();
+    }
+    await proceedToCategorySelection();
   }
 }

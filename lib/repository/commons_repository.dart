@@ -5,7 +5,6 @@ import 'package:commons/model/place.dart';
 import 'package:commons/model/response/MwQueryResponse.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
 import 'package:commons/model/response/nearby/NearbyResponse.dart';
-import 'package:commons/model/response/upload/UploadResult.dart';
 import 'package:commons/model/upload_interface.dart';
 import 'package:commons/repository/commons_api_provider.dart';
 import 'package:latlong/latlong.dart';
@@ -67,7 +66,7 @@ class CommonsRepository {
     return _apiProvider.checkIfFileExists(title).then((MwQueryResponse value) {
       return value.query
           .firstPage()
-          .pageid > 0;
+          .pageid != null;
     }, onError: (e) {
       throw e;
     });
