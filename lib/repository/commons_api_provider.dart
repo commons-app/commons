@@ -5,6 +5,7 @@ import 'package:commons/model/response/MwQueryResponse.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
 import 'package:commons/model/response/nearby/NearbyResponse.dart';
 import 'package:commons/model/response/upload/UploadResult.dart';
+import 'package:commons/model/upload_interface.dart';
 import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart';
 import 'package:latlong/latlong.dart';
@@ -78,8 +79,8 @@ class CommonsApiProvider {
     }
   }
 
-  Future<UploadResult> uploadFile(File file, String filename,
-      String token, String text) async {
+  void uploadFile(File file, String filename,
+      String token, String text, UploadInterface uploadInterface) async {
     try {
       var _endpoint = _url_prefix + 'action=upload&ignorewarnings=1';
 
@@ -89,11 +90,16 @@ class CommonsApiProvider {
         "file": new UploadFileInfo(file, filename),
         "text": text
       });
-      Response response = await _dio.post(_endpoint, data: formData);
-      return UploadResult.fromJson(response.data);
+      Response response = await _dio.post(
+          _endpoint, data: formData, onSendProgress: (int sent, int total) {
+        print("$sent $total");
+        uploadInterface.onUploadProgessChanged(sent, total);
+      });
+      UploadResult uploadResult = UploadResult.fromJson(response.data);
+      uploadInterface.onUploadSuccessful(uploadResult);
     } catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");
-      throw error;
+      uploadInterface.onUploadFailure(error);
     }
   }
 

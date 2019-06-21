@@ -6,6 +6,7 @@ import 'package:commons/model/response/MwQueryResponse.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
 import 'package:commons/model/response/nearby/NearbyResponse.dart';
 import 'package:commons/model/response/upload/UploadResult.dart';
+import 'package:commons/model/upload_interface.dart';
 import 'package:commons/repository/commons_api_provider.dart';
 import 'package:latlong/latlong.dart';
 
@@ -38,9 +39,9 @@ class CommonsRepository {
     });
   }
 
-  Future<UploadResult> uploadFile(File file, String token, String filename,
-      String text) {
-    return _apiProvider.uploadFile(file, filename, token, text);
+  void uploadFile(File file, String token, String filename,
+      String text, UploadInterface uploadInterface) {
+    _apiProvider.uploadFile(file, filename, token, text, uploadInterface);
   }
 
   Future<List<Place>> getNearbyPlaces(LatLng latlng) {

@@ -5,6 +5,7 @@ import 'package:commons/model/category.dart';
 import 'package:commons/screens/upload/upload_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chips_input/flutter_chips_input.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 
 class FileCategoryPage extends StatefulWidget {
   final UploadableFile uploadableFile;
@@ -26,6 +27,7 @@ class _FileCategoryPageState extends State<FileCategoryPage>
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
   TextEditingController editingController = TextEditingController();
+  ProgressDialog pr;
 
   bool _isLoading = false;
 
@@ -57,9 +59,14 @@ class _FileCategoryPageState extends State<FileCategoryPage>
   @override
   Widget build(BuildContext context) {
     _ctx = context;
-    var config = AppConfig.of(_ctx);
-    _presenter = new UploadPagePresenter(config.commonsBaseUrl, this);
+    if (_presenter == null) {
+      var config = AppConfig.of(_ctx);
+      _presenter = new UploadPagePresenter(config.commonsBaseUrl, this);
+    }
 
+    if (pr == null) {
+      pr = new ProgressDialog(context, ProgressDialogType.Download);
+    }
 
     var outlineInputBorder = OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(25.0)));
@@ -129,6 +136,7 @@ class _FileCategoryPageState extends State<FileCategoryPage>
   }
 
   void _submit() {
+    pr.show();
     var categories = _selectedCategoryItems.map((val) => val.categoryName)
         .toList();
     _uploadableFile.categories = categories;
@@ -137,6 +145,9 @@ class _FileCategoryPageState extends State<FileCategoryPage>
 
   @override
   void onImageUploadError(String error) {
+    if (pr.isShowing()) {
+      pr.hide();
+    }
     _showSnackBar(error);
     setState(() {
       _isLoading = false;
@@ -145,6 +156,9 @@ class _FileCategoryPageState extends State<FileCategoryPage>
 
   @override
   void onImageUploadSuccess(String success) {
+    if (pr.isShowing()) {
+      pr.hide();
+    }
     if (_uploadableFile.place != null) {
       _presenter.editWikiDataItem(_uploadableFile.title, _uploadableFile.place);
     }
@@ -152,5 +166,14 @@ class _FileCategoryPageState extends State<FileCategoryPage>
     setState(() {
       _isLoading = false;
     });
+
+    Navigator.of(context).pushNamed("/home");
+  }
+
+  @override
+  void onImageProgressChanged(double percentage) {
+    if (pr.isShowing()) {
+      pr.update(progress: percentage, message: "Please wait...");
+    }
   }
 }

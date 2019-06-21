@@ -17,7 +17,13 @@ class LoginPagePresenter {
   doLogin(String username, String password) {
     commonsBloc
         .doLogin(username, password)
-        .then((loginResponse) => _view.onLoginSuccess(loginResponse))
+        .then((LoginResponse loginResponse) {
+      if (loginResponse.clientlogin.status == "PASS") {
+        _view.onLoginSuccess(loginResponse);
+      } else {
+        _view.onLoginError(loginResponse.clientlogin.message);
+      }
+    })
         .catchError((onError) => _view.onLoginError(onError.toString()));
   }
 }

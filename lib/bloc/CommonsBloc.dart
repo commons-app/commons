@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:commons/model/category.dart';
 import 'package:commons/model/place.dart';
 import 'package:commons/model/response/MwQueryResponse.dart';
+import 'package:commons/model/response/login/LoginResponse.dart';
 import 'package:commons/model/response/upload/UploadResult.dart';
+import 'package:commons/model/upload_interface.dart';
 import 'package:commons/repository/commons_repository.dart';
 import 'package:latlong/latlong.dart';
 
@@ -16,16 +18,16 @@ class CommonsBloc {
     _repository = CommonsRepository(baseEndpoint);
   }
 
-  doLogin(String username, String password) async {
+  Future<LoginResponse> doLogin(String username, String password) async {
     String loginToken = await _repository.getLoginToken();
 
     return _repository.doLogin(username, password, loginToken, baseEndpoint);
   }
 
-  Future<UploadResult> uploadFile(File file, String filename,
-      String text) async {
+  void uploadFile(File file, String filename,
+      String text, UploadInterface uploadInterface) async {
     String csrfToken = await _repository.getCsrfToken();
-    return _repository.uploadFile(file, csrfToken, filename, text);
+    return _repository.uploadFile(file, csrfToken, filename, text, uploadInterface);
   }
 
   Future<List<Place>> getNearbyPlaces(LatLng latLng) async {

@@ -1,6 +1,7 @@
 import 'package:commons/app_config.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
 import 'package:flutter/material.dart';
+import 'package:progress_dialog/progress_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'login_presenter.dart';
@@ -12,7 +13,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> implements LoginPageContract {
   BuildContext _ctx;
-  bool _isLoading = false;
+
+  ProgressDialog pr;
+
   final formKey = new GlobalKey<FormState>();
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
@@ -24,11 +27,11 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     final form = formKey.currentState;
 
     if (form.validate()) {
-      setState(() {
-        _isLoading = true;
-        form.save();
-        _presenter.doLogin(_username, _password);
-      });
+      if (!pr.isShowing()) {
+        pr.show();
+      }
+      form.save();
+      _presenter.doLogin(_username, _password);
     }
   }
 
@@ -41,8 +44,14 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
   @override
   Widget build(BuildContext context) {
     _ctx = context;
-    var config = AppConfig.of(_ctx);
-    _presenter = new LoginPagePresenter(this, config.commonsBaseUrl);
+    if (_presenter == null) {
+      var config = AppConfig.of(_ctx);
+      _presenter = new LoginPagePresenter(this, config.commonsBaseUrl);
+    }
+
+    if (pr == null) {
+      pr = new ProgressDialog(context, ProgressDialogType.Normal);
+    }
 
     var outlineInputBorder = OutlineInputBorder(
         borderRadius: BorderRadius.all(
@@ -64,6 +73,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
           ),
         ),
         new Form(
+          autovalidate: true,
           key: formKey,
           child: new Column(
             children: <Widget>[
@@ -71,6 +81,11 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
                 padding: const EdgeInsets.all(20.0),
                 child: new TextFormField(
                   onSaved: (val) => _username = val,
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Username cannot be empty';
+                    }
+                  },
                   decoration: new InputDecoration(labelText: "Username",
                       border: outlineInputBorder),
                 ),
@@ -80,6 +95,11 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
                 child: new TextFormField(
                   obscureText: true,
                   onSaved: (val) => _password = val,
+                  validator: (value) {
+                    if (value.isEmpty) {
+                      return 'Password cannot be empty';
+                    }
+                  },
                   decoration: new InputDecoration(labelText: "Password",
                       border: outlineInputBorder),
                 ),
@@ -97,26 +117,23 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       ),
       key: scaffoldKey,
       body: new Container(
-        child: new Center(
-          child: loginForm,
-        ),
-      ),
-    );
+          child: loginForm
+      ));
   }
 
   @override
   void onLoginError(String error) {
+    if (pr.isShowing()) {
+      pr.hide();
+    }
     _showSnackBar(error);
-    setState(() {
-      _isLoading = false;
-    });
   }
 
   @override
   void onLoginSuccess(LoginResponse loginResponse) async {
-    setState(() {
-      _isLoading = false;
-    });
+    if (pr.isShowing()) {
+      pr.hide();
+    }
 
     print(loginResponse);
 
