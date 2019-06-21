@@ -4,6 +4,7 @@ import 'package:commons/model/response/media/contributions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pagewise/flutter_pagewise.dart';
 
+import 'contributions_item.dart';
 import 'contributions_presenter.dart';
 
 
@@ -39,18 +40,7 @@ class _ContributionsState extends State<ContributionsPage>
         ));
   }
 
-  Stack listItem(AllImages allimage) {
-    return Stack(alignment: Alignment.bottomLeft, children: <Widget>[
-      Container(
-        width: double.infinity,
-        height: 200,
-      ),
-      new CachedNetworkImage(imageUrl: allimage.url),
-      new Container(
-          margin: const EdgeInsets.only(left: 10.0, bottom: 10),
-          child: Text(allimage.name,
-              style: TextStyle(
-                  fontWeight: FontWeight.bold, color: Colors.white))),
-    ]);
+  ContributionsItem listItem(AllImages allimage) {
+    return ContributionsItem(allimage);
   }
 }
