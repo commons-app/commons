@@ -62,6 +62,16 @@ class CommonsRepository {
     });
   }
 
+  Future<bool> checkIfFileExists(String title) {
+    return _apiProvider.checkIfFileExists(title).then((MwQueryResponse value) {
+      return value.query
+          .firstPage()
+          .pageid > 0;
+    }, onError: (e) {
+      throw e;
+    });
+  }
+
   Future<List<Category>> searchNearbyCategories(LatLng latLng) {
     return _apiProvider.searchNearbyCategories(latLng).then((MwQueryResponse value) {
       return value.query.geosearch

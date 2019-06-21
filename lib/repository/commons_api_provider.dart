@@ -111,6 +111,19 @@ class CommonsApiProvider {
     }
   }
 
+  Future<MwQueryResponse> checkIfFileExists(String title) async {
+    try {
+      var _endpoint = _url_prefix +
+          'w/api.php?action=query&format=json&formatversion=2&titles=$title';
+
+      Response response = await _dio.get(_endpoint);
+      return MwQueryResponse.fromJson(response.data);
+    } catch (error, stacktrace) {
+      print("Exception occured: $error stackTrace: $stacktrace");
+      throw error;
+    }
+  }
+
   Future<MwQueryResponse> searchNearbyCategories(LatLng latLng) async {
     try {
       var _endpoint = _url_prefix +

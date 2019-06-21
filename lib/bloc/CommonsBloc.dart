@@ -32,6 +32,10 @@ class CommonsBloc {
     return _repository.getNearbyPlaces(latLng);
   }
 
+  Future<bool> checkIfPageExists(String title) async {
+    return _repository.checkIfFileExists(title);
+  }
+
   Future<List<Category>> getCategories(String query) async {
     return _repository.searchCategories(query);
   }
