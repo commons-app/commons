@@ -10,27 +10,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chips_input/flutter_chips_input.dart';
 
 class FileCategoryPage extends StatefulWidget {
-  final File file;
-  final Place place;
-  final String title;
-  final String caption;
-  final String description;
-  final String license;
+  final UploadableFile uploadableFile;
 
   const FileCategoryPage(
       {Key key,
-      @required this.file,
-      @required this.title,
-      @required this.caption,
-      @required this.description,
-        @required this.license,
-        this.place})
+        @required this.uploadableFile})
       : super(key: key);
 
   @override
   _FileCategoryPageState createState() =>
-      new _FileCategoryPageState(
-          file, title, caption, description, license, place);
+      new _FileCategoryPageState(uploadableFile);
 }
 
 class _FileCategoryPageState extends State<FileCategoryPage>
@@ -46,6 +35,8 @@ class _FileCategoryPageState extends State<FileCategoryPage>
   Place _place;
   String _license;
 
+  UploadableFile _uploadableFile;
+
   var _title;
   var _caption;
   var _description;
@@ -55,14 +46,8 @@ class _FileCategoryPageState extends State<FileCategoryPage>
 
   String dropdownValue = UploadHelper.CC_BY_3;
 
-  _FileCategoryPageState(File file, String title, String caption,
-      String description, String license, Place place) {
-    _image = file;
-    _title = title;
-    _description = description;
-    _caption = caption;
-    _license = license;
-    _place = place;
+  _FileCategoryPageState(UploadableFile uploadableFile) {
+    _uploadableFile = uploadableFile;
   }
 
   void _showSnackBar(String text) {
@@ -156,14 +141,8 @@ class _FileCategoryPageState extends State<FileCategoryPage>
   void _submit() {
     var categories = _selectedCategoryItems.map((val) => val.categoryName)
         .toList();
-    var description = new Map<String, String>();
-    description['en'] = _description.toString();
-    var caption = new Map<String, String>();
-    caption['en'] = _caption.toString();
-    var uploadableFile = new UploadableFile(
-        _image, _title, description, caption, _license,
-        categories);
-    _presenter.uploadFile(uploadableFile);
+    _uploadableFile.categories = categories;
+    _presenter.uploadFile(_uploadableFile);
   }
 
   @override

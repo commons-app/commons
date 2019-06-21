@@ -1,20 +1,17 @@
-import 'dart:io';
-
 import 'package:commons/helper/upload_helper.dart';
-import 'package:commons/model/place.dart';
+import 'package:commons/model/UploadableFile.dart';
 import 'package:commons/screens/upload/upload_category_page.dart';
 import 'package:flutter/material.dart';
 
 class FileDescriptionPage extends StatefulWidget {
-  final File file;
-  final Place place;
+  final UploadableFile uploadableFile;
 
-  const FileDescriptionPage({Key key, @required this.file, this.place})
+  const FileDescriptionPage({Key key, @required this.uploadableFile})
       : super(key: key);
 
   @override
   _FileDescriptionPageState createState() =>
-      new _FileDescriptionPageState(file, place);
+      new _FileDescriptionPageState(uploadableFile);
 }
 
 class _FileDescriptionPageState extends State<FileDescriptionPage> {
@@ -23,17 +20,15 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
   bool _isLoading = false;
-  File _image;
-  Place _place;
+  UploadableFile _uploadableFile;
 
   var _title;
   var _caption;
   var _description;
   String _license = UploadHelper.CC_BY_3;
 
-  _FileDescriptionPageState(File file, Place place) {
-    _image = file;
-    _place = place;
+  _FileDescriptionPageState(uploadableFile) {
+    _uploadableFile = uploadableFile;
   }
 
   void _showSnackBar(String text) {
@@ -162,16 +157,22 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
       setState(() {
         _isLoading = true;
         form.save();
+
+        var description = new Map<String, String>();
+        description['en'] = _description.toString();
+        var caption = new Map<String, String>();
+        caption['en'] = _caption.toString();
+
+        _uploadableFile.title = _title;
+        _uploadableFile.description = description;
+        _uploadableFile.caption = caption;
+        _uploadableFile.license = _license;
+
         Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    FileCategoryPage(file: _image,
-                        title: _title,
-                        caption: _caption,
-                        description: _description,
-                        license: _license,
-                        place: _place)));
+                    FileCategoryPage(uploadableFile: _uploadableFile)));
       });
     }
   }

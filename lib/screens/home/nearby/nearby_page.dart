@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:commons/app_config.dart';
+import 'package:commons/model/UploadableFile.dart';
 import 'package:commons/model/place.dart';
 import 'package:commons/screens/upload/description_page.dart';
 import 'package:flutter/material.dart';
@@ -194,7 +195,11 @@ class _NearbyState extends State<NearbyPage> implements NearbyContract {
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => FileDescriptionPage(file: image, place: place),
+          builder: (context) {
+            UploadableFile uploadableFile = new UploadableFile(
+                file: image, place: place);
+            return FileDescriptionPage(uploadableFile: uploadableFile);
+          },
         ));
   }
 }
