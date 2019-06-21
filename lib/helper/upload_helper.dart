@@ -11,8 +11,6 @@ class UploadHelper {
   static const String CC0 = "CC0";
 
   Future<String> getPageText(UploadableFile uploadableFile) async {
-    uploadableFile = await getExifFromFile(uploadableFile);
-
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (prefs.getBool("isLoggedIn")) {
       return getPageContents(

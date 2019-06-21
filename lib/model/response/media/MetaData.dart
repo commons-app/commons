@@ -1,6 +1,6 @@
 class Metadata {
   String name;
-  String value;
+  int value;
 
   Metadata({this.name, this.value});
 

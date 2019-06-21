@@ -150,29 +150,33 @@ class _FileDescriptionPageState extends State<FileDescriptionPage> {
     );
   }
 
-  void _submit() {
+  void _submit() async {
     final form = formKey.currentState;
 
     if (form.validate()) {
+      _isLoading = true;
+      form.save();
+
+      var description = new Map<String, String>();
+      description['en'] = _description.toString();
+      var caption = new Map<String, String>();
+      caption['en'] = _caption.toString();
+
+      _uploadableFile.title = _title;
+      _uploadableFile.description = description;
+      _uploadableFile.caption = caption;
+      _uploadableFile.license = _license;
+
+      _uploadableFile = await UploadHelper().getExifFromFile(_uploadableFile);
+
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  FileCategoryPage(uploadableFile: _uploadableFile)));
+
       setState(() {
-        _isLoading = true;
-        form.save();
 
-        var description = new Map<String, String>();
-        description['en'] = _description.toString();
-        var caption = new Map<String, String>();
-        caption['en'] = _caption.toString();
-
-        _uploadableFile.title = _title;
-        _uploadableFile.description = description;
-        _uploadableFile.caption = caption;
-        _uploadableFile.license = _license;
-
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) =>
-                    FileCategoryPage(uploadableFile: _uploadableFile)));
       });
     }
   }

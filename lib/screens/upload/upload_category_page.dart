@@ -1,10 +1,7 @@
-import 'dart:io';
-
 import 'package:commons/app_config.dart';
 import 'package:commons/helper/upload_helper.dart';
 import 'package:commons/model/UploadableFile.dart';
 import 'package:commons/model/category.dart';
-import 'package:commons/model/place.dart';
 import 'package:commons/screens/upload/upload_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chips_input/flutter_chips_input.dart';
@@ -31,15 +28,9 @@ class _FileCategoryPageState extends State<FileCategoryPage>
   TextEditingController editingController = TextEditingController();
 
   bool _isLoading = false;
-  File _image;
-  Place _place;
-  String _license;
 
   UploadableFile _uploadableFile;
 
-  var _title;
-  var _caption;
-  var _description;
   var _selectedCategoryItems = List<Category>();
 
   UploadPagePresenter _presenter;
@@ -81,8 +72,7 @@ class _FileCategoryPageState extends State<FileCategoryPage>
       ),
       maxChips: 10,
       findSuggestions: (String query) async {
-        print("findSuggestions triggered for " + query);
-        List<Category> categories = await _presenter.filterSearchResults(query);
+        List<Category> categories = await _presenter.filterSearchResults(_uploadableFile, query);
         return categories;
       },
       onChanged: (data) {
@@ -155,8 +145,8 @@ class _FileCategoryPageState extends State<FileCategoryPage>
 
   @override
   void onImageUploadSuccess(String success) {
-    if (_place != null) {
-      _presenter.editWikiDataItem(_title, _place);
+    if (_uploadableFile.place != null) {
+      _presenter.editWikiDataItem(_uploadableFile.title, _uploadableFile.place);
     }
     _showSnackBar(success);
     setState(() {
