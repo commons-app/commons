@@ -87,7 +87,7 @@ class _FileDescriptionPageState extends State<FileDescriptionPage>
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         new Form(
-          autovalidate: true,
+          autovalidate: false,
           key: formKey,
           child: new Column(
             children: <Widget>[

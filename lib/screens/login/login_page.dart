@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
           ),
         ),
         new Form(
-          autovalidate: true,
+          autovalidate: false,
           key: formKey,
           child: new Column(
             children: <Widget>[
@@ -152,9 +152,10 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
         title: new Text("Commons App"),
       ),
       key: scaffoldKey,
-      body: new Container(
-          child: loginForm
-      ));
+        body: new SingleChildScrollView(
+            child: new Container(
+                child: loginForm
+            )));
   }
 
   @override
