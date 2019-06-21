@@ -1,8 +1,10 @@
 import 'package:commons/app_config.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'login_presenter.dart';
 
@@ -107,7 +109,41 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
             ],
           ),
         ),
-        loginBtn
+        loginBtn,
+        new Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: new RichText(
+              text: new TextSpan(
+                children: [
+                  new TextSpan(
+                    text: "Forgot password?",
+                    style: new TextStyle(color: Colors.blue, fontSize: 16),
+                    recognizer: new TapGestureRecognizer()
+                      ..onTap = () {
+                        launch(
+                            "https://commons.wikimedia.beta.wmflabs.org/wiki/Special:PasswordReset");
+                      },
+                  ),
+                ],
+              )),
+        ),
+        new Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: new RichText(
+              text: new TextSpan(
+                children: [
+                  new TextSpan(
+                    text: "Privacy Policy",
+                    style: new TextStyle(color: Colors.blue, fontSize: 16, decoration: TextDecoration.underline),
+                    recognizer: new TapGestureRecognizer()
+                      ..onTap = () {
+                        launch(
+                            "https://github.com/commons-app/apps-android-commons/wiki/Privacy-policy");
+                      },
+                  ),
+                ],
+              )),
+        )
       ],
     );
 

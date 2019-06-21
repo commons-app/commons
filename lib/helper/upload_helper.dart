@@ -92,6 +92,38 @@ class UploadHelper {
         "}}";
   }
 
+  String licenseNameFor(String license) {
+    switch (license) {
+      case CC_BY_3:
+        return "Attribution 3.0";
+      case CC_BY_4:
+        return "Attribution 4.0";
+      case CC_BY_SA_3:
+        return "Attribution-ShareAlike 3.0";
+      case CC_BY_SA_4:
+        return "Attribution-ShareAlike 4.0";
+      case CC0:
+        return "CC0";
+    }
+    return "";
+  }
+
+  String licenseUrlFor(String license) {
+    switch (license) {
+      case CC_BY_3:
+        return "https://creativecommons.org/licenses/by/3.0/";
+      case CC_BY_4:
+        return "https://creativecommons.org/licenses/by/4.0/";
+      case CC_BY_SA_3:
+        return "https://creativecommons.org/licenses/by-sa/3.0/";
+      case CC_BY_SA_4:
+        return "https://creativecommons.org/licenses/by-sa/4.0/";
+      case CC0:
+        return "https://creativecommons.org/publicdomain/zero/1.0/";
+    }
+    return "";
+  }
+
   String getTemplatedLicense(String license) {
     switch (license) {
       case CC_BY_3:

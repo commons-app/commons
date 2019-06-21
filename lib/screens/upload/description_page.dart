@@ -2,8 +2,10 @@ import 'package:commons/app_config.dart';
 import 'package:commons/helper/upload_helper.dart';
 import 'package:commons/model/UploadableFile.dart';
 import 'package:commons/screens/upload/upload_category_page.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'description_presenter.dart';
 
@@ -167,6 +169,26 @@ class _FileDescriptionPageState extends State<FileDescriptionPage>
                     );
                   }).toList(),
                 ),
+              ),
+              new Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: new RichText(
+                    text: new TextSpan(
+                      children: [
+                        new TextSpan(
+                          text: 'This image will be licensed under ',
+                          style: new TextStyle(color: Colors.black),
+                        ),
+                        new TextSpan(
+                          text: UploadHelper().licenseNameFor(_license),
+                          style: new TextStyle(color: Colors.blue),
+                          recognizer: new TapGestureRecognizer()
+                            ..onTap = () {
+                              launch(UploadHelper().licenseUrlFor(_license));
+                            },
+                        ),
+                      ],
+                    )),
               )
             ],
           ),
