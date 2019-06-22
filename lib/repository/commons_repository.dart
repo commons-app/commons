@@ -18,7 +18,7 @@ class CommonsRepository {
 
   Future<String> getLoginToken() {
     return _apiProvider.getLoginToken().then((MwQueryResponse value) {
-      return value.getMwQueryResult().getTokens().login();
+      return value.query.getTokens().login();
     }, onError: (e) {
       throw e;
     });
@@ -32,7 +32,7 @@ class CommonsRepository {
 
   Future<String> getCsrfToken() {
     return _apiProvider.getCsrfToken().then((MwQueryResponse value) {
-      return value.getMwQueryResult().getTokens().getCsrf();
+      return value.query.getTokens().getCsrf();
     }, onError: (e) {
       throw e;
     });

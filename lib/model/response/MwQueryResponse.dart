@@ -1,29 +1,47 @@
-import 'package:json_annotation/json_annotation.dart';
 import 'MwQueryResult.dart';
 import 'MwResponse.dart';
 import 'MwServiceError.dart';
 
-part 'MwQueryResponse.g.dart';
-
-@JsonSerializable()
 class MwQueryResponse extends MwResponse {
-  @JsonKey(name: "batchcomplete")
-  final bool batchComplete;
-  @JsonKey(name: "continue")
-  final Map<String, String> continuation;
-  final MwQueryResult query;
+  bool batchcomplete;
+  Map<String, String> continuation;
+  MwQueryResult query;
 
-  MwQueryResponse(List<MwServiceError> errors, String servedBy, this.batchComplete, this.continuation, this.query) : super(errors, servedBy);
+  MwQueryResponse(
+      {errors, servedBy, this.batchcomplete, this.continuation, this.query})
+      : super(errors: errors, servedBy: servedBy);
 
-  MwQueryResult getMwQueryResult() {
-    return query;
+  MwQueryResponse.fromJson(Map<String, dynamic> json) {
+    errors = (json['errors'] as List)
+        ?.map((e) => e == null
+            ? null
+            : MwServiceError.fromJson(e as Map<String, dynamic>))
+        ?.toList();
+    servedBy = json['servedBy'] as String;
+    batchcomplete = json['batchcomplete'];
+    continuation = (json['continue'] as Map<String, dynamic>)?.map(
+      (k, e) {
+        if (e is String) {
+          return MapEntry(k, e);
+        } else {
+          return MapEntry(k, e.toString());
+        }
+      },
+    );
+    query = json['query'] != null
+        ? new MwQueryResult.fromJson(json['query'])
+        : null;
   }
 
-  bool success() {
-    return this.query != null;
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['batchcomplete'] = this.batchcomplete;
+    if (this.continuation != null) {
+      data['continue'] = this.continuation;
+    }
+    if (this.query != null) {
+      data['query'] = this.query.toJson();
+    }
+    return data;
   }
-
-  factory MwQueryResponse.fromJson(Map<String, dynamic> json) => _$MwQueryResponseFromJson(json);
-
-  Map<String, dynamic> toJson() => _$MwQueryResponseToJson(this);
 }

@@ -6,9 +6,9 @@ part 'MwResponse.g.dart';
 @JsonSerializable()
 class MwResponse {
   List<MwServiceError> errors;
-  final String servedBy;
+  String servedBy;
 
-  MwResponse(this.errors, this.servedBy);
+  MwResponse({this.errors, this.servedBy});
 
   factory MwResponse.fromJson(Map<String, dynamic> json) => _$MwResponseFromJson(json);
 
