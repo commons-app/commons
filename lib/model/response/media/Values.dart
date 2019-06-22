@@ -6,7 +6,11 @@ class Values {
   Values({this.value, this.hidden, this.source});
 
   Values.fromJson(Map<String, dynamic> json) {
-    value = json['value'];
+    if (json[value] is String) {
+      value = json['value'];
+    } else {
+      value = json['value'].toString();
+    }
     hidden = json['hidden'];
     source = json['source'];
   }

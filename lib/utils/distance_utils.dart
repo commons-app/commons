@@ -3,6 +3,7 @@ import 'dart:math' show cos, sqrt, asin;
 import 'package:latlong/latlong.dart';
 
 class DistanceUtils {
+  /// Calculate direct distance between two points in kilometers
   static double calculateDistance(LatLng latLng1, LatLng latLng2) {
     var p = 0.017453292519943295;
     var c = cos;

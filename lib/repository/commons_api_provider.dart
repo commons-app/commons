@@ -216,10 +216,11 @@ class CommonsApiProvider {
    GROUP BY ?item ?wikipediaArticle ?commonsArticle""";
   }
 
+  /// https://www.mediawiki.org/wiki/API:Allimages
   Future<MwQueryResponse> fetchContributions(String userName,
       Map<String, String> continuation) async {
     try {
-      var _endpoint = _url_prefix + 'action=query&list=allimages&aiuser=+'+userName+'&aisort=timestamp&aiprop=url%7Cextmetadata';
+      var _endpoint = _url_prefix + 'action=query&list=allimages&aiuser=+'+userName+'&aisort=timestamp&aiprop=url%7Cextmetadata&aidir=descending';
 
       if (continuation != null) {
         for (String key in continuation.keys) {

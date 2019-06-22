@@ -4,6 +4,7 @@ import 'package:commons/app_config.dart';
 import 'package:commons/model/UploadableFile.dart';
 import 'package:commons/model/place.dart';
 import 'package:commons/screens/upload/description_page.dart';
+import 'package:commons/utils/distance_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
@@ -40,7 +41,7 @@ class _NearbyState extends State<NearbyPage> implements NearbyContract {
 
     flutterMap = FlutterMap(
       options: new MapOptions(
-          zoom: 13.0,
+          zoom: 15.0,
           center: _currentLocation
       ),
       mapController: controller,
@@ -89,6 +90,8 @@ class _NearbyState extends State<NearbyPage> implements NearbyContract {
   }
 
   void _settingModalBottomSheet(context, Place place) {
+    var distance = DistanceUtils.calculateDistance(
+        _currentLocation, place.getLocation());
     showModalBottomSheet(
         context: context,
         builder: (BuildContext bc) {
@@ -101,7 +104,7 @@ class _NearbyState extends State<NearbyPage> implements NearbyContract {
                   new Text(place.getName(),
                       style: TextStyle(
                           fontSize: 20, fontWeight: FontWeight.bold)),
-                  new Text(place.getLongDescription(),
+                  new Text(distance.toStringAsFixed(2) + " km",
                       style: TextStyle(
                           fontSize: 16, fontWeight: FontWeight.normal)),
                   new Padding(
@@ -124,6 +127,9 @@ class _NearbyState extends State<NearbyPage> implements NearbyContract {
                       ],
                     ),
                   ),
+                  new Text(place.getLongDescription(),
+                      style: TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.normal))
                 ],
               ),
             ),

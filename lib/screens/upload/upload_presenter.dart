@@ -39,12 +39,46 @@ class UploadPagePresenter implements UploadInterface {
 
   Future<List<Category>> filterSearchResults(UploadableFile uploadableFile,
       String query) {
-    if (query == "" && uploadableFile.latLng != null) {
-      return commonsBloc.getNearbyCategories(uploadableFile.latLng);
+    if (query == "") {
+      return getCategorySuggestion(uploadableFile);
     } else if (query != "") {
       return commonsBloc.getCategories(query);
     }
     return Future.value(List());
+  }
+
+  Future<List<Category>> getCategorySuggestion(UploadableFile uploadableFile) {
+    var futures = [];
+    Future<List<Category>> gpsBasedSuggestions;
+    if (uploadableFile.latLng != null) {
+      gpsBasedSuggestions = commonsBloc
+          .getNearbyCategories(
+          uploadableFile.latLng);
+      futures.add(gpsBasedSuggestions);
+    } else {
+      gpsBasedSuggestions = Future.value(List());
+    }
+    Future<List<Category>> titleBasedSuggestions;
+    if (uploadableFile.title != null) {
+      titleBasedSuggestions = commonsBloc
+          .getCategories(uploadableFile.title);
+      futures.add(titleBasedSuggestions);
+    } else {
+      titleBasedSuggestions = Future.value(List());
+    }
+
+    return Future.wait([titleBasedSuggestions, gpsBasedSuggestions])
+        .then((List<List<Category>> results) {
+      List<Category> categorySuggestions = List();
+      results.forEach((List<Category> categories) {
+        categories.forEach((Category category) {
+          categorySuggestions.add(category);
+        });
+      });
+      return categorySuggestions;
+    }, onError: (e) {
+      throw e;
+    });
   }
 
   @override

@@ -44,6 +44,7 @@ class UploadHelper {
 
     var lat, long, dateTime;
     tags.forEach((k, v) {
+      print("$k: $v");
       if (k == "GPS GPSLatitude") {
         List<String> split = v.toString().replaceAll("[", "").replaceAll(
             "]", "").split(",");
@@ -72,7 +73,9 @@ class UploadHelper {
     });
 
     uploadableFile.dateTime = dateTime;
-    uploadableFile.latLng = new LatLng(lat, long);
+    if (lat != null && long != null) {
+      uploadableFile.latLng = new LatLng(lat, long);
+    }
 
     return uploadableFile;
   }
