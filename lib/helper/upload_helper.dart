@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:commons/model/UploadableFile.dart';
 import 'package:exif/exif.dart';
 import 'package:latlong/latlong.dart';
+import 'package:package_info/package_info.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UploadHelper {
@@ -13,13 +16,15 @@ class UploadHelper {
   Future<String> getPageText(UploadableFile uploadableFile) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (prefs.getBool("isLoggedIn")) {
+      String appVersion = await getAppVersion();
+
       return getPageContents(
           getDescription(uploadableFile.description),
           prefs.getString("username"),
           getTemplatedDate(uploadableFile.dateTime),
           getTemplatedCoords(uploadableFile.latLng),
           getTemplatedLicense(uploadableFile.license),
-          "0.1.0",
+          appVersion,
           getTemplatedCategories(uploadableFile.categories));
     }
     return Future.error(new NullThrownError());
@@ -154,6 +159,19 @@ class UploadHelper {
     }
   }
 
+  String getPlatform() {
+    if (Platform.isIOS) {
+      return "IOS";
+    } else {
+      return "Android";
+    }
+  }
+
+  Future<String> getAppVersion() async {
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    return packageInfo.version;
+  }
+
   String getPageContents(String description,
       String creator,
       String templatedDate,
@@ -161,8 +179,7 @@ class UploadHelper {
       String license,
       String version,
       String categories) {
-    print(categories);
-    return "== {{int:filedesc}} ==\n{{Information\n|description=$description\n|source={{own}}\n|author=[[User:$creator|$creator]]\n$templatedDate}}\n$decimalCoords\n== {{int:license-header}} ==\n$license\n\n{{Uploaded from Mobile|platform=Android|version=$version}}\n$categories";
+    return "== {{int:filedesc}} ==\n{{Information\n|description=$description\n|source={{own}}\n|author=[[User:$creator|$creator]]\n$templatedDate}}\n$decimalCoords\n== {{int:license-header}} ==\n$license\n\n{{Uploaded from Mobile|platform=${getPlatform()}|version=$version}}\n$categories";
   }
 
   String getDescription(Map<String, String> description) {
