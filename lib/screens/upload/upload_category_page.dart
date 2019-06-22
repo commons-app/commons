@@ -173,7 +173,7 @@ class _FileCategoryPageState extends State<FileCategoryPage>
   @override
   void onImageProgressChanged(double percentage) {
     if (pr.isShowing()) {
-      pr.update(progress: percentage, message: "Please wait...");
+      pr.update(progress: percentage.ceil() / 1.0, message: "Please wait...");
     }
   }
 }

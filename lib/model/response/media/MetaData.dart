@@ -1,12 +1,17 @@
 class Metadata {
   String name;
-  int value;
+  String value;
 
   Metadata({this.name, this.value});
 
   Metadata.fromJson(Map<String, dynamic> json) {
     name = json['name'];
-    value = json['value'];
+    if(json["value"] is String) {
+      value = json['value'];
+    } else {
+      value = json['value'].toString();
+    }
+
   }
 
   Map<String, dynamic> toJson() {
