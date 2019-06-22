@@ -1,24 +1,36 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:commons/bloc/CommonsBloc.dart';
-import 'package:commons/helper/upload_helper.dart';
+import 'package:commons/screens/login/login_page.dart';
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:launch_review/launch_review.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 abstract class HomePageContract {
+  void redirectUserForLogin();
 }
 
 class HomePagePresenter {
   HomePageContract _view;
-  CommonsBloc commonsBloc;
-  UploadHelper _uploadHelper;
 
 
-  HomePagePresenter(String baseEndpoint, this._view) {
-    commonsBloc = new CommonsBloc(baseEndpoint);
-    _uploadHelper = new UploadHelper();
+  HomePagePresenter(this._view);
+
+  void checkIsLogin() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var isLoggedIn = prefs.getBool("isLoggedIn");
+    if (isLoggedIn == null || !isLoggedIn) {
+      _view.redirectUserForLogin();
+    }
+  }
+
+  void redirectToLogin(BuildContext context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => new LoginPage()),
+    );
   }
 
   Future<File> getImageFromCamera() async {
@@ -36,5 +48,11 @@ class HomePagePresenter {
   void sendFeedback() async {
     var emailLauncher = "mailto:commons-app-android@googlegroups.com?subject=Commons App Feedback";
     launch(emailLauncher);
+  }
+
+  void logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+    _view.redirectUserForLogin();
   }
 }

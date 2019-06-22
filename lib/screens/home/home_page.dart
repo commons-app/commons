@@ -1,13 +1,10 @@
 import 'dart:io';
 
-import 'package:commons/app_config.dart';
 import 'package:commons/model/Choice.dart';
 import 'package:commons/model/UploadableFile.dart';
-import 'package:commons/screens/login/login_page.dart';
 import 'package:commons/screens/upload/description_page.dart';
 import 'package:commons/widgets/fancy_fab.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'contributions/contributions_page.dart';
 import 'home_presenter.dart';
@@ -83,19 +80,11 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
   @override
   void initState() {
     super.initState();
-    checkIsLogin();
-  }
-
-  Future<Null> checkIsLogin() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    var isLoggedIn = prefs.getBool("isLoggedIn");
-    if (isLoggedIn == null || !isLoggedIn) {
-      print("User is not logged in");
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => new LoginPage()),
-      );
+    if (_presenter == null) {
+      _presenter = new HomePagePresenter(this);
     }
+
+    _presenter.checkIsLogin();
   }
 
   Widget gallery() {
@@ -133,10 +122,17 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
     // Causes the app to rebuild with the new _selectedChoice.
     setState(() {
       _selectedChoice = choice;
-      if (_selectedChoice.title == 'Rate Us') {
-        _presenter.appReview();
-      } else if (_selectedChoice.title == 'Send Feedback') {
-        _presenter.sendFeedback();
+
+      switch (_selectedChoice.title) {
+        case "Rate Us":
+          _presenter.appReview();
+          return;
+        case "Send Feedback":
+          _presenter.sendFeedback();
+          return;
+        case "Logout":
+          _presenter.logout();
+          return;
       }
     });
   }
@@ -144,8 +140,6 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
   @override
   Widget build(BuildContext context) {
     _ctx = context;
-    var config = AppConfig.of(_ctx);
-    _presenter = new HomePagePresenter(config.commonsBaseUrl, this);
 
     var homeAppBar = AppBar(
       title: const Text('Home'),
@@ -200,5 +194,10 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
         onTap: _onItemTapped,
       ),
     );
+  }
+
+  @override
+  void redirectUserForLogin() {
+    _presenter.redirectToLogin(context);
   }
 }
