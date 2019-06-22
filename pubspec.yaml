@@ -38,7 +38,6 @@ dependencies:
   cached_network_image: 0.8.0
   exif: ^1.0.0
   launch_review: ^2.0.0
-  flutter_mailer: ^0.4.1+1
   flutter_pagewise: 1.2.3
   progress_dialog: ^1.1.0+1
 

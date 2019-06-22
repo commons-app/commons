@@ -125,6 +125,7 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
   static const List<Choice> choices = const <Choice>[
     const Choice(title: 'Rate Us', icon: Icons.star),
     const Choice(title: 'Send Feedback', icon: Icons.feedback),
+    const Choice(title: 'Logout', icon: Icons.exit_to_app),
   ];
 
 

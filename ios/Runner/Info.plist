@@ -34,6 +34,10 @@
     <string>Use location to show nearby map</string>
     <key>NSLocationAlwaysUsageDescription</key>
     <string>Use location to show nearby map</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+            <string>itms</string>
+    </array>
     <key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

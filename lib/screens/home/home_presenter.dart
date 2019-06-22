@@ -3,9 +3,9 @@ import 'dart:io';
 
 import 'package:commons/bloc/CommonsBloc.dart';
 import 'package:commons/helper/upload_helper.dart';
-import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:launch_review/launch_review.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 abstract class HomePageContract {
 }
@@ -34,13 +34,7 @@ class HomePagePresenter {
   }
 
   void sendFeedback() async {
-    final MailOptions mailOptions = MailOptions(
-        body: 'a long body for the email <br> with a subset of HTML',
-        subject: 'Commons App Feedback',
-        recipients: ['commons-app-android@googlegroups.com'],
-        isHTML: true
-    );
-
-    await FlutterMailer.send(mailOptions);
+    var emailLauncher = "mailto:commons-app-android@googlegroups.com?subject=Commons App Feedback";
+    launch(emailLauncher);
   }
 }
