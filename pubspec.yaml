@@ -40,6 +40,7 @@ dependencies:
   launch_review: ^2.0.0
   flutter_pagewise: 1.2.3
   progress_dialog: ^1.1.0+1
+  flutter_html: ^0.8.2
 
   #utils
   cookie_jar: ^1.0.0

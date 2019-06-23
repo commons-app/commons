@@ -1,4 +1,6 @@
 import 'media/ImageInfo.dart';
+import 'package:commons/model/response/media/contributions.dart';
+
 
 class MwQueryPage {
   int pageid;
@@ -33,5 +35,12 @@ class MwQueryPage {
       data['imageinfo'] = this.imageinfo.map((v) => v.toJson()).toList();
     }
     return data;
+  }
+
+  AllImages toAllImage() {
+    var imageInfo = imageinfo.elementAt(0);
+    var objectNameJson = imageInfo.extmetadata.objectName.toJson();
+    var imageName = objectNameJson['value'];
+    return new AllImages(title: title, name: imageName, url: imageInfo.url,extmetadata: imageInfo.extmetadata);
   }
 }

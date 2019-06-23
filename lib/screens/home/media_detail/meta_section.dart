@@ -1,6 +1,7 @@
 import 'package:commons/model/response/media/contributions.dart';
 import 'package:commons/utils/misc_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class MetaSection extends StatelessWidget {
   final AllImages media;
@@ -11,7 +12,7 @@ class MetaSection extends StatelessWidget {
   Widget build(BuildContext context) {
     var latitude = null!=media.extmetadata.gPSLatitude?media.extmetadata.gPSLatitude.value:null;
     var longitude = null!=media.extmetadata.gPSLongitude?media.extmetadata.gPSLongitude.value:null;
-    var name = media.name;
+    var title = media.title;
     var licenseUrl = media.extmetadata.licenseUrl.value.toString();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,7 +20,7 @@ class MetaSection extends StatelessWidget {
         new Container(
           padding: const EdgeInsets.all(10.0),
           color: hexToColor("#0c609c"),
-          child: getTitleSection("Title: $name"),
+          child: getTitleSection("Title: $title"),
         ),
         Container(
           margin: const EdgeInsets.symmetric(vertical: 10.0),
@@ -64,9 +65,9 @@ class MetaSection extends StatelessWidget {
     var contentSection = Expanded(
       flex: 6,
       child: GestureDetector(
-        child: Text(
-          content,
-          style: TextStyle(
+        child: Html(
+          data: content,
+          defaultTextStyle: TextStyle(
               color: isLink ? Colors.blue : Colors.black, fontSize: 16.0),
         ),
       ),
@@ -78,9 +79,9 @@ class MetaSection extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 4,
-              child: Text(
-                '$title:',
-                style: TextStyle(
+              child: Html(
+                data :title,
+                defaultTextStyle: TextStyle(
                     color: hexToColor("#0c609c"),
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold),
@@ -98,9 +99,9 @@ class MetaSection extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 4,
-              child: Text(
-                '$title',
-                style: TextStyle(
+              child: Html(
+                data: '$title',
+                defaultTextStyle: TextStyle(
                     color: Colors.white,
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold),

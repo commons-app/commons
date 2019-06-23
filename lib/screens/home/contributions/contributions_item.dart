@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:commons/model/response/media/contributions.dart';
 import 'package:commons/utils/navigator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class ContributionsItem extends StatelessWidget {
   ContributionsItem(this.contribution);
@@ -18,9 +19,9 @@ class ContributionsItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  child: Text(
-                    contribution.name,
-                    style: Theme.of(context)
+                  child: Html(
+                    data:contribution.name,
+                    defaultTextStyle: Theme.of(context)
                         .textTheme
                         .title
                         .copyWith(fontWeight: FontWeight.normal),
