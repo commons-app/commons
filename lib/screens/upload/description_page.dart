@@ -33,7 +33,7 @@ class _FileDescriptionPageState extends State<FileDescriptionPage>
   FileDescriptionPagePresenter _presenter;
 
   var _title;
-  var _caption;
+  var _caption = "";
   var _description;
   String _license = UploadHelper.CC_BY_3;
 
@@ -106,23 +106,6 @@ class _FileDescriptionPageState extends State<FileDescriptionPage>
                       }
                     },
                     decoration: new InputDecoration(labelText: "Title",
-                        border: outlineInputBorder),
-                  )),
-              new Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: new Text(
-                    "Add a one-line explanation of what this file represents, including only the most relevant information.(Optional)"),
-              ),
-              new Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: new TextFormField(
-                    onSaved: (val) => _caption = val,
-                    validator: (value) {
-                      if (value.isEmpty) {
-                        return 'Please enter a caption';
-                      }
-                    },
-                    decoration: new InputDecoration(labelText: "Caption",
                         border: outlineInputBorder),
                   )),
               new Padding(
