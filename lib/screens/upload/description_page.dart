@@ -196,6 +196,7 @@ class _FileDescriptionPageState extends State<FileDescriptionPage>
       _isLoading = true;
       form.save();
 
+      pr.show();
 
       var description = new Map<String, String>();
       description['en'] = _description.toString();
@@ -226,7 +227,7 @@ class _FileDescriptionPageState extends State<FileDescriptionPage>
     if (pr.isShowing()) {
       pr.hide();
     }
-    _showSnackBar(errorMessages[0]);
+    _showSnackBar("Problems found with the file:\n${errorMessages.join("\n")}");
   }
 
   @override

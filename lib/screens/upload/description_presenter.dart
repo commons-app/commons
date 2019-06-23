@@ -27,6 +27,8 @@ class FileDescriptionPagePresenter {
     }).then((bool exists) {
       if (exists) {
         errors.add("This file already exists on Commons!");
+      }
+      if (errors.length > 0) {
         _view.onQualityChecksFailed(errors);
       } else {
         _view.onQualityChecksPassed();
