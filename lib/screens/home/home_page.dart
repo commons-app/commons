@@ -7,6 +7,7 @@ import 'package:commons/widgets/fancy_fab.dart';
 import 'package:flutter/material.dart';
 
 import 'contributions/contributions_page.dart';
+import 'explore/explore_page.dart';
 import 'home_presenter.dart';
 import 'nearby/nearby_page.dart';
 
@@ -64,10 +65,11 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
       fontSize: 30, fontWeight: FontWeight.bold);
   static var contributionsPage = new ContributionsPage();
   static var nearbyPage = new NearbyPage();
+  static var explorePage = new ExplorePage();
   final widgetOptions = [
     contributionsPage,
     nearbyPage,
-    Text('Explore'),
+    explorePage,
   ];
 
   void _onItemTapped(int index) {

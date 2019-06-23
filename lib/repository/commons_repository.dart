@@ -84,4 +84,8 @@ class CommonsRepository {
   Future<MwQueryResponse> fetchContributions(String userName, Map<String, String> continuation) {
     return _apiProvider.fetchContributions(userName, continuation);
   }
+
+  Future<MwQueryResponse> getFeaturedImages(Map<String, String> continuation) {
+    return _apiProvider.getFeaturedImages(continuation);
+  }
 }

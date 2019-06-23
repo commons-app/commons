@@ -4,7 +4,6 @@ import 'package:commons/model/category.dart';
 import 'package:commons/model/place.dart';
 import 'package:commons/model/response/MwQueryResponse.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
-import 'package:commons/model/response/upload/UploadResult.dart';
 import 'package:commons/model/upload_interface.dart';
 import 'package:commons/repository/commons_repository.dart';
 import 'package:latlong/latlong.dart';
@@ -49,5 +48,10 @@ class CommonsBloc {
   Future<MwQueryResponse> fetchContributions(String userName,
       Map<String, String> continuation) async {
     return _repository.fetchContributions(userName, continuation);
+  }
+
+  Future<MwQueryResponse> getFeaturedImages(
+      Map<String, String> continuation) async {
+    return _repository.getFeaturedImages(continuation);
   }
 }

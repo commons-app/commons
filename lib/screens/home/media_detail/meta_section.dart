@@ -11,7 +11,7 @@ class MetaSection extends StatelessWidget {
   Widget build(BuildContext context) {
     var latitude = null!=media.extmetadata.gPSLatitude?media.extmetadata.gPSLatitude.value:null;
     var longitude = null!=media.extmetadata.gPSLongitude?media.extmetadata.gPSLongitude.value:null;
-    var name = media.name;
+    var title = media.title;
     var licenseUrl = media.extmetadata.licenseUrl.value.toString();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,7 +19,7 @@ class MetaSection extends StatelessWidget {
         new Container(
           padding: const EdgeInsets.all(10.0),
           color: hexToColor("#0c609c"),
-          child: getTitleSection("Title: $name"),
+          child: getTitleSection("Title: $title"),
         ),
         Container(
           margin: const EdgeInsets.symmetric(vertical: 10.0),

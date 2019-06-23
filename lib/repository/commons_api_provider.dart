@@ -235,4 +235,22 @@ class CommonsApiProvider {
       throw error;
     }
   }
+
+  Future<MwQueryResponse> getFeaturedImages(Map<String, String> continuation) async{
+    try {
+      var _endpoint = _url_prefix + 'action=query&generator=categorymembers&gcmtype=file&gcmtitle=Category:Featured_pictures_on_Wikimedia_Commons&prop=imageinfo&gcmlimit=100&formatversion=2&iiprop=url|extmetadata&format=json';
+
+      if (continuation != null) {
+        for (String key in continuation.keys) {
+          _endpoint = _endpoint + "&$key=${continuation[key]}";
+        }
+      }
+
+      Response response = await _dio.get(_endpoint);
+      return MwQueryResponse.fromJson(response.data);
+    } catch (error, stacktrace) {
+      print("Exception occured: $error stackTrace: $stacktrace");
+      throw error;
+    }
+  }
 }
