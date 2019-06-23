@@ -1,13 +1,14 @@
 import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:commons/model/Media.dart';
 import 'package:commons/model/response/media/contributions.dart';
 import 'package:flutter/material.dart';
 
 import 'meta_section.dart';
 
 class MediaDetailScreen extends StatefulWidget {
-  final AllImages _mediaItem;
+  final Media _mediaItem;
 
   MediaDetailScreen(this._mediaItem);
 
@@ -48,7 +49,7 @@ class MediaDetailScreenState extends State<MediaDetailScreen> {
         ])));
   }
 
-  Widget _buildAppBar(AllImages media) {
-    return AppBar(title: Text(media.title));
+  Widget _buildAppBar(Media media) {
+    return AppBar(title: Text(media.name));
   }
 }

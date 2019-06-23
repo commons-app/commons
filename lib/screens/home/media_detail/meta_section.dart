@@ -1,49 +1,68 @@
-import 'package:commons/model/response/media/contributions.dart';
+import 'package:commons/model/Media.dart';
 import 'package:commons/utils/misc_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 
 class MetaSection extends StatelessWidget {
-  final AllImages media;
+  final Media media;
 
   MetaSection(this.media);
 
   @override
   Widget build(BuildContext context) {
-    var latitude = null!=media.extmetadata.gPSLatitude?media.extmetadata.gPSLatitude.value:null;
-    var longitude = null!=media.extmetadata.gPSLongitude?media.extmetadata.gPSLongitude.value:null;
-    var title = media.title;
-    var licenseUrl = media.extmetadata.licenseUrl?.value.toString();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         new Container(
           padding: const EdgeInsets.all(10.0),
           color: hexToColor("#0c609c"),
-          child: getTitleSection("Title: $title"),
+          child: getTitleSection("Title: ${media.name}"),
         ),
         Container(
           margin: const EdgeInsets.symmetric(vertical: 10.0),
           height: 10.0,
         ),
         new GestureDetector(
-            onTap: () => openLinkInWebBrowser(licenseUrl),
+            onTap: () => openLinkInWebBrowser(media.licenseUrl),
             child: _getSectionOrContainer(
-                'License', media.extmetadata.licenseShortName.value,
+                'License', media.licenseName,
                 isLink: true)),
         _getSectionOrContainer(
-            'Description', media.extmetadata.imageDescription.value),
+            'Description', media.description),
         _getSectionOrContainer(
             'Coordinates',
-            "$latitude,$longitude".contains("null")
+            "${media.latLng.latitude},${media.latLng.longitude}".contains(
+                "null")
                 ? "NA"
-                : "$latitude,$longitude"),
+                : "${media.latLng.latitude},${media.latLng.longitude}"),
+        new Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Row(
+              children: <Widget>[
+                Expanded(
+                  flex: 4,
+                  child: Html(
+                    data: "Categories",
+                    defaultTextStyle: TextStyle(
+                        color: hexToColor("#0c609c"),
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Expanded(flex: 7,
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return new Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Text(
+                                  media.categories[index].categoryName));
+                        }, itemCount: media.categories.length))
+              ],
+            )),
         _getSectionOrContainer(
-            'Categories',
-            getCategoryDisplayableString(
-                media.extmetadata.categories.toJson())),
-        _getSectionOrContainer('Uploaded Date',
-            formatDate(media.extmetadata.dateTime.value).toString())
+            'Uploaded Date', media.uploadDateTime.toIso8601String())
         //TODO, format date time,
       ],
     );

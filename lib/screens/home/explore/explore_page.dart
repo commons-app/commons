@@ -1,4 +1,5 @@
 import 'package:commons/app_config.dart';
+import 'package:commons/model/Media.dart';
 import 'package:commons/model/response/MwQueryPage.dart';
 import 'package:commons/screens/home/contributions/contributions_item.dart';
 import 'package:flutter/material.dart';
@@ -36,7 +37,7 @@ class _ExploreState extends State<ExplorePage> implements ExploreContract {
         ));
   }
 
-  ContributionsItem listItem(MwQueryPage mQueryPage) {
-    return ContributionsItem(mQueryPage.toAllImage());
+  MediaItem listItem(Media media) {
+    return MediaItem(media);
   }
 }

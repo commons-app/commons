@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:commons/model/UploadableFile.dart';
+import 'package:commons/utils/misc_util.dart';
 import 'package:exif/exif.dart';
 import 'package:latlong/latlong.dart';
 import 'package:package_info/package_info.dart';
@@ -60,15 +61,7 @@ class UploadHelper {
       }
 
       if (k == "Image DateTime") {
-        List<String> dateTimeSplit = v.toString().split(" ");
-        List<String> dateSplit = dateTimeSplit[0].split(":");
-        List<String> timeSplit = dateTimeSplit[1].split(":");
-        dateTime = DateTime(int.tryParse(dateSplit[0]),
-            int.tryParse(dateSplit[1]),
-            int.tryParse(dateSplit[2]),
-            int.tryParse(timeSplit[0]),
-            int.tryParse(timeSplit[1]),
-            int.tryParse(timeSplit[2]));
+        dateTime = getDateTimeFromString(v.toString(), ":", ":");
       }
     });
 

@@ -33,3 +33,18 @@ String getCategoryDisplayableString(Map<String, dynamic> categoryJson) {
 void openLinkInWebBrowser(String url) async {
   launch(url);
 }
+
+DateTime getDateTimeFromString(String dateTimeString, String dateDelimiter, String timeDelimiter) {
+  if(dateTimeString == null) {
+    return null;
+  }
+  List<String> dateTimeSplit = dateTimeString.toString().split(" ");
+  List<String> dateSplit = dateTimeSplit[0].split(dateDelimiter);
+  List<String> timeSplit = dateTimeSplit[1].split(timeDelimiter);
+  return DateTime(int.tryParse(dateSplit[0]),
+      int.tryParse(dateSplit[1]),
+      int.tryParse(dateSplit[2]),
+      int.tryParse(timeSplit[0]),
+      int.tryParse(timeSplit[1]),
+      int.tryParse(timeSplit[2]));
+}

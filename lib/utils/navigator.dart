@@ -1,9 +1,9 @@
-import 'package:commons/model/response/media/contributions.dart';
+import 'package:commons/model/Media.dart';
 import 'package:commons/screens/home/media_detail/media_detail.dart';
 import 'package:flutter/material.dart';
 
-goToMediaDetails(BuildContext context, AllImages contribution) {
-  openWidgetWithFade(context, MediaDetailScreen(contribution));
+goToMediaDetails(BuildContext context, Media media) {
+  openWidgetWithFade(context, MediaDetailScreen(media));
 }
 
 openWidgetWithFade(BuildContext context, Widget widget) {
