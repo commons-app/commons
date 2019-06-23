@@ -25,6 +25,8 @@ class _FancyFabState extends State<FancyFab>
   Function() onCameraPressed;
   Function() onGalleryPressed;
 
+  final primaryColor = Color.fromRGBO(12, 96, 156, 1);
+
   _FancyFabState(this.onCameraPressed, this.onGalleryPressed);
 
   bool isOpened = false;
@@ -44,8 +46,9 @@ class _FancyFabState extends State<FancyFab>
           });
     _animateIcon =
         Tween<double>(begin: 0.0, end: 1.0).animate(_animationController);
+
     _buttonColor = ColorTween(
-      begin: Colors.blue,
+      begin: primaryColor,
       end: Colors.red,
     ).animate(CurvedAnimation(
       parent: _animationController,
@@ -87,6 +90,7 @@ class _FancyFabState extends State<FancyFab>
   Widget gallery() {
     return Container(
       child: FloatingActionButton(
+        backgroundColor: primaryColor,
         onPressed: onGalleryPressed,
         tooltip: 'Gallery',
         heroTag: "GalleryButton",
@@ -98,6 +102,7 @@ class _FancyFabState extends State<FancyFab>
   Widget camera() {
     return Container(
       child: FloatingActionButton(
+        backgroundColor: primaryColor,
         onPressed: onCameraPressed,
         heroTag: "CameraButton",
         tooltip: 'Camera',
