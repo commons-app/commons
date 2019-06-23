@@ -45,6 +45,7 @@ dependencies:
   cookie_jar: ^1.0.0
   location: ^2.3.5
   url_launcher: ^5.0.3
+  path: ^1.6.2
 
   ##plugins
   path_provider: ^0.5.0+1
