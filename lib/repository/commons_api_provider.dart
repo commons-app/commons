@@ -253,4 +253,16 @@ class CommonsApiProvider {
       throw error;
     }
   }
+
+  Future<MwQueryResponse> checkIfDuplicateFileExists(String sha1) async {
+    try {
+      var _endpoint = _url_prefix +
+          'action=query&format=json&formatversion=2&list=allimages&aisha1=$sha1';
+      Response response = await _dio.get(_endpoint);
+      return MwQueryResponse.fromJson(response.data);
+    } catch (error, stacktrace) {
+      print("Exception occured: $error stackTrace: $stacktrace");
+      throw error;
+    }
+  }
 }
