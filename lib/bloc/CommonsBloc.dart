@@ -51,8 +51,8 @@ class CommonsBloc {
   }
 
   Future<MwQueryResponse> getFeaturedImages(
-      Map<String, String> continuation) async {
-    return _repository.getFeaturedImages(continuation);
+      String category, Map<String, String> continuation) async {
+    return _repository.getCategoryImages(category, continuation);
   }
 
   Future<bool> checkIfDuplicateFileExists(String sha1) {

@@ -85,8 +85,8 @@ class CommonsRepository {
     return _apiProvider.fetchContributions(userName, continuation);
   }
 
-  Future<MwQueryResponse> getFeaturedImages(Map<String, String> continuation) {
-    return _apiProvider.getFeaturedImages(continuation);
+  Future<MwQueryResponse> getCategoryImages(String category, Map<String, String> continuation) {
+    return _apiProvider.getFeaturedImages(category, continuation);
   }
 
   Future<bool> checkIfDuplicateFileExists(String sha1) {
