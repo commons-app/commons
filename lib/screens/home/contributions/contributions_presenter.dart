@@ -1,4 +1,5 @@
 import 'package:commons/bloc/CommonsBloc.dart';
+import 'package:commons/model/Media.dart';
 import 'package:commons/model/response/MwQueryResponse.dart';
 import 'package:commons/model/response/media/contributions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,13 +15,17 @@ class ContributionsPresenter {
     commonsBloc = new CommonsBloc(baseEndpoint);
   }
 
-  Future<List<AllImages>> getContributions() async {
+  Future<List<Media>> getContributions() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return commonsBloc.fetchContributions(
         prefs.getString('username'), continuation).then((
         MwQueryResponse value) {
       continuation = value.continuation;
-      return value.query.allimages;
+      List<Media> mediaList = new List();
+      value.query.allimages.forEach((AllImages allImages) {
+        mediaList.add(Media.fromAllImages(allImages));
+      });
+      return mediaList;
     }, onError: (e) {
       throw e;
     });

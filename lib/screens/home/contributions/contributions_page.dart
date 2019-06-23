@@ -1,5 +1,5 @@
 import 'package:commons/app_config.dart';
-import 'package:commons/model/response/media/contributions.dart';
+import 'package:commons/model/Media.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_pagewise/flutter_pagewise.dart';
 
@@ -17,7 +17,6 @@ class ContributionsPage extends StatefulWidget {
 class _ContributionsState extends State<ContributionsPage>
     implements ContributionsContract {
 
-  List<AllImages> contributions = List();
   ContributionsPresenter presenter;
 
   bool _isPresenterInit = false;
@@ -39,7 +38,7 @@ class _ContributionsState extends State<ContributionsPage>
         ));
   }
 
-  ContributionsItem listItem(AllImages allimage) {
-    return ContributionsItem(allimage);
+  MediaItem listItem(Media media) {
+    return MediaItem(media);
   }
 }

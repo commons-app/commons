@@ -1,8 +1,7 @@
 import 'package:commons/bloc/CommonsBloc.dart';
+import 'package:commons/model/Media.dart';
 import 'package:commons/model/response/MwQueryPage.dart';
 import 'package:commons/model/response/MwQueryResponse.dart';
-import 'package:commons/model/response/media/contributions.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class ExploreContract {}
 
@@ -15,11 +14,15 @@ class ExplorePresenter {
     commonsBloc = new CommonsBloc(baseEndpoint);
   }
 
-  Future<List<MwQueryPage>> getFeaturedImages() async {
+  Future<List<Media>> getFeaturedImages() async {
     return commonsBloc.getFeaturedImages("Featured_pictures_on_Wikimedia_Commons", continuation).then((
         MwQueryResponse value) {
       continuation = value.continuation;
-      return value.query.pages;
+      List<Media> mediaList = new List();
+      value.query.pages.forEach((MwQueryPage page) {
+        mediaList.add(Media.fromPage(page));
+      });
+      return mediaList;
     }, onError: (e) {
       throw e;
     });
