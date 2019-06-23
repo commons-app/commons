@@ -1,3 +1,4 @@
+import 'package:commons/screens/home/explore/explore_page.dart';
 import 'package:commons/screens/home/home_page.dart';
 import 'package:commons/screens/login/login_page.dart';
 import 'package:commons/utils/misc_util.dart';

@@ -14,8 +14,8 @@ class ExplorePresenter {
     commonsBloc = new CommonsBloc(baseEndpoint);
   }
 
-  Future<List<Media>> getFeaturedImages() async {
-    return commonsBloc.getFeaturedImages("Featured_pictures_on_Wikimedia_Commons", continuation).then((
+  Future<List<Media>> getCategoryImages(String category) async {
+    return commonsBloc.getFeaturedImages(category, continuation).then((
         MwQueryResponse value) {
       continuation = value.continuation;
       List<Media> mediaList = new List();

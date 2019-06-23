@@ -1,4 +1,5 @@
 import 'package:commons/model/Media.dart';
+import 'package:commons/screens/home/explore/explore_page.dart';
 import 'package:commons/utils/misc_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -54,10 +55,13 @@ class MetaSection extends StatelessWidget {
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
-                          return new Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Text(
-                                  media.categories[index].categoryName));
+                          return GestureDetector(
+                            child: new Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Text(
+                                    media.categories[index].categoryName)),
+                            onTap: () => onCategoryTapped(context, media.categories[index].categoryName),
+                          );
                         }, itemCount: media.categories.length))
               ],
             )),
@@ -127,6 +131,17 @@ class MetaSection extends StatelessWidget {
               ),
             ),
           ],
+        ));
+  }
+
+  onCategoryTapped(BuildContext context, String categoryName) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) =>
+              ExplorePage(
+                showAppbar: true,
+                  category: categoryName),
         ));
   }
 }
