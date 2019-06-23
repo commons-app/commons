@@ -13,7 +13,7 @@ class MetaSection extends StatelessWidget {
     var latitude = null!=media.extmetadata.gPSLatitude?media.extmetadata.gPSLatitude.value:null;
     var longitude = null!=media.extmetadata.gPSLongitude?media.extmetadata.gPSLongitude.value:null;
     var title = media.title;
-    var licenseUrl = media.extmetadata.licenseUrl.value.toString();
+    var licenseUrl = media.extmetadata.licenseUrl?.value.toString();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[

@@ -236,9 +236,11 @@ class CommonsApiProvider {
     }
   }
 
-  Future<MwQueryResponse> getFeaturedImages(Map<String, String> continuation) async{
+  Future<MwQueryResponse> getFeaturedImages(String category,
+      Map<String, String> continuation) async {
     try {
-      var _endpoint = _url_prefix + 'action=query&generator=categorymembers&gcmtype=file&gcmtitle=Category:Featured_pictures_on_Wikimedia_Commons&prop=imageinfo&gcmlimit=100&formatversion=2&iiprop=url|extmetadata&format=json';
+      var _endpoint = _url_prefix +
+          'action=query&generator=categorymembers&gcmtype=file&gcmtitle=Category:$category&prop=imageinfo&gcmlimit=10&formatversion=2&iiprop=url|extmetadata&format=json';
 
       if (continuation != null) {
         for (String key in continuation.keys) {

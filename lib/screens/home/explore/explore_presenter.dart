@@ -16,7 +16,7 @@ class ExplorePresenter {
   }
 
   Future<List<MwQueryPage>> getFeaturedImages() async {
-    return commonsBloc.getFeaturedImages(continuation).then((
+    return commonsBloc.getFeaturedImages("Featured_pictures_on_Wikimedia_Commons", continuation).then((
         MwQueryResponse value) {
       continuation = value.continuation;
       return value.query.pages;

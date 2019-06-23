@@ -2,6 +2,7 @@ import 'package:commons/app_config.dart';
 import 'package:commons/model/response/MwQueryPage.dart';
 import 'package:commons/screens/home/contributions/contributions_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_pagewise/flutter_pagewise.dart';
 
 import 'explore_presenter.dart';
 
@@ -24,24 +25,15 @@ class _ExploreState extends State<ExplorePage> implements ExploreContract {
       _isPresenterInit = true;
       var config = AppConfig.of(this.context);
       presenter = new ExplorePresenter(config.commonsBaseUrl, this);
-      var featuredImages = presenter.getFeaturedImages();
-      featuredImages.then((List<MwQueryPage> onValue) {
-        setState(() {
-          contributions = onValue;
-        });
-      });
     }
 
     return Scaffold(
-        body: contributions.length == 0
-            ? new Center(
-                child: const Center(child: const CircularProgressIndicator()),
-              )
-            : ListView.builder(
-                padding: EdgeInsets.all(5.0),
-                itemCount: contributions.length,
-                itemBuilder: (context, index) =>
-                    listItem(contributions.elementAt(index))));
+        body: PagewiseListView(
+            pageSize: 10,
+            padding: EdgeInsets.all(5.0),
+            itemBuilder: (context, entry, index) => listItem(entry),
+            pageFuture: (pageIndex) => presenter.getFeaturedImages()
+        ));
   }
 
   ContributionsItem listItem(MwQueryPage mQueryPage) {
