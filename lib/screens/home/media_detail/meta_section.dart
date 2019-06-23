@@ -1,6 +1,7 @@
 import 'package:commons/model/response/media/contributions.dart';
 import 'package:commons/utils/misc_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 
 class MetaSection extends StatelessWidget {
   final AllImages media;
@@ -64,9 +65,9 @@ class MetaSection extends StatelessWidget {
     var contentSection = Expanded(
       flex: 6,
       child: GestureDetector(
-        child: Text(
-          content,
-          style: TextStyle(
+        child: Html(
+          data: content,
+          defaultTextStyle: TextStyle(
               color: isLink ? Colors.blue : Colors.black, fontSize: 16.0),
         ),
       ),
@@ -78,9 +79,9 @@ class MetaSection extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 4,
-              child: Text(
-                '$title:',
-                style: TextStyle(
+              child: Html(
+                data :title,
+                defaultTextStyle: TextStyle(
                     color: hexToColor("#0c609c"),
                     fontSize: 18.0,
                     fontWeight: FontWeight.bold),
@@ -98,9 +99,9 @@ class MetaSection extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 4,
-              child: Text(
-                '$title',
-                style: TextStyle(
+              child: Html(
+                data: '$title',
+                defaultTextStyle: TextStyle(
                     color: Colors.white,
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold),
