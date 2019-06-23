@@ -1,5 +1,6 @@
 import 'package:commons/screens/home/home_page.dart';
 import 'package:commons/screens/login/login_page.dart';
+import 'package:commons/utils/misc_util.dart';
 import 'package:flutter/material.dart';
 
 import 'app_config.dart';
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
 
     return new MaterialApp(
       title: config.appName,
-      theme: new ThemeData(primarySwatch: Colors.blue),
+      theme: new ThemeData(primaryColor: hexToColor("#0c609c"),
+          primaryColorDark: hexToColor("#00376d")),
       routes: routes,
     );
   }
