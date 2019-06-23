@@ -192,6 +192,6 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool('isLoggedIn', true);
     prefs.setString('username', loginResponse.clientlogin.username);
-    Navigator.of(context).pushNamed("/home");
+    Navigator.of(context).pushReplacementNamed("/home");
   }
 }
