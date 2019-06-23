@@ -1,5 +1,6 @@
 import 'package:commons/app_config.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
+import 'package:commons/utils/misc_util.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:progress_dialog/progress_dialog.dart';
@@ -61,19 +62,31 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
 
     var loginBtn = new RaisedButton(
       onPressed: _submit,
-      child: new Text("Login"),
-      color: Colors.green,
+      child: Text(
+      'Log In',
+      style: TextStyle(
+          color:Colors.white, fontSize: 16.0),
+    ),
+      color: hexToColor("#0c609c"),
     );
     var loginForm = new Column(
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
-        new Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: new Text(
-            "Log in to your account",
-            textScaleFactor: 1.5,
+        new Container(
+          width : double.infinity,
+          color: hexToColor("#0c609c"),
+          child: new Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: new Text(
+              "Log In to your account",
+              textScaleFactor: 1.5,
+              style: TextStyle(color: Colors.white),
+              textAlign: TextAlign.center,
+            ),
           ),
-        ),
+        )
+        ,
         new Form(
           autovalidate: false,
           key: formKey,
@@ -147,15 +160,17 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
       ],
     );
 
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Commons App"),
-      ),
-      key: scaffoldKey,
-        body: new SingleChildScrollView(
-            child: new Container(
-                child: loginForm
-            )));
+    return new Scaffold (
+        key: scaffoldKey,
+        body: new Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              new Container(height: 48),new SingleChildScrollView(
+                child: new Card(
+                    child: loginForm
+                ))
+            ]));
+
   }
 
   @override
