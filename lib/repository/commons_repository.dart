@@ -88,4 +88,14 @@ class CommonsRepository {
   Future<MwQueryResponse> getFeaturedImages(Map<String, String> continuation) {
     return _apiProvider.getFeaturedImages(continuation);
   }
+
+  Future<bool> checkIfDuplicateFileExists(String sha1) {
+    return _apiProvider.checkIfDuplicateFileExists(sha1).then((
+        MwQueryResponse value) {
+      return value.query
+          .allimages.length > 0;
+    }, onError: (e) {
+      throw e;
+    });
+  }
 }

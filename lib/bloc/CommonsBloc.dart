@@ -54,4 +54,8 @@ class CommonsBloc {
       Map<String, String> continuation) async {
     return _repository.getFeaturedImages(continuation);
   }
+
+  Future<bool> checkIfDuplicateFileExists(String sha1) {
+    return _repository.checkIfDuplicateFileExists(sha1);
+  }
 }
