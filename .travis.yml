@@ -37,7 +37,7 @@ matrix:
 
     - os: osx
       language: generic
-      osx_image: xcode9.4
+      osx_image: xcode10.2
       before_script:
         - curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
         - sudo python get-pip.py
