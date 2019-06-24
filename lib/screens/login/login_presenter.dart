@@ -1,5 +1,6 @@
 import 'package:commons/bloc/CommonsBloc.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
+import 'package:commons/utils/misc_util.dart';
 
 abstract class LoginPageContract {
   void onLoginSuccess(LoginResponse loginResponse);
@@ -25,5 +26,9 @@ class LoginPagePresenter {
       }
     })
         .catchError((onError) => _view.onLoginError(onError.toString()));
+  }
+
+  void signup(String signUpUrl) {
+    openLinkInWebBrowser(signUpUrl);
   }
 }

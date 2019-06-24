@@ -8,6 +8,7 @@ void main() {
     appName: 'Commons Beta',
     flavorName: 'beta',
     commonsBaseUrl: 'https://commons.wikimedia.beta.wmflabs.org/w/api.php',
+    signUpUrl: 'https://commons.m.wikimedia.beta.wmflabs.org/w/index.php?title=Special:CreateAccount&returnto=Main+Page&returntoquery=welcome%3Dyes',
     child: new MyApp(),
   );
 
