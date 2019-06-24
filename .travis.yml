@@ -43,10 +43,16 @@ matrix:
         - sudo python get-pip.py
         - pip install six
         - brew update
+        - brew update
+        - brew uninstall --ignore-dependencies libimobiledevice
+        - brew uninstall --ignore-dependencies usbmuxd
+        - brew install --HEAD usbmuxd
+        - brew unlink usbmuxd
+        - brew link usbmuxd
         - brew install --HEAD libimobiledevice
         - brew install ideviceinstaller
         - brew install ios-deploy
-        - git clone https://github.com/flutter/flutter.git -b alpha --depth 1
+        - git clone https://github.com/flutter/flutter.git -b stable --depth 1
       script:
         - ./flutter/bin/flutter -v build ios -t lib/main_prod.dart --no-codesign
 
