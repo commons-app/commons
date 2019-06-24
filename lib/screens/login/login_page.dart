@@ -38,6 +38,12 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     }
   }
 
+
+  void _signup() {
+      _presenter.signup(AppConfig.of(context).signUpUrl);
+
+  }
+
   void _showSnackBar(String text) {
     scaffoldKey.currentState.showSnackBar(new SnackBar(
       content: new Text(text),
@@ -69,6 +75,17 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     ),
       color: hexToColor("#0c609c"),
     );
+    var singupButton = new GestureDetector(
+      onTap: _signup,
+      child: new Container(
+        padding: const EdgeInsets.only(right:20.0),
+        child: Text(
+          'Signup',
+          style: TextStyle(
+              color: hexToColor("#0c609c"), fontSize: 16.0),
+        ),
+      );
+
     var loginForm = new Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.end,
@@ -122,7 +139,16 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
             ],
           ),
         ),
-        loginBtn,
+        new Container(
+          child: new Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              singupButton,
+              loginBtn,
+
+            ],
+          ),
+        ),
         new Padding(
           padding: const EdgeInsets.all(20.0),
           child: new RichText(
