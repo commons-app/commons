@@ -50,14 +50,14 @@ class MetaSection extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-                Expanded(flex: 7,
+                Expanded(flex: 6,
                     child: ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           return GestureDetector(
                             child: new Padding(
-                                padding: const EdgeInsets.all(4.0),
+                                padding: const EdgeInsets.only(top:4.0,bottom: 4.0),
                                 child: Text(
                                     media.categories[index].categoryName)),
                             onTap: () => onCategoryTapped(context, media.categories[index].categoryName),
@@ -143,4 +143,54 @@ class MetaSection extends StatelessWidget {
                   category: categoryName),
         ));
   }
+
+
+
+  /*Widget _getDescriptionsSection(String title, String content,
+      {bool isLink: false}) {
+    if (content == null) return Container();
+
+    var contentSection = Expanded(
+      flex: 6,
+      child: GestureDetector(
+        child: Html(
+          data: content,
+          defaultTextStyle: TextStyle(
+              color: isLink ? Colors.blue : Colors.black, fontSize: 16.0),
+        ),
+      ),
+    );
+
+    return Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              flex: 4,
+              child: Html(
+                data :title,
+                defaultTextStyle: TextStyle(
+                    color: hexToColor("#0c609c"),
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+
+      Expanded(flex: 7,
+          child: ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  child: new Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Text(
+                          media.categories[index].categoryName)),
+                  onTap: () => onCategoryTapped(context, media.categories[index].categoryName),
+                );
+              }, itemCount: media.categories.length))
+            contentSection
+          ],
+        ));
+  }*/
 }
