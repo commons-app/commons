@@ -1,4 +1,4 @@
-# Commons App for Android and IOS
+# Commons App for IOS
 
 App to upload pictures to Commons
 
