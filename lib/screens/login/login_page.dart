@@ -75,16 +75,22 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     ),
       color: hexToColor("#0c609c"),
     );
-    var singupButton = new GestureDetector(
-      onTap: _signup,
-      child: new Container(
-        padding: const EdgeInsets.only(right:20.0),
-        child: Text(
-          'Signup',
-          style: TextStyle(
-              color: hexToColor("#0c609c"), fontSize: 16.0),
-        ),
-      ));
+    var singupButton = new Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: new RichText(
+          text: new TextSpan(
+            children: [
+              new TextSpan(
+                text: "Signup",
+                style: new TextStyle(color: hexToColor("#0c609c"), fontSize: 16),
+                recognizer: new TapGestureRecognizer()
+                  ..onTap = () {
+                    _signup();
+                  },
+              ),
+            ],
+          )),
+    );
 
     var loginForm = new Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -175,7 +181,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              new Container(height: 48),new SingleChildScrollView(
+              new SingleChildScrollView(
                 child: new Card(
                     child: loginForm
                 )),
