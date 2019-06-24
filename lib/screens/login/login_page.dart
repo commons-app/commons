@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
           style: TextStyle(
               color: hexToColor("#0c609c"), fontSize: 16.0),
         ),
-      );
+      ));
 
     var loginForm = new Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -165,23 +165,6 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
                   ),
                 ],
               )),
-        ),
-        new Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: new RichText(
-              text: new TextSpan(
-                children: [
-                  new TextSpan(
-                    text: "Privacy Policy",
-                    style: new TextStyle(color: Colors.blue, fontSize: 16, decoration: TextDecoration.underline),
-                    recognizer: new TapGestureRecognizer()
-                      ..onTap = () {
-                        launch(
-                            "https://github.com/commons-app/apps-android-commons/wiki/Privacy-policy");
-                      },
-                  ),
-                ],
-              )),
         )
       ],
     );
@@ -189,12 +172,30 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     return new Scaffold (
         key: scaffoldKey,
         body: new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               new Container(height: 48),new SingleChildScrollView(
                 child: new Card(
                     child: loginForm
-                ))
+                )),
+              new Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: new RichText(
+                    text: new TextSpan(
+                      children: [
+                        new TextSpan(
+                          text: "Privacy Policy",
+                          style: new TextStyle(color: Colors.blue, fontSize: 16, decoration: TextDecoration.underline),
+                          recognizer: new TapGestureRecognizer()
+                            ..onTap = () {
+                              launch(
+                                  "https://github.com/commons-app/apps-android-commons/wiki/Privacy-policy");
+                            },
+                        ),
+                      ],
+                    )),
+              )
             ]));
 
   }
