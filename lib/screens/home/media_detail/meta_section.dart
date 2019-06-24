@@ -66,8 +66,7 @@ class MetaSection extends StatelessWidget {
               ],
             )),
         _getSectionOrContainer(
-            'Uploaded Date', media.uploadDateTime.toIso8601String())
-        //TODO, format date time,
+            'Uploaded Date', formatDate(media.uploadDateTime.toIso8601String()))
       ],
     );
   }
