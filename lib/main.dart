@@ -27,6 +27,7 @@ class _MyAppState extends State<MyApp> {
     // For sharing images coming from outside the app while the app is in the memory
     _intentDataStreamSubscription =
         ReceiveSharingIntent.getImageStream().listen((List<String> value) {
+          print("receiving sharing intent");
           print(value);
             _sharedFiles = value;
             homePage.setSharedFile(_sharedFiles);
@@ -36,6 +37,7 @@ class _MyAppState extends State<MyApp> {
 
     // For sharing images coming from outside the app while the app is closed
     ReceiveSharingIntent.getInitialImage().then((List<String> value) {
+      print("receiving sharing intent");
       print(value);
       _sharedFiles = value;
       homePage.setSharedFile(_sharedFiles);
