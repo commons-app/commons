@@ -33,6 +33,7 @@ matrix:
         - export PATH=$GRADLE_HOME/bin:$PATH
         - git clone https://github.com/flutter/flutter.git -b alpha --depth 1
       script:
+        - ./flutter/bin/flutter clean
         - ./flutter/bin/flutter -v build apk
 
     - os: osx
