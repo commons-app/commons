@@ -1,4 +1,4 @@
-import 'Upload.dart';
+import 'package:commons/model/response/upload/Upload.dart';
 
 class UploadResult {
   Upload upload;
