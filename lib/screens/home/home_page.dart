@@ -26,7 +26,7 @@ class HomePage extends StatefulWidget {
   }
 
 
-  setSharedFiled(List<String> sharedFiles){
+  setSharedFile(List<String> sharedFiles){
     this.sharedFiles=sharedFiles;
     homePageState.setSharedFiles(sharedFiles);
   }
@@ -39,6 +39,8 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
   HomePagePresenter _presenter;
+
+  List<String> sharedFiles;
 
   void _pickImageFromCamera() async {
     var image = await _presenter.getImageFromCamera();
@@ -94,16 +96,16 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
     });
   }
 
+  var isInitialised=false;
 
   @override
   void initState() {
     super.initState();
+    isInitialised=true;
     if (_presenter == null) {
       _presenter = new HomePagePresenter(this);
     }
-
-    print("home page");
-    _presenter.checkIsLogin();
+    _presenter.checkIsLogin(sharedFiles);
   }
 
   Widget gallery() {
@@ -227,6 +229,9 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
   }
 
   void setSharedFiles(List<String> sharedFiles) {
-    _presenter.checkIsLogin(sharedFiles);
+    this.sharedFiles = sharedFiles;
+    if (isInitialised) {
+      _presenter.checkIsLogin(sharedFiles);
+    }
   }
 }
