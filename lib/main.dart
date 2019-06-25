@@ -20,6 +20,9 @@ class _MyAppState extends State<MyApp> {
   StreamSubscription _intentDataStreamSubscription;
   List<String> _sharedFiles;
 
+  var homePage=new HomePage();
+  var loginPage=new LoginPage();
+
   @override
   void initState() {
     super.initState();
@@ -28,7 +31,8 @@ class _MyAppState extends State<MyApp> {
     _intentDataStreamSubscription =
         ReceiveSharingIntent.getImageStream().listen((List<String> value) {
           print(value);
-          _sharedFiles = value;
+            _sharedFiles = value;
+            homePage.setSharedFiled(_sharedFiles);
         }, onError: (err) {
           print("getIntentDataStream error: $err");
         });
@@ -50,16 +54,16 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     var config = AppConfig.of(context);
 
-    print(_sharedFiles);
+
 
     return new MaterialApp(
       title: config.appName,
       theme: new ThemeData(primaryColor: hexToColor("#0c609c"),
           primaryColorDark: hexToColor("#00376d")),
       routes: {
-        '/login': (BuildContext context) => new LoginPage(),
-        '/home': (BuildContext context) => new HomePage(sharedFiles: _sharedFiles),
-        '/': (BuildContext context) => new HomePage(sharedFiles: _sharedFiles),
+        '/login': (BuildContext context) => loginPage,
+        '/home': (BuildContext context) => homePage,
+        '/': (BuildContext context) => homePage,
       },
     );
   }
