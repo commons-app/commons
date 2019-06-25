@@ -29,7 +29,7 @@ class _MyAppState extends State<MyApp> {
         ReceiveSharingIntent.getImageStream().listen((List<String> value) {
           print(value);
             _sharedFiles = value;
-            homePage.setSharedFiled(_sharedFiles);
+            homePage.setSharedFile(_sharedFiles);
         }, onError: (err) {
           print("getIntentDataStream error: $err");
         });
@@ -38,6 +38,7 @@ class _MyAppState extends State<MyApp> {
     ReceiveSharingIntent.getInitialImage().then((List<String> value) {
       print(value);
       _sharedFiles = value;
+      homePage.setSharedFile(_sharedFiles);
     });
   }
 
