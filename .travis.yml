@@ -26,6 +26,8 @@ matrix:
           packages:
             - libstdc++6
             - fonts-droid
+      before_install:
+        - yes | sdkmanager "platforms;android-27"
       before_script:
         - wget http://services.gradle.org/distributions/gradle-5.1.1-bin.zip
         - unzip -qq gradle-5.1.1-bin.zip
