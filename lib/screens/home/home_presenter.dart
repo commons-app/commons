@@ -10,6 +10,8 @@ import 'package:url_launcher/url_launcher.dart';
 
 abstract class HomePageContract {
   void redirectUserForLogin();
+
+  void redirectToInitiateUpload(List<String> sharedFiles);
 }
 
 class HomePagePresenter {
@@ -18,11 +20,13 @@ class HomePagePresenter {
 
   HomePagePresenter(this._view);
 
-  void checkIsLogin() async {
+  void checkIsLogin([List<String> sharedFiles]) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var isLoggedIn = prefs.getBool("isLoggedIn");
     if (isLoggedIn == null || !isLoggedIn) {
       _view.redirectUserForLogin();
+    } else if (sharedFiles != null && sharedFiles.length > 0) {
+      _view.redirectToInitiateUpload(sharedFiles);
     }
   }
 

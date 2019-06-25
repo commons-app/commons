@@ -12,8 +12,13 @@ import 'home_presenter.dart';
 import 'nearby/nearby_page.dart';
 
 class HomePage extends StatefulWidget {
+  final List<String> sharedFiles;
+
+  const HomePage({Key key, this.sharedFiles})
+      : super(key: key);
+
   @override
-  _HomePageState createState() => new _HomePageState();
+  _HomePageState createState() => new _HomePageState(sharedFiles);
 }
 
 class _HomePageState extends State<HomePage> implements HomePageContract {
@@ -23,6 +28,9 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
   HomePagePresenter _presenter;
+  final List<String> sharedFiles;
+
+  _HomePageState(this.sharedFiles);
 
   void _pickImageFromCamera() async {
     var image = await _presenter.getImageFromCamera();
@@ -86,7 +94,9 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
       _presenter = new HomePagePresenter(this);
     }
 
-    _presenter.checkIsLogin();
+    print("home page");
+    print(sharedFiles);
+    _presenter.checkIsLogin(sharedFiles);
   }
 
   Widget gallery() {
@@ -201,5 +211,11 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
   @override
   void redirectUserForLogin() {
     _presenter.redirectToLogin(context);
+  }
+
+  @override
+  void redirectToInitiateUpload(List<String> sharedFiles) {
+    var file = File(sharedFiles[0]);
+    uploadImage(file);
   }
 }
