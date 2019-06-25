@@ -1,11 +1,8 @@
 import 'dart:async';
-import 'dart:io';
 
-import 'package:commons/model/UploadableFile.dart';
 import 'package:commons/plugins/receive_sharing_intent.dart';
 import 'package:commons/screens/home/home_page.dart';
 import 'package:commons/screens/login/login_page.dart';
-import 'package:commons/screens/upload/description_page.dart';
 import 'package:commons/utils/misc_util.dart';
 import 'package:flutter/material.dart';
 

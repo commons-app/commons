@@ -20,7 +20,7 @@ class ShareViewController: SLComposeServiceViewController {
         
         if let content = extensionContext!.inputItems[0] as? NSExtensionItem {
             if let contents = content.attachments {
-                for (index, attachment) in (contents as! [NSItemProvider]).enumerated() {
+                for (index, attachment) in (contents).enumerated() {
                     
                     if attachment.hasItemConformingToTypeIdentifier(imageContentType) {
                         handleImages(content: content, attachment: attachment, index: index)
@@ -52,8 +52,7 @@ class ShareViewController: SLComposeServiceViewController {
                 
                 // If this is the last item, save imagesData in userDefaults and redirect to host app
                 if index == (content.attachments?.count)! - 1 {
-                    // TODO: IMPROTANT: This should be your host app bundle identiefier
-                    let hostAppBundleIdentiefier = "com.kasem.sharing"
+                    let hostAppBundleIdentiefier = "com.maskaravivek.commons"
                     let userDefaults = UserDefaults(suiteName: "group.\(hostAppBundleIdentiefier)")
                     userDefaults?.set(this.sharedData, forKey: this.sharedKey)
                     userDefaults?.synchronize()
@@ -76,8 +75,7 @@ class ShareViewController: SLComposeServiceViewController {
                 
                 // If this is the last item, save imagesData in userDefaults and redirect to host app
                 if index == (content.attachments?.count)! - 1 {
-                    // TODO: IMPROTANT: This should be your host app bundle identiefier
-                    let hostAppBundleIdentiefier = "com.kasem.sharing"
+                    let hostAppBundleIdentiefier = "com.maskaravivek.commons"
                     let userDefaults = UserDefaults(suiteName: "group.\(hostAppBundleIdentiefier)")
                     userDefaults?.set(this.sharedData, forKey: this.sharedKey)
                     userDefaults?.synchronize()
@@ -111,8 +109,7 @@ class ShareViewController: SLComposeServiceViewController {
                 
                 // If this is the last item, save imagesData in userDefaults and redirect to host app
                 if index == (content.attachments?.count)! - 1 {
-                    // TODO: IMPROTANT: This should be your host app bundle identiefier
-                    let hostAppBundleIdentiefier = "com.kasem.sharing"
+                    let hostAppBundleIdentiefier = "com.maskaravivek.commons"
                     let userDefaults = UserDefaults(suiteName: "group.\(hostAppBundleIdentiefier)")
                     userDefaults?.set(this.sharedData, forKey: this.sharedKey)
                     userDefaults?.synchronize()
