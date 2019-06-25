@@ -73,6 +73,6 @@ local.properties
 
 
 .gradle/5.1.1/executionHistory/
-gradlew
-gradlew.bat
+#gradlew
+#gradlew.bat
 
