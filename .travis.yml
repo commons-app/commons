@@ -36,6 +36,15 @@ matrix:
         - git clone https://github.com/flutter/flutter.git -b stable --depth 1
       script:
         - ./flutter/bin/flutter -v build apk -t lib/main_prod.dart
+      after_success:
+        # Export commit info
+        - export AUTHOR_NAME=`git log -1 "$TRAVIS_COMMIT" --pretty="%aN"`
+        - export COMMITTER_NAME=`git log -1 "$TRAVIS_COMMIT" --pretty="%cN"`
+        - export COMMIT_SUBJECT=`git log -1 "$TRAVIS_COMMIT" --pretty="%s"`
+        - export COMMIT_MESSAGE=`git log -1 "$TRAVIS_COMMIT" --pretty="%b"`
+        # Upload to WeTransfer
+        - npm install --save @wetransfer/js-sdk
+        - export BUILD_OUTPUT_URL=`node ./.travis/utils/runUpload.js`
 
     - os: osx
       language: generic
