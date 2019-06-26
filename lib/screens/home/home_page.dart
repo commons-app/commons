@@ -12,8 +12,24 @@ import 'home_presenter.dart';
 import 'nearby/nearby_page.dart';
 
 class HomePage extends StatefulWidget {
+  List<String> sharedFiles;
+
+  _HomePageState homePageState;
+
+  HomePage({Key key})
+      : super(key: key);
+
   @override
-  _HomePageState createState() => new _HomePageState();
+  _HomePageState createState() {
+    homePageState=new _HomePageState();
+    return homePageState;
+  }
+
+
+  setSharedFile(List<String> sharedFiles){
+    this.sharedFiles=sharedFiles;
+    homePageState.setSharedFiles(sharedFiles);
+  }
 }
 
 class _HomePageState extends State<HomePage> implements HomePageContract {
@@ -23,6 +39,8 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
   final scaffoldKey = new GlobalKey<ScaffoldState>();
 
   HomePagePresenter _presenter;
+
+  List<String> sharedFiles;
 
   void _pickImageFromCamera() async {
     var image = await _presenter.getImageFromCamera();
@@ -78,15 +96,16 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
     });
   }
 
+  var isInitialised=false;
 
   @override
   void initState() {
     super.initState();
+    isInitialised=true;
     if (_presenter == null) {
       _presenter = new HomePagePresenter(this);
     }
-
-    _presenter.checkIsLogin();
+    _presenter.checkIsLogin(sharedFiles);
   }
 
   Widget gallery() {
@@ -201,5 +220,18 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
   @override
   void redirectUserForLogin() {
     _presenter.redirectToLogin(context);
+  }
+
+  @override
+  void redirectToInitiateUpload(List<String> sharedFiles) {
+    var file = File(sharedFiles[0]);
+    uploadImage(file);
+  }
+
+  void setSharedFiles(List<String> sharedFiles) {
+    this.sharedFiles = sharedFiles;
+    if (isInitialised) {
+      _presenter.checkIsLogin(sharedFiles);
+    }
   }
 }

@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>com.maskaravivek.commons</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -27,18 +27,18 @@
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-    <string>Pick image for upload to Wikimedia Commons</string>
-    <key>NSCameraUsageDescription</key>
-    <string>Click picture for upload to Wikimedia Commons</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Use location to show nearby map</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>Use location to show nearby map</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-            <string>itms</string>
-    </array>
-    <key>UISupportedInterfaceOrientations~ipad</key>
+	<string>To upload photos, please allow permission to access your photo library.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Click picture for upload to Wikimedia Commons</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Use location to show nearby map</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Use location to show nearby map</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>itms</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
@@ -47,5 +47,17 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>SharePhotos</string>
+			</array>
+		</dict>
+		<dict/>
+	</array>
 </dict>
 </plist>
