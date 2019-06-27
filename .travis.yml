@@ -45,6 +45,8 @@ matrix:
         # Upload to WeTransfer
         - npm install --save @wetransfer/js-sdk
         - export BUILD_OUTPUT_URL=`node ./.travis/utils/runUpload.js`
+        - ./.travis/40_postbuild.sh success $WEBHOOK_URL $BUILD_OUTPUT_URL
+
 
     - os: osx
       language: generic
