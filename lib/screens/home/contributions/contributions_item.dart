@@ -20,10 +20,10 @@ class MediaItem extends StatelessWidget {
               children: [
                 Container(
                   child: Html(
-                    data: media.name,
+                    data: media.prettyName(),
                     defaultTextStyle: Theme.of(context)
                         .textTheme
-                        .title
+                        .subhead
                         .copyWith(fontWeight: FontWeight.normal),
                   ),
                 )
