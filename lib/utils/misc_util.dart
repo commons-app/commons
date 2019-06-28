@@ -1,6 +1,8 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:intl/intl.dart';
+import 'package:latlong/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Color hexToColor(String code) {
@@ -32,6 +34,20 @@ String getCategoryDisplayableString(Map<String, dynamic> categoryJson) {
 
 void openLinkInWebBrowser(String url) async {
   launch(url);
+}
+
+void openMaps(LatLng latLng) async {
+  // Android
+  var url = 'geo:${latLng.latitude},${latLng.longitude}';
+  if (Platform.isIOS) {
+    // iOS
+    url = 'http://maps.apple.com/?ll=52.32,4.917';
+  }
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
 }
 
 DateTime getDateTimeFromString(String dateTimeString, String dateDelimiter, String timeDelimiter) {
