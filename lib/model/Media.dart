@@ -26,6 +26,11 @@ class Media {
     this.description,
     this.categories});
 
+  String prettyName() {
+    String prettyName = name.substring(0, name.lastIndexOf("."));
+    return prettyName.replaceAll("_", " ").replaceAll("File:", "");
+  }
+
   static Media fromPage(MwQueryPage page) {
     ImageInfo imageInfo = page.imageinfo[0];
     var extmetadata = imageInfo.extmetadata;
