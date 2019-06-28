@@ -5,10 +5,10 @@ import 'package:commons/model/UploadableFile.dart';
 import 'package:commons/model/place.dart';
 import 'package:commons/screens/upload/description_page.dart';
 import 'package:commons/utils/distance_utils.dart';
+import 'package:commons/utils/misc_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong/latlong.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'nearby_presenter.dart';
 
@@ -113,7 +113,7 @@ class _NearbyState extends State<NearbyPage> implements NearbyContract {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         new FlatButton(onPressed: () {
-                          _onDirectionsPressed(place);
+                          openMaps(place.location);
                         },
                             child: new Icon(Icons.directions)),
                         new FlatButton(onPressed: () {
@@ -165,20 +165,6 @@ class _NearbyState extends State<NearbyPage> implements NearbyContract {
     mapMarkers.addAll(nearbyMarkers);
     mapMarkers.add(currentLocationMarker);
     setState(() {});
-  }
-
-  void _onDirectionsPressed(Place place) async {
-    // Android
-    var url = 'geo:${place.location.latitude},${place.location.longitude}';
-    if (Platform.isIOS) {
-      // iOS
-      url = 'http://maps.apple.com/?ll=52.32,4.917';
-    }
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
   }
 
   void _pickImageFromCamera(Place place) async {

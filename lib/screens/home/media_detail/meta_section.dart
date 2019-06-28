@@ -9,6 +9,16 @@ class MetaSection extends StatelessWidget {
 
   MetaSection(this.media);
 
+  bool doesMediaHaveValidCoords() {
+    if (media.latLng == null) {
+      return false;
+    }
+    if (media.latLng.latitude == 0 && media.latLng.longitude == 0) {
+      return false;
+    }
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -30,12 +40,15 @@ class MetaSection extends StatelessWidget {
                 isLink: true)),
         _getSectionOrContainer(
             'Description', media.description),
-        _getSectionOrContainer(
-            'Coordinates',
-            "${media.latLng.latitude},${media.latLng.longitude}".contains(
-                "null")
-                ? "NA"
-                : "${media.latLng.latitude},${media.latLng.longitude}"),
+        new GestureDetector(
+            onTap: () => openMaps(media.latLng),
+            child: _getSectionOrContainer(
+                'Coordinates',
+                doesMediaHaveValidCoords()
+                    ? "${media.latLng.latitude},${media.latLng.longitude}"
+                    : "NA"
+                ,
+                isLink: doesMediaHaveValidCoords())),
         new Padding(
             padding: const EdgeInsets.all(10.0),
             child: Row(
