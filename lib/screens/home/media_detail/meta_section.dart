@@ -7,6 +7,9 @@ import 'package:flutter_html/flutter_html.dart';
 class MetaSection extends StatelessWidget {
   final Media media;
 
+  final int leftSectionFlex = 3;
+  final int rightSectionFlex = 7;
+
   MetaSection(this.media);
 
   bool doesMediaHaveValidCoords() {
@@ -27,7 +30,7 @@ class MetaSection extends StatelessWidget {
         new Container(
           padding: const EdgeInsets.all(10.0),
           color: hexToColor("#0c609c"),
-          child: getTitleSection("Title: ${media.name}"),
+          child: getTitleSection("Title: ${media.prettyName()}"),
         ),
         Container(
           margin: const EdgeInsets.symmetric(vertical: 10.0),
@@ -45,7 +48,7 @@ class MetaSection extends StatelessWidget {
             child: _getSectionOrContainer(
                 'Coordinates',
                 doesMediaHaveValidCoords()
-                    ? "${media.latLng.latitude},${media.latLng.longitude}"
+                    ? "${media.latLng.latitude}, ${media.latLng.longitude}"
                     : "NA"
                 ,
                 isLink: doesMediaHaveValidCoords())),
@@ -54,7 +57,7 @@ class MetaSection extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  flex: 4,
+                  flex: leftSectionFlex,
                   child: Html(
                     data: "Categories",
                     defaultTextStyle: TextStyle(
@@ -63,7 +66,7 @@ class MetaSection extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ),
                 ),
-                Expanded(flex: 6,
+                Expanded(flex: rightSectionFlex,
                     child: ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
@@ -98,7 +101,7 @@ class MetaSection extends StatelessWidget {
     if (content == null) return Container();
 
     var contentSection = Expanded(
-      flex: 6,
+      flex: rightSectionFlex,
       child: GestureDetector(
         child: Html(
           data: content,
@@ -113,7 +116,7 @@ class MetaSection extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Expanded(
-              flex: 4,
+              flex: leftSectionFlex,
               child: Html(
                 data :title,
                 defaultTextStyle: TextStyle(
@@ -156,54 +159,4 @@ class MetaSection extends StatelessWidget {
                   category: categoryName),
         ));
   }
-
-
-
-  /*Widget _getDescriptionsSection(String title, String content,
-      {bool isLink: false}) {
-    if (content == null) return Container();
-
-    var contentSection = Expanded(
-      flex: 6,
-      child: GestureDetector(
-        child: Html(
-          data: content,
-          defaultTextStyle: TextStyle(
-              color: isLink ? Colors.blue : Colors.black, fontSize: 16.0),
-        ),
-      ),
-    );
-
-    return Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Row(
-          children: <Widget>[
-            Expanded(
-              flex: 4,
-              child: Html(
-                data :title,
-                defaultTextStyle: TextStyle(
-                    color: hexToColor("#0c609c"),
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
-
-      Expanded(flex: 7,
-          child: ListView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  child: new Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Text(
-                          media.categories[index].categoryName)),
-                  onTap: () => onCategoryTapped(context, media.categories[index].categoryName),
-                );
-              }, itemCount: media.categories.length))
-            contentSection
-          ],
-        ));
-  }*/
 }

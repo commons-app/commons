@@ -50,6 +50,6 @@ class MediaDetailScreenState extends State<MediaDetailScreen> {
   }
 
   Widget _buildAppBar(Media media) {
-    return AppBar(title: Text(media.name));
+    return AppBar(title: Text(media.prettyName()));
   }
 }
