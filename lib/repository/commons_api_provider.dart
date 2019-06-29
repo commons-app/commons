@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:commons/model/GeneratorType.dart';
 import 'package:commons/model/response/MwQueryResponse.dart';
 import 'package:commons/model/response/login/LoginResponse.dart';
 import 'package:commons/model/response/nearby/NearbyResponse.dart';
@@ -13,6 +14,7 @@ import 'package:path_provider/path_provider.dart';
 
 
 class CommonsApiProvider {
+  final String THUMB_SIZE = "640";
   String _base_endpoint;
   String _url_prefix;
   String _sparql_query_endpoint = "https://query.wikidata.org/sparql";
@@ -216,11 +218,14 @@ class CommonsApiProvider {
    GROUP BY ?item ?wikipediaArticle ?commonsArticle""";
   }
 
-  /// https://www.mediawiki.org/wiki/API:Allimages
-  Future<MwQueryResponse> fetchContributions(String userName,
+  Future<MwQueryResponse> getImagesFromGenerator(GeneratorType type,
+      String filter,
       Map<String, String> continuation) async {
     try {
-      var _endpoint = _url_prefix + 'action=query&list=allimages&aiuser=+'+userName+'&aisort=timestamp&aiprop=url%7Cextmetadata&aidir=descending';
+      var _endpoint = _url_prefix +
+          'action=query&${getGeneratorParams(type, filter)}'
+              '&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=$THUMB_SIZE&'
+              'iiextmetadatafilter=DateTime|Categories|GPSLatitude|GPSLongitude|ImageDescription|DateTimeOriginal|Artist|LicenseShortName|LicenseUrl';
 
       if (continuation != null) {
         for (String key in continuation.keys) {
@@ -236,24 +241,19 @@ class CommonsApiProvider {
     }
   }
 
-  Future<MwQueryResponse> getFeaturedImages(String category,
-      Map<String, String> continuation) async {
-    try {
-      var _endpoint = _url_prefix +
-          'action=query&generator=categorymembers&gcmtype=file&gcmtitle=Category:$category&prop=imageinfo&gcmlimit=10&formatversion=2&iiprop=url|extmetadata&format=json';
-
-      if (continuation != null) {
-        for (String key in continuation.keys) {
-          _endpoint = _endpoint + "&$key=${continuation[key]}";
-        }
-      }
-
-      Response response = await _dio.get(_endpoint);
-      return MwQueryResponse.fromJson(response.data);
-    } catch (error, stacktrace) {
-      print("Exception occured: $error stackTrace: $stacktrace");
-      throw error;
+  String getGeneratorParams(GeneratorType type, String filter) {
+    switch (type) {
+      case GeneratorType.category:
+        return "generator=categorymembers&gcmtype=file&gcmtitle=Category:$filter&gcmlimit=10";
+        break;
+      case GeneratorType.contribution:
+        return "generator=allimages&gaiuser=$filter&gailimit=10&gaisort=timestamp&gaidir=descending";
+        break;
+      case GeneratorType.sha:
+        return "generator=allimages&aisha1=$filter&gailimit=10";
+        break;
     }
+    return "";
   }
 
   Future<MwQueryResponse> checkIfDuplicateFileExists(String sha1) async {

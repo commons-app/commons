@@ -5,7 +5,6 @@ import 'MwQueryPage.dart';
 import 'Tokens.dart';
 import 'category/GeoSearch.dart';
 import 'media/ImageInfo.dart';
-import 'media/contributions.dart';
 
 part 'MwQueryResult.g.dart';
 
@@ -13,7 +12,6 @@ part 'MwQueryResult.g.dart';
 class MwQueryResult {
   List<SearchResultItem> search;
   List<ImageInfo> imageinfo;
-  List<AllImages> allimages;
   List<GeoSearch> geosearch;
   List<MwQueryPage> pages;
   Tokens tokens;

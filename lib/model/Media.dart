@@ -1,7 +1,6 @@
 import 'package:commons/model/category.dart';
 import 'package:commons/model/response/MwQueryPage.dart';
 import 'package:commons/model/response/media/ImageInfo.dart';
-import 'package:commons/model/response/media/contributions.dart';
 import 'package:commons/utils/misc_util.dart';
 import 'package:latlong/latlong.dart';
 
@@ -59,34 +58,5 @@ class Media {
         latLng: mediaLatLng == null? new LatLng(0, 0): mediaLatLng,
         uploadDateTime: dateTimeFromString,
         categories: categoryList);
-  }
-
-  static Media fromAllImages(AllImages allImages) {
-    var extmetadata = allImages.extmetadata;
-
-    List<Category> categoryList = List();
-    extmetadata?.categories?.value?.split("|")?.forEach((String category) {
-      categoryList.add(Category(category.trim(), ""));
-    });
-
-    var mediaLatLng;
-    if(extmetadata.gPSLatitude!=null && extmetadata.gPSLongitude!=null) {
-      var _latitude = double.parse(extmetadata.gPSLatitude?.value);
-      var _longitude = double.parse(extmetadata.gPSLongitude?.value);
-      mediaLatLng = new LatLng(_latitude, _longitude);
-    }
-
-    var dateTimeFromString = getDateTimeFromString(extmetadata?.dateTime?.value, "-", ":");
-    var media = Media(
-        name: allImages.name,
-        thumbUrl: allImages.url,
-        url: allImages.url,
-        description: extmetadata.imageDescription?.value,
-        licenseName: extmetadata.licenseShortName?.value,
-        licenseUrl: extmetadata.licenseUrl?.value,
-        latLng: mediaLatLng == null? new LatLng(0, 0): mediaLatLng,
-        uploadDateTime: dateTimeFromString,
-        categories: categoryList);
-    return media;
   }
 }
