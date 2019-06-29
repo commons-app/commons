@@ -50,7 +50,7 @@ class CommonsBloc {
     return _repository.fetchContributions(userName, continuation);
   }
 
-  Future<MwQueryResponse> getFeaturedImages(
+  Future<MwQueryResponse> getCategoryImages(
       String category, Map<String, String> continuation) async {
     return _repository.getCategoryImages(category, continuation);
   }

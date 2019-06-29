@@ -15,7 +15,7 @@ class ExplorePresenter {
   }
 
   Future<List<Media>> getCategoryImages(String category) async {
-    return commonsBloc.getFeaturedImages(category, continuation).then((
+    return commonsBloc.getCategoryImages(category, continuation).then((
         MwQueryResponse value) {
       continuation = value.continuation;
       List<Media> mediaList = new List();

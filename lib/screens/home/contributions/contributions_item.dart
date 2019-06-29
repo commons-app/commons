@@ -47,7 +47,7 @@ class MediaItem extends StatelessWidget {
           children: <Widget>[
             Hero(
               child: CachedNetworkImage(
-                imageUrl: media.url,
+                imageUrl: media.thumbUrl,
                 fit: BoxFit.cover,
                 width: double.infinity,
                 height: 300.0,

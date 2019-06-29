@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:commons/model/GeneratorType.dart';
 import 'package:commons/model/category.dart';
 import 'package:commons/model/place.dart';
 import 'package:commons/model/response/MwQueryResponse.dart';
@@ -82,18 +83,20 @@ class CommonsRepository {
   }
 
   Future<MwQueryResponse> fetchContributions(String userName, Map<String, String> continuation) {
-    return _apiProvider.fetchContributions(userName, continuation);
+    return _apiProvider.getImagesFromGenerator(
+        GeneratorType.contribution, userName, continuation);
   }
 
   Future<MwQueryResponse> getCategoryImages(String category, Map<String, String> continuation) {
-    return _apiProvider.getFeaturedImages(category, continuation);
+    return _apiProvider.getImagesFromGenerator(
+        GeneratorType.category, category, continuation);
   }
 
   Future<bool> checkIfDuplicateFileExists(String sha1) {
-    return _apiProvider.checkIfDuplicateFileExists(sha1).then((
+    return _apiProvider.getImagesFromGenerator(
+        GeneratorType.sha, sha1, Map()).then((
         MwQueryResponse value) {
-      return value.query
-          .allimages.length > 0;
+      return value.query.pages.length > 0;
     }, onError: (e) {
       throw e;
     });
