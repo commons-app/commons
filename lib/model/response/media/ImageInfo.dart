@@ -2,6 +2,7 @@ import 'ExtMetaData.dart';
 import 'MetaData.dart';
 
 class ImageInfo {
+  String thumburl;
   String url;
   String html;
   int width;
@@ -22,28 +23,29 @@ class ImageInfo {
   String timestamp;
   int height;
 
-  ImageInfo(
-      {this.url,
-      this.html,
-      this.width,
-      this.size,
-      this.bitdepth,
-      this.mime,
-      this.userid,
-      this.mediatype,
-      this.descriptionurl,
-      this.extmetadata,
-      this.comment,
-      this.descriptionshorturl,
-      this.sha1,
-      this.parsedcomment,
-      this.metadata,
-      this.canonicaltitle,
-      this.user,
-      this.timestamp,
-      this.height});
+  ImageInfo({this.thumburl,
+    this.url,
+    this.html,
+    this.width,
+    this.size,
+    this.bitdepth,
+    this.mime,
+    this.userid,
+    this.mediatype,
+    this.descriptionurl,
+    this.extmetadata,
+    this.comment,
+    this.descriptionshorturl,
+    this.sha1,
+    this.parsedcomment,
+    this.metadata,
+    this.canonicaltitle,
+    this.user,
+    this.timestamp,
+    this.height});
 
   ImageInfo.fromJson(Map<String, dynamic> json) {
+    thumburl = json['thumburl'];
     url = json['url'];
     html = json['html'];
     width = json['width'];
@@ -74,6 +76,7 @@ class ImageInfo {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['thumburl'] = this.thumburl;
     data['url'] = this.url;
     data['html'] = this.html;
     data['width'] = this.width;

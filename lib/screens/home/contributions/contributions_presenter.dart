@@ -1,7 +1,7 @@
 import 'package:commons/bloc/CommonsBloc.dart';
 import 'package:commons/model/Media.dart';
+import 'package:commons/model/response/MwQueryPage.dart';
 import 'package:commons/model/response/MwQueryResponse.dart';
-import 'package:commons/model/response/media/contributions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class ContributionsContract {}
@@ -22,10 +22,10 @@ class ContributionsPresenter {
         MwQueryResponse value) {
       continuation = value.continuation;
       List<Media> mediaList = new List();
-      value.query.allimages.forEach((AllImages allImages) {
-        mediaList.add(Media.fromAllImages(allImages));
+      value.query.pages.forEach((MwQueryPage page) {
+        mediaList.add(Media.fromPage(page));
       });
-      return mediaList;
+      return mediaList.reversed.toList();
     }, onError: (e) {
       throw e;
     });

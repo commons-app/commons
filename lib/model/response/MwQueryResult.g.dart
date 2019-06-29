@@ -20,10 +20,6 @@ MwQueryResult _$MwQueryResultFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : ImageInfo.fromJson(e as Map<String, dynamic>))
         ?.toList()
-    ..allimages = (json['allimages'] as List)
-        ?.map((e) =>
-            e == null ? null : AllImages.fromJson(e as Map<String, dynamic>))
-        ?.toList()
     ..geosearch = (json['geosearch'] as List)
         ?.map((e) =>
             e == null ? null : GeoSearch.fromJson(e as Map<String, dynamic>))
@@ -38,7 +34,6 @@ Map<String, dynamic> _$MwQueryResultToJson(MwQueryResult instance) =>
     <String, dynamic>{
       'search': instance.search,
       'imageinfo': instance.imageinfo,
-      'allimages': instance.allimages,
       'geosearch': instance.geosearch,
       'pages': instance.pages,
       'tokens': instance.tokens

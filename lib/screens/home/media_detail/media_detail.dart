@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:commons/model/Media.dart';
-import 'package:commons/model/response/media/contributions.dart';
 import 'package:flutter/material.dart';
 
 import 'meta_section.dart';
