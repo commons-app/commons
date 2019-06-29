@@ -1,9 +1,13 @@
-import 'app_config.dart';
-import 'main.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_stetho/flutter_stetho.dart';
 
-void main() {
+import 'app_config.dart';
+import 'helper/localizations.dart';
+import 'main.dart';
+
+void main() async {
   var configuredApp = new AppConfig(
     appName: 'Commons Beta',
     flavorName: 'beta',
@@ -13,5 +17,9 @@ void main() {
   );
 
   Stetho.initialize();
+
+  final Locale myLocale = Locale(Platform.localeName);
+  await AppLocalizations.load(myLocale);
+
   runApp(configuredApp);
 }
