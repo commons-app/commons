@@ -34,11 +34,12 @@ class MediaDetailScreenState extends State<MediaDetailScreen> {
         body: SingleChildScrollView(
             child: Column(children: [
           new Hero(
-            tag: "Image-Tag-${widget._mediaItem.hashCode}",
+            tag: "Image-Tag-${widget._mediaItem.name.hashCode}",
             child: CachedNetworkImage(
                 fit: BoxFit.cover,
                 width: double.infinity,
-                imageUrl: widget._mediaItem.url),
+                imageUrl: widget._mediaItem.url,
+                placeholder: (context, url) => new Icon(Icons.image)),
           ),
           new Container(
               child: new MetaSection(widget._mediaItem)),
