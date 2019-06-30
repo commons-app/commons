@@ -56,6 +56,14 @@ matrix:
       script:
         - ./flutter/bin/flutter -v build ios -t lib/main_prod.dart --no-codesign
 
+before_cache:
+  - brew cleanup
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
 cache:
   directories:
     - $HOME/.pub-cache
+    - $HOME/Library/Caches/Homebrew
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
