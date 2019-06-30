@@ -14,6 +14,14 @@ or else use
 
 https://javiercbk.github.io/json_to_dart/
 
+## Localisation
+
+```
+flutter pub pub run intl_translation:generate_from_arb --output-dir=lib/l10n \
+   --no-use-deferred-loading lib/helper/localizations.dart lib/l10n/intl_*.arb
+```
+
+
 ## Running the app
 
 ### Beta variant

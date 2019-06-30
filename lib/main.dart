@@ -1,12 +1,13 @@
 import 'dart:async';
 
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:commons/helper/localizations.dart';
 import 'package:commons/plugins/receive_sharing_intent.dart';
 import 'package:commons/screens/home/home_page.dart';
 import 'package:commons/screens/login/login_page.dart';
 import 'package:commons/utils/misc_util.dart';
 import 'package:flutter/material.dart';
 
-import 'app_config.dart';
 
 class MyApp extends StatefulWidget {
   @override
@@ -52,12 +53,14 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var config = AppConfig.of(context);
-
-
-
     return new MaterialApp(
-      title: config.appName,
+      localizationsDelegates: [
+        AppLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: [Locale("en"), Locale("es")],
+      title: "Commons",
       theme: new ThemeData(primaryColor: hexToColor("#0c609c"),
           primaryColorDark: hexToColor("#00376d")),
       routes: {
@@ -65,6 +68,7 @@ class _MyAppState extends State<MyApp> {
         '/home': (BuildContext context) => homePage,
         '/': (BuildContext context) => homePage,
       },
+      home: homePage,
     );
   }
 }

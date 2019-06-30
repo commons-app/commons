@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:commons/helper/localizations.dart';
 import 'package:commons/model/Choice.dart';
 import 'package:commons/model/UploadableFile.dart';
 import 'package:commons/screens/upload/description_page.dart';
@@ -182,7 +183,6 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
     );
 
 
-
     return Scaffold(
       appBar: homeAppBar,
       key: scaffoldKey,
@@ -203,11 +203,11 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.map),
-            title: Text('Nearby'),
+            title: Text('Explore'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            title: Text('Explore'),
+            title: Text('Nearby'),
           ),
         ],
         currentIndex: _selectedIndex,
