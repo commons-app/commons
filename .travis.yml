@@ -45,7 +45,7 @@ matrix:
         - sudo python get-pip.py
         - pip install six
         - brew update
-        - brew update
+        - git config --global http.sslVerify false
         - brew install --HEAD usbmuxd
         - brew unlink usbmuxd
         - brew link usbmuxd
