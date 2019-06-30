@@ -1,8 +1,8 @@
 #!/bin/bash
 STATUS="$1"
 
-BUILD_OUTPUT_URL=$(node ./utils/runUpload.js);
+BUILD_OUTPUT_URL=$(node ./.travis/utils/runUpload.js);
 echo $BUILD_OUTPUT_URL
 curl -H "Authorization: token ${TRAVIS_COMMENT_PERSONAL_TOKEN}" -X POST \
-          -d "{\"body\": \"Get the APK for Job #$TRAVIS_JOB_NUMBER (Build #$TRAVIS_BUILD_NUMBER) at $BUILD_OUTPUT_URL\"}" \
+          -d "{\"body\": \"Get the APK for Job #$TRAVIS_JOB_NUMBER (Build #$TRAVIS_BUILD_NUMBER) at ${BUILD_OUTPUT_URL}\"}" \
           "https://api.github.com/repos/${TRAVIS_REPO_SLUG}/issues/${TRAVIS_PULL_REQUEST}/comments"

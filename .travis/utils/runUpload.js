@@ -30,7 +30,7 @@ const message = `Job: ${jobName}, Build: ${buildName}\n\n${title} (${author})`;
 
     files: [
       {
-        name: `ApolloTV Build ${buildName} - ${commit}.apk`,
+        name: `Commons App ${buildName} - ${commit}.apk`,
         size: appBinaryContent.length,
         content: appBinaryContent,
       }
