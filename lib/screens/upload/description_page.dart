@@ -86,7 +86,10 @@ class _FileDescriptionPageState extends State<FileDescriptionPage>
     var uploadForm = new Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        new Image.file(_uploadableFile.file),
+        new Image.file(_uploadableFile.file,
+          fit: BoxFit.cover,
+          width: double.infinity,
+          height: 200.0),
         new Form(
           autovalidate: false,
           key: formKey,
