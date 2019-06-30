@@ -1,0 +1,19 @@
+{
+  "@@last_modified": "2019-06-28T22:14:18.793822",
+  "contributionsTabName": "Contributions",
+  "@contributionsTabName": {
+    "description": "The tab name for contributions tab",
+    "type": "text",
+    "placeholders": {}
+  },
+  "nearbyTabName": "Nearby",
+  "@nearbyTabName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "exploreTabName": "Explore",
+  "@exploreTabName": {
+    "type": "text",
+    "placeholders": {}
+  }
+}
