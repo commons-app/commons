@@ -1,8 +1,12 @@
-import 'app_config.dart';
-import 'main.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
-void main() {
+import 'app_config.dart';
+import 'helper/localizations.dart';
+import 'main.dart';
+
+Future main() async {
   var configuredApp = new AppConfig(
     appName: 'Commons',
     flavorName: 'prod',
@@ -11,5 +15,7 @@ void main() {
     child: new MyApp(),
   );
 
+  final Locale myLocale = Locale(Platform.localeName);
+  await AppLocalizations.load(myLocale);
   runApp(configuredApp);
 }
