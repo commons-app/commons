@@ -182,9 +182,6 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
       ],
     );
 
-    String contributions = AppLocalizations
-        .of(context)
-        .contributionsTabName;
 
     return Scaffold(
       appBar: homeAppBar,
@@ -202,21 +199,15 @@ class _HomePageState extends State<HomePage> implements HomePageContract {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.add_a_photo),
-            title: Text(AppLocalizations
-                .of(context)
-                .contributionsTabName),
+            title: Text('Contributions'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.map),
-            title: Text(AppLocalizations
-                .of(context)
-                .nearbyTabName),
+            title: Text('Explore'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            title: Text(AppLocalizations
-                .of(context)
-                .exploreTabName),
+            title: Text('Nearby'),
           ),
         ],
         currentIndex: _selectedIndex,
