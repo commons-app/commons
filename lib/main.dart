@@ -66,7 +66,6 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/login': (BuildContext context) => loginPage,
         '/home': (BuildContext context) => homePage,
-        '/': (BuildContext context) => homePage,
       },
       home: homePage,
     );
