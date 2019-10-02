@@ -65,7 +65,7 @@ class _FileCategoryPageState extends State<FileCategoryPage>
     }
 
     if (pr == null) {
-      pr = new ProgressDialog(context, ProgressDialogType.Download);
+      pr = new ProgressDialog(context, type: ProgressDialogType.Download);
     }
 
     var outlineInputBorder = OutlineInputBorder(

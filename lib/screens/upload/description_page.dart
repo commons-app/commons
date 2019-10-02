@@ -63,7 +63,7 @@ class _FileDescriptionPageState extends State<FileDescriptionPage>
     }
 
     if (pr == null) {
-      pr = new ProgressDialog(context, ProgressDialogType.Normal);
+      pr = new ProgressDialog(context);
     }
 
     var outlineInputBorder = OutlineInputBorder(
