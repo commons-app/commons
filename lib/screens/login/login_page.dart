@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> implements LoginPageContract {
     }
 
     if (pr == null) {
-      pr = new ProgressDialog(context, ProgressDialogType.Normal);
+      pr = new ProgressDialog(context);
     }
 
     var outlineInputBorder = OutlineInputBorder(
