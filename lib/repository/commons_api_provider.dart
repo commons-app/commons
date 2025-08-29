@@ -28,7 +28,7 @@ class CommonsApiProvider {
     BaseOptions options = BaseOptions(
         receiveTimeout: 60000, connectTimeout: 60000);
     _dio = Dio(options);
-    _dio.interceptors.add(LogInterceptor(responseBody: true));
+    _dio.interceptors.add(LogInterceptor(responseBody: true, requestHeader: true, requestBody: true, responseHeader: true));
 
     addCookieJar();
   }
